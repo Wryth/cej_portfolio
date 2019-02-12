@@ -1,0 +1,13 @@
+* Header with Name different links etc
+
+* "Selected Work", vertical Alphabetical links
+
+* Instagram Display wheel. 
+
+
+
+
+
+
+bling:
+* Curser hover over et element, så skyftes det font.
