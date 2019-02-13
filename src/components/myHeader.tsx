@@ -3,11 +3,24 @@ import './myHeader.css';
 
 
 class MyHeader extends React.Component {
+    constructor(props:number) {
+        super(props);
+        this.state = {isToggleOn: true};
+    
+        // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+      }
+    
+      handleClick() {
+        this.setState(state => ({
+          //isToggleOn: !state.isToggleOn
+        }));
+      }
+
+
     render(){
         return(
-            <div className="MyHeader">
-                <header className="mhead">
-                    <div>
+            <div className="MyHeaderContainer">
                         <h1 id="name">CARL EMIL JACOBSEN</h1>
                         <div className="headerMenu">
                             <p className="headerOptions">X</p>
@@ -17,8 +30,6 @@ class MyHeader extends React.Component {
                             <p className="headerOptions">Bio.</p>
                             <p className="headerOptions">Contact</p>
                         </div>
-                    </div>
-                </header>
             </div>
         );
     }

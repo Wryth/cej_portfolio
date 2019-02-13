@@ -1,26 +1,26 @@
 
-.MyHeader{
+.MyHeaderContainer{
     background-color: white;
-    left: 0;
-    top: 0;
-    height: 10%;
+    height: 5%; /*fixed eller prosent? */
     width: 100%;
-    position: fixed;
 }
 
 #name{
     position: relative;
+    width: 40%;
+    height: 100%;
     float: left;
-    margin-left: 2.5%;
+    margin: 0;
+    font-weight: normal;
 }
 
 .headerMenu{
-    margin-right: 2.5%;
-    position: relative;
+    height: 100%;
+    width: 60%;
+    float: right;
 }
 
 .headerOptions{
-    position: relative;
     float: right;
-    margin: 1%;
+    margin-left: 2.5em;
 }

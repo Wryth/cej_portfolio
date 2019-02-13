@@ -1,0 +1,16 @@
+.WorkListContainer{
+    width: 100%;
+}
+
+#swText{
+    font-weight: normal;
+}
+
+.list{
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.projects{
+    margin: 5px;
+}

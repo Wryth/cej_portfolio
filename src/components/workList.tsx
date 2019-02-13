@@ -4,13 +4,35 @@ import './workList.css';
 class WorkList extends React.Component {
     render(){
         return(
-            <div className="workListContainer">
-                <h2>Selected WORK</h2>
+            <div className="WorkListContainer">
+                <h2 id="swText">Selected WORK</h2>
                 <ol type="A" className="list">
-                    <li>Collage</li>
-                    <li>Red Volumes</li>
-                    <li>Don't Know What Shape I'm In</li>
-                    <li>Stone colours</li>
+                    <li className="projects">Collage</li>
+                    <li className="projects">Red Volumes</li>
+                    <li className="projects">Don't Know What Shape I'm In</li>
+                    <li className="projects">Stone colours</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
+                    <li className="projects">-</li>
                 </ol> 
 
             </div>

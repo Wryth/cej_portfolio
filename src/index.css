@@ -4,14 +4,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: ivory; 
-  position: fixed;
+  background-color: white; 
 }
 
-.main{
-  height: 100%;
-  width: 100%;
+.mainContainer{
+  position: relative;
+  width: 95%;
   background-color: white;
-  position: fixed;
-  left: 0;
+  left: 2.5%;
 }

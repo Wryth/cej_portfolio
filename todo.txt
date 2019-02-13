@@ -4,6 +4,7 @@
 
 * Instagram Display wheel. 
 
+* Brukt Font Georgia on mouseHover.
 
 
 
@@ -11,3 +12,8 @@
 
 bling:
 * Curser hover over et element, så skyftes det font.
+
+
+
+CP får nesten gi skalerings størrelse etc.
+Instagram embedding: https://www.instagram.com/developer/embedding/

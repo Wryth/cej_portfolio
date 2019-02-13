@@ -11,7 +11,7 @@ import WorkList from './components/workList.tsx';
 class Main extends React.Component {
     render() {
         return(
-            <div className="main">
+            <div className="mainContainer">
                 <MyHeader />
                 <WorkList />
             </div>
