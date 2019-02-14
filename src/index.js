@@ -5,8 +5,8 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import App from './components/exampleReact/App';
-import MyHeader from './components/myHeader.tsx';
-import WorkList from './components/workList.tsx';
+import MyHeader from './components/myHeader.js';
+import WorkList from './components/workList.js';
 
 class Main extends React.Component {
     render() {
@@ -19,10 +19,6 @@ class Main extends React.Component {
     }
 
 }
-
-
-
-
 
 
 //===========================

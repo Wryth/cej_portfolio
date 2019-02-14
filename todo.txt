@@ -1,19 +1,35 @@
-* Header with Name different links etc
+ToDoList:
 
-* "Selected Work", vertical Alphabetical links
+-Drop down manu.
+    -Gjøre om til buttons.
+        -Dropdown ved trykk, okuper like mye plass.
 
-* Instagram Display wheel. 
+-Horizontal scroll of projects.
+    -Include in the Selected WORK element?
 
-* Brukt Font Georgia on mouseHover.
-
-
-
-
-
-bling:
-* Curser hover over et element, så skyftes det font.
+-Instagram Display wheel.
+    -Instagram embedding: https://www.instagram.com/developer/embedding/
+    -https://www.instagram.com/carlemiljacobsen/
 
 
 
-CP får nesten gi skalerings størrelse etc.
-Instagram embedding: https://www.instagram.com/developer/embedding/
+Spørsmål til CPS:
+-Fonts
+    -Hvilke fonts? Størrelse(em,%,px),
+    -Skal alle bokstaver skyfte font til Georgia? forslag: bare de man kan trykke på?
+        -atm omståkker det veldig på siden, etter som fonts har forskjellig størrelse.
+        Dette kan sikkert fikses, men det kan hende at noe sånt over hele siden blir fort
+        rotete.
+
+-Bilder/prosjekter
+    -Skal alle bilder hentes fra Instagram?
+
+-Meny
+    -Drop-down ved hover/trykk? Jeg antar trykk.
+    -Skal denne ligge over evt andre elementer, eller klarer vekk de?.
+
+-Horizontal scoll of projects
+    -Hentes disse fra instagram?
+    -Skal hele nettsiden kun være en side?
+    -Hva slags størrelse er bildene? er de alle samme format?
+

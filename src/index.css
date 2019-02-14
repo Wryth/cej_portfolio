@@ -7,6 +7,12 @@ body {
   background-color: white; 
 }
 
+
+/*Global on hover change text font */
+p:hover,h1:hover,button:hover,li:hover {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .mainContainer{
   position: relative;
   width: 95%;
