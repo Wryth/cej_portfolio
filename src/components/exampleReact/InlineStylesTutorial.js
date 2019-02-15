@@ -8,19 +8,24 @@ class InlineStylesTutorial extends React.Component {
     }
     this.toggleIsShowing = this.toggleIsShowing.bind(this);
   }
+
   toggleIsShowing() {
     this.setState(prevState => ({
       isShowing: ! prevState.isShowing
     }));
   }
+
   render() {
     return (
       <div>
-        <p style={{display: this.state.isShowing ? "inherit" : "none"}}>This is the text!</p>
+        <div>
         <button onClick={this.toggleIsShowing}>Show Text</button>
+        </div>
+        <p style={{display: this.state.isShowing ? "inherit" : "none"}}>This is the text!</p>
       </div>
     )
   }
 }
+
 
 export default InlineStylesTutorial;

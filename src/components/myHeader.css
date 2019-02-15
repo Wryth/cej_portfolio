@@ -1,4 +1,3 @@
-
 .MyHeaderContainer{
     background-color: white;
     height: 5%; /*fixed eller prosent? */
@@ -15,18 +14,8 @@
     font-weight: normal;
 }
 
-.headerMenu{
+#headerMenu{
     height: 100%;
     width: 60%;
     float: right;
-}
-
-.headerOptions{
-    float: right;
-    margin: 0;
-    margin-left: 2.5em;
-    padding: 0;
-    border: none;
-    background: none;
-    font-size: 1rem;
 }

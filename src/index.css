@@ -9,7 +9,7 @@ body {
 
 
 /*Global on hover change text font */
-p:hover,h1:hover,button:hover,li:hover {
+p:hover,h1:hover,button:hover,li:hover,h2:hover {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
