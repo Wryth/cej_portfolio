@@ -5,17 +5,29 @@
     overflow: auto; /*Adjusts element size depending on child size. */
 }
 
-#name{
-    position: relative;
-    width: 40%;
+#headerMenu{
     height: 100%;
+    width: 70%;
+    float: right;
+}
+
+#shortIntro{
+    width: 30%;
+    float: left;
+    height: 100%;
+}
+
+#name{
+    width: 100%;
+    height: 50%;
     float: left;
     margin: 0;
     font-weight: normal;
 }
 
-#headerMenu{
-    height: 100%;
-    width: 60%;
-    float: right;
+#contactText{
+    position: relative;
+    height: 50%;
+    left: 5%;
 }
+

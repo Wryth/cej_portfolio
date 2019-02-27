@@ -1,8 +1,13 @@
 ToDoList:
 
+Archive scrolling etc.
+Frontside.
+
 -Drop down manu.
     -Gjøre om til buttons.
         -Dropdown ved trykk, okuper like mye plass.
+https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm
+
 
 -Horizontal scroll of projects.
     -Include in the Selected WORK element?
