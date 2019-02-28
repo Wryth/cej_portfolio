@@ -1,7 +1,6 @@
 ToDoList:
 
-Archive scrolling etc.
-Frontside.
+Hvordan kommer man seg tilbake til frontsiden? trykke på navnet hans?
 
 -Drop down manu.
     -Gjøre om til buttons.
@@ -25,16 +24,4 @@ Spørsmål til CPS:
         -atm omståkker det veldig på siden, etter som fonts har forskjellig størrelse.
         Dette kan sikkert fikses, men det kan hende at noe sånt over hele siden blir fort
         rotete.
-
--Bilder/prosjekter
-    -Skal alle bilder hentes fra Instagram?
-
--Meny
-    -Drop-down ved hover/trykk? Jeg antar trykk.
-    -Skal denne ligge over evt andre elementer, eller klarer vekk de?.
-
--Horizontal scoll of projects
-    -Hentes disse fra instagram?
-    -Skal hele nettsiden kun være en side?
-    -Hva slags størrelse er bildene? er de alle samme format?
 

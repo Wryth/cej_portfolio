@@ -3,7 +3,6 @@ import React from 'react';
 import './instagramDisplay.css';
 
 class InstagramDisplay extends React.Component{
-
     render(){
         return(
         <div id="igContainer">
