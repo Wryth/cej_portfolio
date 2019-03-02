@@ -41,8 +41,9 @@ class Menu extends React.Component {
                         to="/bio"
                         >Bio</NavLink>
                         
-                        {/*<NavLink className="menuOption"
-                        >Downloads</NavLink>*/}
+                        <NavLink className="menuOption"
+                        to="/downloads"
+                        >Downloads</NavLink>
 
                         <a id="igLink" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
                 </div>

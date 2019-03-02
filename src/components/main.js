@@ -13,6 +13,7 @@ import Bio from './bio';
 import Exhibitions from './exhibitions';
 import InstagramDisplay from './instagramDisplay.js';
 import Archive from './archive.js';
+import Downloads from './downloads';
 
 class Main extends React.Component {
     render() {
@@ -25,6 +26,7 @@ class Main extends React.Component {
                     <Route path="/archive" component={Archive}/>
                     <Route path="/exhibitions" component={Exhibitions}/>
                     <Route path="/bio" component={Bio}/>
+                    <Route path="/downloads" component={Downloads}/>
                 </div>
             </div>
             </HashRouter>

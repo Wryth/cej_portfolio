@@ -6,13 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white; 
-  cursor: crosshair;
+  /*cursor: crosshair;*/
+  cursor: url(img/dot.png);
 }
 
-cursor{
-  cursor: none;}
-
 /*Global on hover change text font */
-button:hover,.projects:hover {
+button:hover, .projects:hover {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
