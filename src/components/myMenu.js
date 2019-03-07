@@ -22,9 +22,9 @@ class Menu extends React.Component {
         return(
             <div id="menuContainer">
                 <div className="menuOptions">
-                        <NavLink className="menuOption"
+                        {/*<NavLink className="menuOption"
                         to="/"
-                        >Home</NavLink>
+                        >Home</NavLink>*/}
 
                         <NavLink className="menuOption"
                         to="/archive"
@@ -47,14 +47,6 @@ class Menu extends React.Component {
 
                         <a id="igLink" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
                 </div>
-                
-                {/*<div id="menuBox"
-                ref={this.menuBox}
-                style={{visibility: this.state.isShowing ? "visible" : "hidden"}}
-                >
-                <Bio />
-                <Contact />
-                </div>*/}
             </div>
         );
     }

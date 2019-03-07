@@ -1,15 +1,10 @@
 ToDoList:
 
-Hvordan kommer man seg tilbake til frontsiden? trykke på navnet hans?
-
 -Drop down manu.
     -Gjøre om til buttons.
         -Dropdown ved trykk, okuper like mye plass.
 https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm
 
-
--Horizontal scroll of projects.
-    -Include in the Selected WORK element?
 
 -Instagram Display wheel.
     -Instagram embedding: https://www.instagram.com/developer/embedding/
@@ -24,4 +19,29 @@ Spørsmål til CPS:
         -atm omståkker det veldig på siden, etter som fonts har forskjellig størrelse.
         Dette kan sikkert fikses, men det kan hende at noe sånt over hele siden blir fort
         rotete.
+
+https://auth0.com/
+https://firebase.google.com/
+
+Logge inn med googlebruker i en skjult admin dashboard.
+
+godaddy som host?
+wordpress
+
+navn some home
+
+
+Default: Arial
+Hover/selected: Georgia
+
+Todo:
+-Plassering av bilder, ape etter pdf.
+-trigger inline css font skifte på valge elementer.
+-sirkel på cursor.
+-flytt home til navnet hans.
+-firebase/innlogging.
+
+
+Laget på wix.com
+Domenet er fra One.com
 

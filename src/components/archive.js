@@ -13,26 +13,31 @@ import './archive.css';
 
 // list of items
 const list = [
-    { name: '1' },
-    { name: '3' },
-    { name: '6' },
-    { name: '10' },
-    { name: 'Chamber_Fran Parente_Black Lines relief-2' },
-    { name: 'Chamber_Fran Parente_Powder Table-1' },
-    { name: 'Chamber_Fran Parente_Powder Table-5' },
-    { name: 'Chamber_Fran Parente_Red Powder Variation 4-1' },
-    { name: 'Chamber_Fran Parente_Red Powder Variation 5-1' }
+    { name: '1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: '3', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: '6', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: '10', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'Chamber_Fran Parente_Black Lines relief-2', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'Chamber_Fran Parente_Powder Table-1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'Chamber_Fran Parente_Powder Table-5', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'Chamber_Fran Parente_Red Powder Variation 4-1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'Chamber_Fran Parente_Red Powder Variation 5-1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" }
   ];
 
 // One item component
 // selected prop will be passed
-const MenuItem = ({ text, selected }) => {
+const MenuItem = ({ pic, title, materials, dim, weight, selected }) => {
     return (
       <div
         className="menu-item"
       >
-        {/*{text}*/}
-        <img src={process.env.PUBLIC_URL + '/foto/' + text + '.jpg'} width="500px" height="500px"/>
+        <div id="menu-info">
+          <div id="title">Title {title}</div>
+          <div id="materials">Materials {materials}</div>
+          <div id="dim">Dim. {dim}</div>
+          <div id="weight">Weight {weight}</div>
+        </div>
+        <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="500px"/>
       </div>
     );
   };
@@ -40,25 +45,19 @@ const MenuItem = ({ text, selected }) => {
 // All items component
 // Important! add unique key
 export const Menu = (list) => list.map(el => {
-    const { name } = el;
+    const { name, title, materials, dim, weight } = el;
     return (
       <MenuItem
-        text={name}
+        weight={weight}
+        dim={dim}
+        materials={materials}
+        title={title}
+        pic={name}
         key={name}
       />
     );
 });
 
-const Arrow = ({ text, className }) => {
-    return (
-      <div
-        className={className}
-      >{text}</div>
-    );
-};
-
-const ArrowLeft = Arrow({ text: '<', className: 'arrow-prev' });
-const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
 
 class Archive extends React.Component{
     state = {
@@ -78,8 +77,6 @@ class Archive extends React.Component{
         <div id="archiveContainer">
             <ScrollMenu
             data={menu}
-            arrowLeft={ArrowLeft}
-            arrowRight={ArrowRight}
             selected={selected}
             onSelect={this.onSelect}
             />

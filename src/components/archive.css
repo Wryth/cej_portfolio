@@ -2,6 +2,7 @@
     position: fixed;
     width: 100%;
     left:0;
+    bottom: 0;
 }
 
 .menu-item {
@@ -11,10 +12,11 @@
     cursor: pointer;
     border: none;
   }
-  .menu-item-wrapper.active {
-    border: 1px blue solid;
-  }
-  
+
+#menu-info{
+  font-size: 0.8em;
+}
+
   .menu-item.active {
     border: 1px green solid;
   }

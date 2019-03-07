@@ -1,6 +1,11 @@
 import React from 'react';
 import './myHeader.css';
 import Menu from './myMenu';
+import {
+    Route,
+    NavLink,
+    HashRouter
+  } from "react-router-dom";
 
 
 class MyHeader extends React.Component {
@@ -8,9 +13,10 @@ class MyHeader extends React.Component {
         return(
             <div className="MyHeaderContainer">
                 <div id="shortIntro">
-                    <h1 id="name"
-                    >CARL EMIL JACOBSEN
-                    </h1>
+                    <NavLink id="name" 
+                        className="menuOption"
+                        to="/"
+                        >CARL EMIL JACOBSEN</NavLink>
                     <Contact />
                 </div>
                 <div id="headerMenu">
@@ -24,7 +30,7 @@ class MyHeader extends React.Component {
 function Contact() {
     return(
         <p id="contactText">
-            E-mail  carlemiljacobsen(a)gmail.com <br></br> Phone +45 31701698
+            E-mail carlemil (a) jacobsen.com<br></br> Phone +45 31701698
         </p>
     )
 }
