@@ -17,11 +17,11 @@
   font-size: 0.8em;
 }
 
-  .menu-item.active {
-    border: 1px green solid;
-  }
+.menu-item.active {
+  border: 1px green solid;
+}
    
-  .scroll-menu-arrow {
-    padding: 20px;
-    cursor: pointer;
-  }
+.scroll-menu-arrow {
+  padding: 20px;
+  cursor: pointer;
+}

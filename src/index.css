@@ -8,6 +8,10 @@ body {
   /*cursor: url(img/dot.png);*/
 }
 
+.custom {
+  cursor: url(img/dot.png), auto;
+}
+
 /*Global on hover change text font */
 button:hover, .projects:hover {
   font-family: Georgia, 'Times New Roman', Times, serif;
