@@ -9,11 +9,34 @@
   height: 95%;
   bottom: 50px;
 }
-  
+
 #contentBox{
   position: relative;
   width: 60%;
   left: 20%;
   text-align: center;
 }
-  
+
+/*
+@media screen { .nomobile { display: block; } } //desktops/laptops
+@media handheld { .nomobile { display: none; } } //mobile devices
+*/
+@media (max-width:960px) {
+  .mainContainer{
+    position: relative;
+    width: 100%;
+    background-color: white;
+    left: 0;
+    overflow: auto;
+    top: 50px;
+    height: 95%;
+    bottom: 50px;
+  }
+
+  #contentBox{
+    position: relative;
+    width: 100%;
+    left: 0;
+    text-align: center;
+  }
+} 

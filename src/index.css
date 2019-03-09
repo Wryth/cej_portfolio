@@ -4,15 +4,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
-  /*cursor: crosshair;*/
-  /*cursor: url(img/dot.png);*/
-}
+  cursor: url(img/sqare.png) 32 32, auto;
 
-.custom {
-  cursor: url(img/dot.png), auto;
 }
 
 /*Global on hover change text font */
-button:hover, .projects:hover {
+button:hover, 
+.projects:hover, 
+.menuOption:hover,
+#igLink:hover {
   font-family: Georgia, 'Times New Roman', Times, serif;
+  cursor: url(img/sqare.png) 32 32, auto;
 }
