@@ -3,25 +3,19 @@ import ScrollMenu from 'react-horizontal-scrolling-menu';
 import './archive.css';
 //import f from "../foto/*.jpg";
 //import f1 from "./foto/f1.jpg";
-//import f1 from "../foto/Chamber_Fran Parente_Powder Table-1.jpg";
-//import f3 from "../foto/Charlottenborg_Side.jpg";
-//import f4 from "../foto/6.jpg";
-//import f5 from "./foto/Chamber_Fran Parente_Powder Table-1.jpg";
-//import f6 from "./foto/Chamber_Fran Parente_Powder Table-1.jpg";
-
 //https://www.npmjs.com/package/react-horizontal-scrolling-menu
 
 // list of items
 const list = [
-    { name: '1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: '3', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: '6', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: '10', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'Chamber_Fran Parente_Black Lines relief-2', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'Chamber_Fran Parente_Powder Table-1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'Chamber_Fran Parente_Powder Table-5', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'Chamber_Fran Parente_Red Powder Variation 4-1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'Chamber_Fran Parente_Red Powder Variation 5-1', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" }
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
+    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" }
   ];
 
 // One item component
@@ -37,7 +31,7 @@ const MenuItem = ({ pic, title, materials, dim, weight, selected }) => {
           <div id="dim">Dim. {dim}</div>
           <div id="weight">Weight {weight}</div>
         </div>
-        <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="500px"/>
+        <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="100%"/>
       </div>
     );
   };

@@ -1,3 +1,9 @@
 #bioText {
     text-align: left;
 }
+
+#bioText{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 25pt;
+    line-height: 33pt; 
+}

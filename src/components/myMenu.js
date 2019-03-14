@@ -27,6 +27,7 @@ class Menu extends React.Component {
                         >Home</NavLink>*/}
 
                         <NavLink className="menuOption"
+                        id="menuArchive"
                         to="/archive"
                         >Archive</NavLink>
 
@@ -34,14 +35,17 @@ class Menu extends React.Component {
                         >Installation view</NavLink>*/}
 
                         <NavLink className="menuOption"
+                        id="menuExhibitions"
                         to="/exhibitions"
                         >Exhibitions</NavLink>
 
                         <NavLink className="menuOption"
+                        id="menuBio"
                         to="/bio"
                         >Bio</NavLink>
                         
                         <NavLink className="menuOption"
+                        id="menuDownloads"
                         to="/downloads"
                         >Downloads</NavLink>
 

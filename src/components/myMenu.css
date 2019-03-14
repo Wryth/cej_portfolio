@@ -12,7 +12,6 @@
 .menuOption{
     float: left;
     margin: 0;
-    margin-left: 2.5em;
     padding: 0;
     border: none;
     background: none;
@@ -20,8 +19,26 @@
     text-decoration: none;
     color: black;
     font-weight: 500;
-    min-width: 100px;
     min-height: 20px;
+}
+
+#menuArchive{
+    min-width: 63px;
+    margin-left: 40px;
+}
+
+#menuExhibitions{
+    margin-left: 40px;
+    min-width: 87px;
+}
+
+#menuBio{
+    margin-left: 40px;
+    min-width: 33px;
+}
+
+#menuDownloads{
+    margin-left: 40px;
 }
 
 .menuOption:hover, #igLink:hover {
