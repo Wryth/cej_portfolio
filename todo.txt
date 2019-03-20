@@ -3,7 +3,7 @@ ToDoList:
 -Drop down manu.
     -Gjøre om til buttons.
         -Dropdown ved trykk, okuper like mye plass.
-https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm
+https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.html
 
 
 -Instagram Display wheel.
