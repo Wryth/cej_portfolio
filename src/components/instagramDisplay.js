@@ -1,4 +1,3 @@
-//https://instagram.com/p/fA9uwTtkSN/media/?size=t
 import React from 'react';
 import './instagramDisplay.css';
 

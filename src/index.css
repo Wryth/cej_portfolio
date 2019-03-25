@@ -4,13 +4,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
   cursor: url(img/circle1.png) 32 32, auto;
-
 }
 
 /*Global on hover change text font */
 button:hover, 
 .menuOption:hover,
-#igLink:hover {
+#igLink:hover{
   font-family: Georgia, 'Times New Roman', Times, serif;
+  cursor: url(img/circle1.png) 32 32, auto;
+}
+
+#archiveContainer:hover,
+.menu-item:hover,
+body:hover{
+  cursor: url(img/circle1.png) 32 32, auto;
+}
+
+cursor:move{
   cursor: url(img/circle1.png) 32 32, auto;
 }

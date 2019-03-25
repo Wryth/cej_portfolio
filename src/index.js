@@ -5,8 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import Main from './components/main.js';
-import Archive from './components/archive';
-
+import InlineStylesTutorial from './components/exampleReact/InlineStylesTutorial';
 
 //===========================
 ReactDOM.render(<Main />, document.getElementById('root'));

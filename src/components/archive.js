@@ -31,7 +31,7 @@ const MenuItem = ({ pic, title, materials, dim, weight, selected }) => {
           <div id="dim">Dim. {dim}</div>
           <div id="weight">Weight {weight}</div>
         </div>
-        <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="100%"/>
+        <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="507px"/>
       </div>
     );
   };

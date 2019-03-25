@@ -1,8 +1,5 @@
 ToDoList:
 
--Drop down manu.
-    -Gjøre om til buttons.
-        -Dropdown ved trykk, okuper like mye plass.
 https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.html
 
 
@@ -10,15 +7,6 @@ https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.h
     -Instagram embedding: https://www.instagram.com/developer/embedding/
     -https://www.instagram.com/carlemiljacobsen/
 
-
-Spørsmål til CPS:
--Fonts
-
-    -Hvilke fonts? Størrelse(em,%,px,pt),
-    -Skal alle bokstaver skyfte font til Georgia? forslag: bare de man kan trykke på?
-        -atm omståkker det veldig på siden, etter som fonts har forskjellig størrelse.
-        Dette kan sikkert fikses, men det kan hende at noe sånt over hele siden blir fort
-        rotete.
 
 https://auth0.com/
 https://firebase.google.com/
@@ -35,10 +23,7 @@ Default: Arial
 Hover/selected: Georgia
 
 Todo:
--Plassering av bilder, ape etter pdf.
 -trigger inline css font skifte på valge elementer.
--sirkel på cursor.
--flytt home til navnet hans.
 -firebase/innlogging.
 
 
@@ -48,3 +33,18 @@ Domenet er fra One.com
 
 
 TODO:
+Host på hostgator
+add node.js to hostgator:
+https://www.dzeta.biz/add-nodejs-hostgator-shared-hosting-server/
+
+Tutorials:
+https://www.youtube.com/watch?v=tq7dqdHCc7U&list=LLO9WJn7iF0KysinClsjvDvA&index=2&t=0s
+https://www.youtube.com/watch?v=P9MB218jzF4
+
+
+WinSCP
+FileZill
+CyberDuck
+
+use webpack to bundle the project.
+the move it to the server.
