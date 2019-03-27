@@ -48,3 +48,6 @@ CyberDuck
 
 use webpack to bundle the project.
 the move it to the server.
+
+https://www.youtube.com/watch?v=rfpRZ2t_BrQ&fbclid=IwAR1ehq1RVvXGCKkbqienAfH75vADhk_Yr1WULPqFwV9aA8ybULt8dbW2qnI
+cursor as a div element

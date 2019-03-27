@@ -3,23 +3,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
-  cursor: url(img/circle1.png) 32 32, auto;
+  /*cursor: url(img/circle1.png) 32 32, auto;*/
+  position: absolute;
+  height: 99%;
+  width: 99%;
+  cursor: pointer;
 }
+
+
 
 /*Global on hover change text font */
 button:hover, 
 .menuOption:hover,
 #igLink:hover{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  cursor: url(img/circle1.png) 32 32, auto;
+  /*cursor: url(img/Dot.png) 32 32, auto;*/
 }
 
 #archiveContainer:hover,
 .menu-item:hover,
 body:hover{
-  cursor: url(img/circle1.png) 32 32, auto;
-}
-
-cursor:move{
-  cursor: url(img/circle1.png) 32 32, auto;
+ /* cursor: url(img/Dot.png) 32 32, auto;*/
 }

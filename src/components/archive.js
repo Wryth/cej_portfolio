@@ -7,29 +7,38 @@ import './archive.css';
 
 // list of items
 const list = [
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" },
-    { name: 'black', title: "POLYPOWDER #1", materials: "Acrylic, fiber concrete,  pigments from crushed stones, polystyrene and steel.", dim: "H 25 cmx W 20 cm  D 30 cm", weight: "ca 5 kg" }
+  { name: '2019_1', title: "2019" },
+  { name: '2018_10', title: "2018" },
+  { name: '2018_9', title: "2018" },
+  { name: '2018_8', title: "2018" },
+  { name: '2018_7', title: "2018" },
+  { name: '2018_6', title: "2018" },
+  { name: '2018_5', title: "2018" },
+  { name: '2018_4', title: "2018" },
+  { name: '2018_3', title: "2018" },
+  { name: '2018_2', title: "2018" },
+  { name: '2018_1', title: "2018" },
+  { name: '2018_0', title: "2018" },
+  { name: '2017_7', title: "2017" },
+  { name: '2017_5', title: "2017" },
+  { name: '2017_4', title: "2017" },
+  { name: '2017_3', title: "2017" },
+  { name: '2017_2', title: "2017" },
+  { name: '2017_1', title: "2017" },
+  { name: '2016_3', title: "2016" },
+  { name: '2016_2', title: "2016" },
+  { name: '2016_1', title: "2016" },
   ];
 
 // One item component
 // selected prop will be passed
-const MenuItem = ({ pic, title, materials, dim, weight, selected }) => {
+const MenuItem = ({ pic, title, selected }) => {
     return (
       <div
         className="menu-item"
       >
         <div id="menu-info">
-          <div id="title">Title {title}</div>
-          <div id="materials">Materials {materials}</div>
-          <div id="dim">Dim. {dim}</div>
-          <div id="weight">Weight {weight}</div>
+          <div id="title"><p className="worksTitle">Prod. year {title}</p></div>
         </div>
         <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="507px"/>
       </div>
@@ -39,12 +48,9 @@ const MenuItem = ({ pic, title, materials, dim, weight, selected }) => {
 // All items component
 // Important! add unique key
 export const Menu = (list) => list.map(el => {
-    const { name, title, materials, dim, weight } = el;
+    const { name, title} = el;
     return (
       <MenuItem
-        weight={weight}
-        dim={dim}
-        materials={materials}
         title={title}
         pic={name}
         key={name}

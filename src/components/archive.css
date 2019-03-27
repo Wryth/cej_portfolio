@@ -1,5 +1,6 @@
 #archiveContainer{
     position: fixed;
+    height: 100%;
     width: 100%;
     left:0;
     margin: auto;
@@ -9,7 +10,6 @@
     padding: 0 40px;
     margin: 5px 10px;
     user-select: none;
-    cursor: pointer;
     border: none;
   }
 
@@ -23,5 +23,19 @@
    
 .scroll-menu-arrow {
   padding: 20px;
-  cursor: pointer;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.worksTitle {
+  font-size: 11pt;
+}
+
+
+
+@media (max-width:960px) {
+
+
+
 }
