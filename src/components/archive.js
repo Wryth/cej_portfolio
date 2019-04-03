@@ -40,7 +40,7 @@ const MenuItem = ({ pic, title, selected }) => {
         <div id="menu-info">
           <div id="title"><p className="worksTitle">Prod. year {title}</p></div>
         </div>
-        <img src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="507px"/>
+        <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'} height="507px"/>
       </div>
     );
   };

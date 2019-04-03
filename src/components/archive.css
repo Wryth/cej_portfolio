@@ -3,36 +3,39 @@
     height: 100%;
     width: 100%;
     left:0;
-    margin: auto;
+    margin: 0;
+    overflow: hidden;
+}
+
+
+.menu-item-wrapper--inner:hover{
+  scroll-snap-type: mandatory;
+  overflow-x: scroll;
+  display: grid;
+  grid-template-columns: repeat(21, 100%);
+}
+
+.menu-item-wrapper {
+  padding-left: 14em;
+  padding-right: 14em;
+  width: calc(100vh);
+  scroll-snap-align: start;
 }
 
 .menu-item {
-    padding: 0 40px;
-    margin: 5px 10px;
-    user-select: none;
-    border: none;
-  }
+  padding: 0 40px;
+  margin: 5px 10px;
+  user-select: none;
+  border: none;
+}
 
 #menu-info{
   font-size: 0.8em;
 }
-
-.menu-item.active {
-  border: 1px green solid;
-}
    
-.scroll-menu-arrow {
-  padding: 20px;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-}
-
 .worksTitle {
   font-size: 11pt;
 }
-
-
 
 @media (max-width:960px) {
 
