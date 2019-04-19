@@ -5,7 +5,7 @@ class InstagramDisplay extends React.Component{
     render(){
         return(
         <div id="igContainer">
-            <img src="https://www.instagram.com/p/Bu1ovYuHamN/media/?size=l" width="100%"/>
+            <img id="igSource" src="https://www.instagram.com/p/Bu1ovYuHamN/media/?size=l"/>
         </div>
         );
     }
