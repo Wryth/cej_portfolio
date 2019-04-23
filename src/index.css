@@ -4,13 +4,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
   /*cursor: url(img/circle1.png) 32 32, auto;*/
-  height: 99%;
-  width: 99%;
   /*cursor: none;*/
-  position: relative;
 }
-
-
 
 /*Global on hover change text font */
 button:hover, 
