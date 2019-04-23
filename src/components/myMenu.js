@@ -46,7 +46,7 @@ class Menu extends React.Component {
                         to="/downloads"
                         >Download(.pdf)</NavLink>
 
-                        <a id="igLink" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
+                        <a id="igLink" className="menuOption" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
                 </div>
             </div>
         );
