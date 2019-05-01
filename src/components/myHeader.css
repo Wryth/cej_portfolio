@@ -1,3 +1,7 @@
+.active{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .MyHeaderContainer{
     background-color: white;
     height: 5%; /*fixed eller prosent? */

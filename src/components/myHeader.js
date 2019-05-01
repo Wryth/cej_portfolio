@@ -13,8 +13,9 @@ class MyHeader extends React.Component {
         return(
             <div className="MyHeaderContainer">
                 <div id="shortIntro">
-                    <NavLink id="name" 
+                    <NavLink exact id="name" 
                         className="menuOption"
+                        activeClassName="active"
                         to="/"
                         >CARL EMIL JACOBSEN</NavLink>
                     <Contact />

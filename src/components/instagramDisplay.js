@@ -5,10 +5,10 @@ class InstagramDisplay extends React.Component{
     render(){
         return(
         <div id="igContainer">
-            <img id="igSource" src="https://www.instagram.com/p/Bu1ovYuHamN/media/?size=l"/>
+            <img id="igSource" src="https://www.instagram.com/p/Bvy16gdnojx/media/?size=l"/>
         </div>
         );
     }
 }
-
+//Bu1ovYuHamN
 export default InstagramDisplay;
