@@ -15,7 +15,6 @@ class MyHeader extends React.Component {
                 <div id="shortIntro">
                     <NavLink exact id="name" 
                         className="menuOption"
-                        activeClassName="active"
                         to="/"
                         >CARL EMIL JACOBSEN</NavLink>
                     <Contact />

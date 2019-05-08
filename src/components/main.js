@@ -17,19 +17,20 @@ import CustomCursor from './custumCursor';
 
 class Main extends React.Component {
 
+    
     handleCursor(event) {
         console.log("its a live!!!");
         document.getElementById("custom-cursor")
             .setAttribute("style", "top: "+(event.pageY - 0)+"px; left: "
                 +(event.pageX - 0)+"px;")
     };
-
+    
 
     render() {
         return(
             <HashRouter>
             <div className="mainContainer">
-                {/*<CustomCursor />*/}
+                <CustomCursor />
                 <MyHeader />
                 <div id="contentBox">
                     <Route exact path="/" component={InstagramDisplay}/>

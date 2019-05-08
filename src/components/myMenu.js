@@ -5,7 +5,6 @@ import {
 
 import './myMenu.css';
 
-
 class Menu extends React.Component {
     render(){
         return(

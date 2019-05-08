@@ -10,6 +10,6 @@ import CustomCursor from "./components/custumCursor";
 
 //===========================
 ReactDOM.render(
-    <Main />, 
+    <Main />,
     document.getElementById('root'));
 serviceWorker.unregister();

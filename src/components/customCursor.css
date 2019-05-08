@@ -1,19 +1,20 @@
 #custom-cursor{
     background-color: black;
-    height: 20px;
-    width: 20px;
+    height: 10px;
+    width: 10px;
     border-radius: 50%;
     position: absolute;
     z-index: 2;
   }
 
 
-  .cursorContainer{
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      left: 0;
-      top: 0;
-      pointer-events: none;
+.cursorContainer{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 1;
   }
