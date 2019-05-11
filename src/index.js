@@ -5,11 +5,10 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.css';
 import Main from './components/main.js';
-import InlineStylesTutorial from './components/exampleReact/InlineStylesTutorial';
-import CustomCursor from "./components/custumCursor";
+import App from "./components/App";
 
 //===========================
 ReactDOM.render(
-    <Main />,
+    <App />,
     document.getElementById('root'));
 serviceWorker.unregister();

@@ -7,7 +7,6 @@
     z-index: 2;
   }
 
-
 .cursorContainer{
     position: fixed;
     height: 100%;
@@ -17,4 +16,14 @@
     top: 0;
     pointer-events: none;
     z-index: 1;
+}
+
+/*
+@media screen { .nomobile { display: block; } } //desktops/laptops
+@media handheld { .nomobile { display: none; } } //mobile devices
+*/
+@media handheld {
+  #custom-cursor {
+    display: none;
   }
+}
