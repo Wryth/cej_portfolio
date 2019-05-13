@@ -5,6 +5,9 @@ body {
   background-color: white;
   /*cursor: url(img/circle1.png) 32 32, auto;*/
   cursor: pointer;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 /*Global on hover change text font */
@@ -21,4 +24,8 @@ button:hover,
 body:hover{
  /* cursor: url(img/Dot.png) 32 32, auto;*/
  cursor: none;
+}
+
+#root{
+  height: 100%;
 }

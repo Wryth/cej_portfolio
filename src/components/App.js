@@ -14,6 +14,7 @@ import Archive from './archive.js';
 import Downloads from './downloads';
 import CustomCursor from './custumCursor';
 import Main from "./main";
+import "./App.css";
 
 class App extends React.Component {
 
