@@ -35,9 +35,9 @@ class SimpleSlider extends React.Component {
   render() {
     var settings = {
       infinite: true,
-      slidesToShow: 1.65,
-      centerMode: true,
+      slidesToShow: 1.68,
       speed: 500,
+      centerMode: false,
       arrow: false
     };
     
