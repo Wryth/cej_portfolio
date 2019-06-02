@@ -1,0 +1,20 @@
+.pictures{
+    width: 80%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.itemContainer{
+
+}
+
+.slick-slider.slick-initialized{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+}

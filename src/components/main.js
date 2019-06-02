@@ -14,6 +14,7 @@ import InstagramDisplay from './instagramDisplay.js';
 import Archive from './archive.js';
 import Downloads from './downloads';
 import CustomCursor from './custumCursor';
+import SimpleSlider from "./exampleReact/SlickDemo";
 
 class Main extends React.Component {
 
@@ -24,7 +25,8 @@ class Main extends React.Component {
                 <MyHeader />
                 <div id="contentBox">
                     <Route exact path="/" component={InstagramDisplay}/>
-                    <Route path="/archive" component={Archive}/>
+                    {/*<Route path="/archive" component={Archive}/>*/}
+                    <Route path="/archive" component={SimpleSlider}/>
                     <Route path="/bio" component={Bio}/>
                     <Route path="/downloads" component={Downloads}/>
                 </div>

@@ -47,3 +47,9 @@ the move it to the server.
 
 https://www.youtube.com/watch?v=rfpRZ2t_BrQ&fbclid=IwAR1ehq1RVvXGCKkbqienAfH75vADhk_Yr1WULPqFwV9aA8ybULt8dbW2qnI
 cursor as a div element
+
+https://css-tricks.com/practical-css-scroll-snapping/
+
+
+https://react-slick.neostack.com/docs/api/
+https://react-slick.neostack.com/docs/api/#methods

@@ -23,7 +23,7 @@ button:hover,
 .menu-item:hover,
 body:hover{
  /* cursor: url(img/Dot.png) 32 32, auto;*/
- cursor: none;
+ /*cursor: none;*/
 }
 
 #root{

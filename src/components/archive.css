@@ -8,14 +8,12 @@
 }
 
 .horizontal-menu{
-  background-color: yellow;
   height: 60%;
 }
 
 .menu-wrapper{
   height: 100%;
 }
-
 
 .menu-item-wrapper--inner:hover{
   scroll-snap-type: mandatory;
@@ -24,6 +22,7 @@
   /*grid-template-columns: repeat(21, 5px);*/
 }
 
+/*Child*/
 .menu-item-wrapper {
   padding-left: 1%;
   padding-right: 1%;
@@ -33,6 +32,7 @@
   height: 100%;
 }
 
+/*Parent*/
 .menu-wrapper--inner{
   height: 100%;
 }
