@@ -30,6 +30,32 @@ const list = [
     { name: '2016_1', title: "2016" },
     ];
 
+// One item component
+// selected prop will be passed
+const MenuItem = ({ pic, title }) => {
+  return (
+    <div className="itemContainer">
+      <div id="menu-info">
+        <div id="title"><p className="worksTitle">Prod. year {title}</p></div>
+      </div>
+      <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'}/>
+    </div>
+  );
+};
+
+// All items component
+// Important! add unique key
+export const Menu = (list) => list.map(el => {
+  const { name, title } = el;
+  return (
+    <MenuItem
+      title={title}
+      pic={name}
+      key={name}
+    />
+  );
+});
+
 
 class SimpleSlider extends React.Component {
   constructor(props) {
@@ -56,38 +82,17 @@ class SimpleSlider extends React.Component {
       slidesToShow: 1.68,
       speed: 500,
       centerMode: false,
-      arrow: false
+      //arrow: false,
+      //autoplay: true,
+      autoplaySpeed: 10000,
+      //adaptiveHeight:true,
     };
+
+    const menu = Menu(list);
     
     return (
-      <Slider {...settings} ref={slider => this.slider = slider }>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_1" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_2" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
-        <div className="itemContainer">
-          <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
-        </div>
+      <Slider {...settings} ref={slider => this.slider = slider}>
+        {menu}
       </Slider>
     );
   }
