@@ -1,5 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
+import ReactDOM from 'react-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./SlickDemo.css";
@@ -30,8 +31,25 @@ const list = [
     ];
 
 
-
 class SimpleSlider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleWheel = this.handleWheel.bind(this);
+  }
+
+  componentDidMount() {
+    ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
+  }
+
+  componentWillUnmount() {
+    ReactDOM.findDOMNode(this).removeEventListener('wheel', this.handleWheel);
+  }
+
+  handleWheel(e) {
+    e.preventDefault();
+    e.deltaY > 0 ? this.slider.slickNext() : this.slider.slickPrev();
+  }
+
   render() {
     var settings = {
       infinite: true,
@@ -42,7 +60,7 @@ class SimpleSlider extends React.Component {
     };
     
     return (
-      <Slider {...settings}>
+      <Slider {...settings} ref={slider => this.slider = slider }>
         <div className="itemContainer">
           <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + "2017_3" + '.jpg'}/>
         </div>

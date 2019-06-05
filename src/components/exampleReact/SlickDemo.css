@@ -16,8 +16,7 @@
     margin: 0;
 }
 
-
-@media (min-width:960px) {
+@media (min-height:550px) {
     .slick-slider.slick-initialized{
         top: 60%;
         -ms-transform: translateY(-50%);
