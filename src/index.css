@@ -6,8 +6,12 @@ body, html {
   height: 100%;
   width: 100%;
   margin: 0;
-  cursor: none;
+  cursor: none ;
   overflow: hidden;
+}
+
+a{
+  cursor: none;
 }
 
 
@@ -17,7 +21,7 @@ button:hover,
 #igLink:hover{
   font-family: Georgia, 'Times New Roman', Times, serif;
   /*cursor: url(img/Dot.png) 32 32, auto;*/
-  cursor: none;
+  cursor: none ;
 }
 
 #archiveContainer:hover,

@@ -23,6 +23,8 @@
 @media handheld { .nomobile { display: none; } } //mobile devices
 */
 @media (max-width:960px) {
+
+  /*
   .mainContainer{
     position: relative;
     width: 100%;
@@ -34,10 +36,21 @@
     bottom: 50px;
   }
 
+  */
   #contentBox{
     position: relative;
     width: 100%;
     left: 0;
     text-align: center;
   }
+
+  a{
+    font-size: 10px !important; 
+  }
+
+  #bioText{
+    font-size: 10px !important;
+    line-height: 20px !important;
+  }
+
 } 

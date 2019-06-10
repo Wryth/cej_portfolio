@@ -7,17 +7,17 @@ import "./SlickDemo.css";
 
 // list of items
 const list = [
-    { name: '2019_1', title: "2019" },
+    //{ name: '2019_1', title: "2019" },
     { name: '2018_10', title: "2018" },
     { name: '2018_9', title: "2018" },
     { name: '2018_8', title: "2018" },
-    { name: '2018_7', title: "2018" },
-    { name: '2018_6', title: "2018" },
-    { name: '2018_5', title: "2018" },
+    //{ name: '2018_7', title: "2018" },
+    //{ name: '2018_6', title: "2018" },
+    //{ name: '2018_5', title: "2018" },
     { name: '2018_4', title: "2018" },
     { name: '2018_3', title: "2018" },
-    { name: '2018_2', title: "2018" },
-    { name: '2018_1', title: "2018" },
+    //{ name: '2018_2', title: "2018" },
+    //{ name: '2018_1', title: "2018" },
     { name: '2018_0', title: "2018" },
     { name: '2017_7', title: "2017" },
     { name: '2017_5', title: "2017" },
@@ -35,9 +35,11 @@ const list = [
 const MenuItem = ({ pic, title }) => {
   return (
     <div className="itemContainer">
+      {/*}
       <div id="menu-info">
         <div id="title"><p className="worksTitle">Prod. year {title}</p></div>
       </div>
+      */}
       <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'}/>
     </div>
   );
@@ -58,6 +60,7 @@ export const Menu = (list) => list.map(el => {
 
 
 class SimpleSlider extends React.Component {
+  
   constructor(props) {
     super(props);
     this.handleWheel = this.handleWheel.bind(this);
@@ -77,12 +80,18 @@ class SimpleSlider extends React.Component {
   }
 
   render() {
+
+    var sts = 1.68; // On screen
+    if(window.matchMedia("(max-width: 960px)").matches) {
+      sts = 1; // on phone tablet
+    }
+
     var settings = {
       infinite: true,
-      slidesToShow: 1.68,
+      slidesToShow: sts,
       speed: 500,
-      centerMode: false,
-      //arrow: false,
+      centerMode: true,
+      arrow: true,
       //autoplay: true,
       autoplaySpeed: 10000,
       //adaptiveHeight:true,

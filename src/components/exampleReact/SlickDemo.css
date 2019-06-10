@@ -22,13 +22,28 @@
 .worksTitle {
 }
 
-
 .slick-slider.slick-initialized{
     position: fixed;
     width: 100%;
     left: 0;
     margin: 0;
 }
+
+.slick-arrow.slick-prev{
+    height: 100%;
+    width: 21%;
+    z-index: 2;
+    opacity: 0;
+}
+
+.slick-arrow.slick-next{
+    height: 100%;
+    width: 21%;
+    z-index: 2;
+    opacity: 0;
+}
+
+
 
 @media (min-height:550px) {
     .slick-slider.slick-initialized{
