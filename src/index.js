@@ -8,6 +8,7 @@ import Main from './components/main.js';
 import App from "./components/App";
 import ScrollDemo from "./components/exampleReact/scrollDemo";
 import SimpleSlider from "./components/exampleReact/SlickDemo";
+import VariableWidth from "./components/exampleReact/SlickWidth";
 //import Archive from "./components/archive";
 
 //===========================

@@ -84,7 +84,7 @@ class SimpleSlider extends React.Component {
   }
 
   render() {
-    var slidesInFrame = 3//1.68; // On screen
+    var slidesInFrame = 1.68; // On screen
     if(window.matchMedia("(max-width: 960px)").matches) {
       slidesInFrame = 1; // on phone tablet
     }
