@@ -5,34 +5,16 @@
 }
 
 .slick-slide{
-    /*margin: 0 0.2% 0 0.2%;*/
+    padding: 0 0.2% 0 0.2%;
     min-height: 1px;
     height: 100%;
     display: inline-block;
 }
 
-div{
-    display:inline-block;
-}
 
-.slick-track{
-    position: relative;
-    display: block;
-    top: 0;
-    left: 0;
+.slick-track, .slick-list{
     height: 100%;
 }
-.slick-list{
-    height: 100%;
-}
-
-.menu-item {
-    padding: 0 40px;
-    margin: 5px 10px;
-    display: inline-block;
-    position: relative;
-    height: 100%;
-  }
 
 .itemContainer{
     display: inline-block;

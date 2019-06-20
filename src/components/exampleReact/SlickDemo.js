@@ -95,13 +95,14 @@ class SimpleSlider extends React.Component {
       slidesToShow: slidesInFrame,
       slidesToScroll: 1,
       speed: 500,
-      //centerMode: true,
+      centerMode: true,
       arrow: true,
       //autoplay: true,
       autoplaySpeed: 10000,
       //adaptiveHeight:true,
       //lazyLoad: true,
       variableWidth: true,
+      //dots:true,
     };
 
     const menu = Menu(list);
