@@ -26,10 +26,10 @@ class Main extends React.Component {
                 <div id="contentBox">
                     <Route exact path="/" component={InstagramDisplay}/>
                     {/*<Route path="/archive" component={Archive}/>*/}
-                    <Route path="/archive" component={SimpleSlider}/>
                     <Route path="/bio" component={Bio}/>
                     <Route path="/downloads" component={Downloads}/>
                 </div>
+                <Route path="/archive" component={SimpleSlider}/>
             </div>
             </HashRouter>
         );

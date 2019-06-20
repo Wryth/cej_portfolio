@@ -53,3 +53,15 @@ https://css-tricks.com/practical-css-scroll-snapping/
 
 https://react-slick.neostack.com/docs/api/
 https://react-slick.neostack.com/docs/api/#methods
+
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+css styled components, so that the change to div does not effect all divs
+
+
+slick-list is a list which contains all active elements.
+with uneven slick-slide boxes it is unable to fit the set amount.
+
+!!
+https://react-slick.neostack.com/docs/example/variable-width
+!!
