@@ -16,6 +16,9 @@
     height: 100%;
 }
 
+.slick-slide div{
+    height: 100%;
+}
 
 .slick-slider.slick-initialized{
     display: block;

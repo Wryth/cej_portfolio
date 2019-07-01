@@ -70,6 +70,7 @@ class SimpleSlider extends React.Component {
   handleWheel(e) {
     e.preventDefault();
     e.deltaY > 0 || e.deltaX > 0 ? this.slider.slickNext() : this.slider.slickPrev();
+    
     if ( !this.timeout ) {
       this.timeout = setTimeout(function() {
   
@@ -94,7 +95,7 @@ class SimpleSlider extends React.Component {
       infinite: true,
       slidesToShow: slidesInFrame,
       slidesToScroll: 1,
-      speed: 500,
+      speed: 1500,
       centerMode: true,
       arrow: true,
       //autoplay: true,
