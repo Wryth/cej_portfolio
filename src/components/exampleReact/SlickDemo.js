@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./SlickDemo.css";
 
+
 // list of items
 const list = [
     { name: '2019_1', title: "2019" },
@@ -30,11 +31,25 @@ const list = [
     { name: '2016_1', title: "2016" },
     ];
 
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+//const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
+const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+// const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
+console.log(pubimages);
+const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+const objList = list2.map(x => {return { name: x }});
+
+console.log(list2);
+console.log(objList);
+  //console.log(require.context(process.env + './', false, /\.(png|jpe?g|svg)$/));
 // One item component
 // selected prop will be passed
 const MenuItem = ({ pic, title }) => {
   return (
-      <img className="pictures" src={process.env.PUBLIC_URL + '/foto/' + pic + '.jpg'}/>
+      <img className="pictures" src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}/>
   );
 };
 
@@ -106,7 +121,8 @@ class SimpleSlider extends React.Component {
       //dots:true,
     };
 
-    const menu = Menu(list);
+    //console.log(list2)
+    const menu = Menu(objList);
     
     return (
       <Slider {...settings} ref={slider => this.slider = slider}>

@@ -19,7 +19,6 @@ import "./App.css";
 class App extends React.Component {
 
     handleCursor(event) {
-        console.log("its a live!!!");
         document.getElementById("custom-cursor")
             .setAttribute("style", "top: "+(event.pageY - 0)+"px; left: "
                 +(event.pageX - 0)+"px;")
