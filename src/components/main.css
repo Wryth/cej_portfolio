@@ -17,25 +17,11 @@
   text-align: center;
 }
 
-
 /*
 @media screen { .nomobile { display: block; } } //desktops/laptops
 @media handheld { .nomobile { display: none; } } //mobile devices
 */
 @media (max-width:960px) {
-
-  /*
-  .mainContainer{
-    position: relative;
-    width: 100%;
-    background-color: white;
-    overflow: auto;
-    top: 0;
-    left: 0;
-    height: 95%;
-    bottom: 50px;
-  }
-
   */
   #contentBox{
     position: relative;

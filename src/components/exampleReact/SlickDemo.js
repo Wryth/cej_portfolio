@@ -36,14 +36,8 @@ function importAll(r) {
 }
 
 //const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
-const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-// const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
-console.log(pubimages);
-const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-const objList = list2.map(x => {return { name: x }});
 
-console.log(list2);
-console.log(objList);
+
   //console.log(require.context(process.env + './', false, /\.(png|jpe?g|svg)$/));
 // One item component
 // selected prop will be passed
@@ -68,10 +62,16 @@ export const Menu = (list) => list.map(el => {
 
 
 class SimpleSlider extends React.Component {
-  
   constructor(props) {
     super(props);
     this.handleWheel = this.handleWheel.bind(this);
+  }
+
+  componentWillMount(){
+    console.log("will mount!");
+    const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+    console.log(pubimages);
+    console.log(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
   }
 
   componentDidMount() {
@@ -100,6 +100,15 @@ class SimpleSlider extends React.Component {
   }
 
   render() {
+    const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+    //const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
+    console.log(pubimages);
+    const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+    const objList = list2.map(x => {return { name: x }});
+    console.log(list2);
+    console.log(objList);
+
+
     var slidesInFrame = 1.68; // On screen
     if(window.matchMedia("(max-width: 960px)").matches) {
       slidesInFrame = 1; // on phone tablet
