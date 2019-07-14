@@ -2,3 +2,13 @@
     float: left;
     text-align: left;
 }
+
+.pdfDL{
+    margin: 0;
+    position: absolute;
+    top: -50px;
+    left: 55%;
+    display: block;
+    text-decoration: none;
+    color: black;
+}

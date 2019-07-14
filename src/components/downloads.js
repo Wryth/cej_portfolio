@@ -5,7 +5,7 @@ class Downloads extends React.Component{
     render(){
         return(
         <div id="dlContainer">
-            <p>carlemiljacobsen.pdf</p>
+            <a className="pdfDL" href={ process.env.PUBLIC_URL + "/dot.png" } /*download*/>carlemiljacobsen.pdf</a>
         </div>
         );
     }

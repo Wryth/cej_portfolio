@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Slider from "react-slick";
 import ReactDOM from 'react-dom';
 import "slick-carousel/slick/slick.css";

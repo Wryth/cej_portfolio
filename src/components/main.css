@@ -17,12 +17,7 @@
   text-align: center;
 }
 
-/*
-@media screen { .nomobile { display: block; } } //desktops/laptops
-@media handheld { .nomobile { display: none; } } //mobile devices
-*/
 @media (max-width:960px) {
-  */
   #contentBox{
     position: relative;
     width: 100%;
@@ -30,7 +25,7 @@
     text-align: center;
   }
 
-  a{
+  a, pre{
     font-size: 10px !important; 
   }
 

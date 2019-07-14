@@ -18,8 +18,8 @@ class MyHeader extends React.Component {
 function Contact() {
     return(
         <div className="contactText">
-            <pre className="contactTextLines">E-mail      carlemil(a)jacobsen.com</pre>
-            <pre className="contactTextLines">Phone      +45 31701698</pre>
+            <a className="contactTextLines" href="mailto:carlemil@jacobsen.com"><pre>E-mail    carlemil(a)jacobsen.com</pre></a>
+            <pre className="contactTextLines">Phone    +45 31701698</pre>
         </div>
     )
 }
