@@ -4,6 +4,28 @@
 
 #bioText{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 25pt;
-    line-height: 33pt; 
+    font-size: 29pt;
+    line-height: 36pt; 
+}
+
+.bioContainer{
+    
+}
+
+.bioHeader{
+    font-size: 29pt;
+    line-height: 38pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+}
+
+.exhibitionInfo{
+    font-size: 17pt;
+    line-height: 23pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+}
+
+.xEnd{
+    font-family: Arial, Helvetica, sans-serif;
 }
