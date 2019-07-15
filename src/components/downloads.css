@@ -1,14 +1,17 @@
 #dlContainer{
-    float: left;
-    text-align: left;
+    text-align: center;
 }
 
 .pdfDL{
     margin: 0;
-    position: absolute;
-    top: -50px;
-    left: 55%;
-    display: block;
     text-decoration: none;
     color: black;
+    position: relative;
+    font-size: 29pt;
+    line-height: 38pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.pdfDL:hover{
+    color: blue;
 }

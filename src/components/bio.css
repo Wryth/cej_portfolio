@@ -1,22 +1,36 @@
-#bioText {
+.bioContainer{
+}
+
+.bioText {
     text-align: left;
 }
 
-#bioText{
+.bioText{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 29pt;
-    line-height: 36pt; 
-}
-
-.bioContainer{
-    
+    line-height: 37pt;
+    margin: 0;
+    margin-bottom: 55px;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
 }
 
 .bioHeader{
     font-size: 29pt;
-    line-height: 38pt;
+    line-height: 37pt;
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
+    margin-bottom: 55px;
+}
+
+
+.bioYear{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 29pt;
+    line-height: 37pt;
+    margin: 0;
+    margin-bottom: 12px;
 }
 
 .exhibitionInfo{
@@ -26,6 +40,13 @@
     margin: 0;
 }
 
+.textEnd{
+    margin-bottom: 90px;
+}
+
 .xEnd{
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 29pt;
+    line-height: 37pt;
+    margin-bottom: 37px;
 }

@@ -19,7 +19,7 @@
 }
 
 #name{
-    width: 35%;
+    width: 25%;
     float: left;
     margin: 0;
     font-weight: normal;
@@ -37,4 +37,8 @@
     line-height: 23pt;
     text-decoration: none;
     color: black;
+}
+
+.emailLink:hover{
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
