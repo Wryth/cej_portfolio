@@ -26,24 +26,26 @@ class Menu extends React.Component {
                         <a id="igLink" className="menuOption" target="_blank" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
 
                         <div className="innerMenu">
-                            <NavLink className="menuOption"
-                            activeClassName="active"
-                            id="menuArchive"
-                            to="/archive"
-                            >Selected works
-                            </NavLink>
+                            <div className="innerContainer">
+                                <NavLink className="menuOption"
+                                activeClassName="active"
+                                id="menuArchive"
+                                to="/archive"
+                                >Selected works
+                                </NavLink>
 
-                            <NavLink className="menuOption"
-                            activeClassName="active"
-                            id="menuBio"
-                            to="/bio"
-                            >CV</NavLink>
-                            
-                            <NavLink className="menuOption"
-                            activeClassName="active"
-                            id="menuDownloads"
-                            to="/downloads"
-                            >Download</NavLink>
+                                <NavLink className="menuOption"
+                                activeClassName="active"
+                                id="menuBio"
+                                to="/bio"
+                                >CV</NavLink>
+                                                            
+                                <NavLink className="menuOption"
+                                activeClassName="active"
+                                id="menuDownloads"
+                                to="/downloads"
+                                >Download</NavLink>
+                            </div>
                         </div>
                 </div>
             </div>
