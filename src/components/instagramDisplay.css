@@ -1,7 +1,12 @@
 #igContainer{
-
+    padding-top: 5%;
+    width: auto;
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 #igSource{
-    width: 90%;
+    width: 100%;
 }

@@ -18,14 +18,6 @@
     width: 100%;
 }
 
-#name{
-    width: 25%;
-    float: left;
-    margin: 0;
-    font-weight: normal;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .contactText{
     margin: 0;
     margin-left: 18px;
@@ -37,6 +29,10 @@
     line-height: 23pt;
     text-decoration: none;
     color: black;
+}
+
+.emailLink{
+    width: 45%;
 }
 
 .emailLink:hover{

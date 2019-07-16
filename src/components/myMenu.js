@@ -23,6 +23,8 @@ class Menu extends React.Component {
                             >CARL EMIL JACOBSEN
                         </NavLink>
 
+                        <a id="igLink" className="menuOption" target="_blank" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
+
                         <div className="innerMenu">
                             <NavLink className="menuOption"
                             activeClassName="active"
@@ -43,8 +45,6 @@ class Menu extends React.Component {
                             to="/downloads"
                             >Download</NavLink>
                         </div>
-
-                        <a id="igLink" className="menuOption" target="_blank" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
                 </div>
             </div>
         );

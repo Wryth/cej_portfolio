@@ -10,8 +10,19 @@
     width: 100%;
 }
 
+#name{
+    float: left;
+    margin: 0;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
 .innerMenu{
-    
+    position: relative;
+    text-align: center;
+    float: right;
+    width: auto;
 }
 
 .menuOption{
@@ -28,18 +39,10 @@
 }
 
 #menuArchive{
-    min-width: 172px;
-    margin-left: 40px;
-}
-
-#menuExhibitions{
-    margin-left: 40px;
-    min-width: 87px;
 }
 
 #menuBio{
     margin-left: 40px;
-    min-width: 36px;
 }
 
 #menuDownloads{
@@ -60,6 +63,7 @@
     float: right;
     text-decoration: none;
     color: black;
+    margin-left: 40px;
 }
 
 @media (max-width:960px) {
@@ -83,7 +87,7 @@
         display: none;
     }
 
-    #menuBio, #menuArchive{
+    #menuBio, #menuArchive, #igLink{
         margin-left: 10px;
         min-width: 0px;
     }
