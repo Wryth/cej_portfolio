@@ -43,7 +43,12 @@ function importAll(r) {
 // selected prop will be passed
 const MenuItem = ({ pic, title }) => {
   return (
+    <Fragment>
+      <div className="titleBox">
+        <p className="pictureTitle">{title}</p>
+      </div>
       <img className="pictures" src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}/>
+    </Fragment>
   );
 };
 
@@ -104,7 +109,9 @@ class SimpleSlider extends React.Component {
     //const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
     console.log(pubimages);
     const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-    const objList = list2.map(x => {return { name: x }});
+    const objList = list2.map(x => {return {
+      name: x,
+      title: x.split("_")[0]}});
     console.log(list2);
     console.log(objList);
 

@@ -6,9 +6,6 @@
 }
 
 .bioText{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 29pt;
-    line-height: 37pt;
     margin: 0;
     margin-bottom: 55px;
     -webkit-hyphens: manual;
@@ -17,26 +14,16 @@
 }
 
 .bioHeader{
-    font-size: 29pt;
-    line-height: 37pt;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     margin-bottom: 55px;
 }
 
-
 .bioYear{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 29pt;
-    line-height: 37pt;
     margin: 0;
-    margin-bottom: 12px;
+    margin-bottom: 3px;
 }
 
 .exhibitionInfo{
-    font-size: 17pt;
-    line-height: 23pt;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
 }
 
@@ -46,7 +33,10 @@
 
 .xEnd{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 29pt;
-    line-height: 37pt;
     margin-bottom: 37px;
+}
+
+
+@media (max-width:900px) {
+
 }

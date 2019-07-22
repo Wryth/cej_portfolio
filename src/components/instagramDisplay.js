@@ -11,4 +11,6 @@ class InstagramDisplay extends React.Component{
     }
 }
 //Bu1ovYuHamN
+//Byiad9zhUWX
+//BzaHwp5B6Eb
 export default InstagramDisplay;

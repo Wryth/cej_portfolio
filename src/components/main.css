@@ -15,24 +15,26 @@
   width: 60%;
   left: 20%;
   text-align: center;
-  top: -45px;
+  top: -37px;
 }
 
-@media (max-width:960px) {
+@media (max-width:400px) {
+  .mainContainer{
+    width: 92%;
+    left: 4%;
+  }
+
   #contentBox{
     position: relative;
     width: 100%;
     left: 0;
     text-align: center;
+    top: 0;
   }
 
   a, pre{
-    font-size: 10px !important; 
-  }
-
-  #bioText{
-    font-size: 10px !important;
-    line-height: 20px !important;
+    font-size: 8.5pt !important;
+    line-height: 11pt !important; 
   }
 
 } 
