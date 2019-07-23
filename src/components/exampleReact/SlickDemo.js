@@ -35,11 +35,6 @@ function importAll(r) {
   return r.keys().map(r);
 }
 
-//const images = importAll(require.context('./', false, /\.(png|jpe?g|svg)$/));
-
-
-  //console.log(require.context(process.env + './', false, /\.(png|jpe?g|svg)$/));
-// One item component
 // selected prop will be passed
 const MenuItem = ({ pic, title }) => {
   return (
@@ -106,7 +101,6 @@ class SimpleSlider extends React.Component {
 
   render() {
     const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-    //const images = importAll(require.context('./img', false, /\.(png|jpe?g|svg)$/));
     console.log(pubimages);
     const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
     const objList = list2.map(x => {return {

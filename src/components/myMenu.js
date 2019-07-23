@@ -23,7 +23,7 @@ class Menu extends React.Component {
                             >CARL EMIL JACOBSEN
                         </NavLink>
 
-                        <a id="igLink" className="menuOption" target="_blank" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
+                        <a id="igLink" className="menuOption" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/carlemiljacobsen/">Instagram</a>
 
                         <div className="innerMenu">
                             <div className="innerContainer">
