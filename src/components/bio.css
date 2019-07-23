@@ -37,6 +37,21 @@
 }
 
 
-@media (max-width:900px) {
+@media (max-width:500px) {
+    .bioHeader{
+        margin-bottom: 20px;
+    }
+
+    .textEnd{
+        margin-bottom: 30px;
+    }
+
+    .bioText {
+        margin-bottom: 30px;
+    }
+
+    .exhibitionInfo {
+    }
+    
 
 }

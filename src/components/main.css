@@ -18,8 +18,11 @@
   top: -37px;
 }
 
-@media (max-width:400px) {
+@media (max-width:500px) {
+  
   .mainContainer{
+    top: 25px;
+    bottom: 25px;
     width: 92%;
     left: 4%;
   }

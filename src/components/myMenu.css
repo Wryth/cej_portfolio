@@ -76,9 +76,8 @@
     min-width: 82px;
 }
 
-@media (max-width:960px) {
+@media (max-width:900px) {
     .menuOption{
-        float: right;
         margin: 0;
         padding: 0;
         border: none;
@@ -88,14 +87,27 @@
         font-weight: 500;
         min-height: 20px;
     }
+    .innerMenu{
+    }
 
     #menuDownloads{
         display: none;
     }
 
-    #menuBio, #menuArchive, #igLink{
-        margin-left: 10px;
-        min-width: 0px;
+    #menuArchive{
+        min-width: 77px;
+    }
+
+    #menuBio{
+        min-width: 16px;
+    }
+
+    #igLink{
+        min-width: 51px;
+    }
+
+    #menuBio, #menuArchive{
+        margin-left: 18px;
     }
 
 }

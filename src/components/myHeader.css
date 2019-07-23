@@ -38,3 +38,16 @@
 .emailLink:hover{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+
+@media (max-width:500px) {
+    #headerMenu{
+        height: 15px;
+    }
+
+    .contactText{
+        margin-bottom: 20px;
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+}

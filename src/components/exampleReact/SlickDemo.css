@@ -51,16 +51,19 @@
     opacity: 0;
 }
 
-@media (min-height:450px) {
+@media (min-height:500px) {
     .slick-slider.slick-initialized{
         top: 60%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
 }
-@media (max-width: 450px) {
+@media (max-width: 500px) {
     .slick-slider.slick-initialized{
         height: 30%;
+        position: relative;
+        -ms-transform: translateY(-200%);
+        transform: translateY(-200%);
     }
     .titleBox{
         font-size: 10px;
