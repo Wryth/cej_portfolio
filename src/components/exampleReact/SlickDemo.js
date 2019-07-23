@@ -132,7 +132,6 @@ class SimpleSlider extends React.Component {
       //autoplay: true,
       autoplaySpeed: 10000,
       //adaptiveHeight:true,
-      //lazyLoad: true,
       variableWidth: true,
       //dots:true,
     };

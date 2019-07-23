@@ -26,7 +26,6 @@
 
 .innerContainer{
     margin-left: 30%;
-
 }
 
 
@@ -87,27 +86,33 @@
         font-weight: 500;
         min-height: 20px;
     }
-    .innerMenu{
-    }
 
     #menuDownloads{
-        display: none;
+        min-width: 42px;
     }
 
     #menuArchive{
-        min-width: 77px;
+        min-width: 64px;
     }
 
     #menuBio{
-        min-width: 16px;
+        min-width: 13px;
     }
 
     #igLink{
-        min-width: 51px;
+        min-width: 42px;
+        margin-left: 0;
     }
 
-    #menuBio, #menuArchive{
-        margin-left: 18px;
+    #menuBio, #menuArchive, #menuDownloads{
+        margin-left: 5%;
     }
 
+    .innerContainer{
+        margin-left: 15%;
+    }
+
+    .innerMenu{
+        left: 26%;
+    }
 }

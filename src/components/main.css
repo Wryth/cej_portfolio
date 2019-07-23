@@ -8,6 +8,8 @@
   top: 37px;
   height: 95%;
   bottom: 50px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 #contentBox{
@@ -33,11 +35,6 @@
     left: 0;
     text-align: center;
     top: 0;
-  }
-
-  a, pre{
-    font-size: 8.5pt !important;
-    line-height: 11pt !important; 
   }
 
 } 

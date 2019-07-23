@@ -18,17 +18,7 @@
     z-index: 1;
 }
 
-/*
-@media screen { .nomobile { display: block; } } //desktops/laptops
-@media handheld { .nomobile { display: none; } } //mobile devices
-*/
-@media handheld {
-  #custom-cursor {
-    display: none;
-  }
-}
-
-@media (max-width:900px) {
+@media (max-width:1050px) {
   #custom-cursor {
     display: none;
   }

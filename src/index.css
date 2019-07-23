@@ -10,9 +10,10 @@ body, html, pre {
   overflow: hidden;
 }
 
+
 ::-webkit-scrollbar {
   width: 0px; 
-  background: transparent; 
+  background: transparent;
 }
 
 a{
@@ -63,6 +64,9 @@ body:hover{
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
-  
+  a, pre{
+    font-size: 7pt !important;
+    line-height: 9pt !important; 
+  }
 
 }
