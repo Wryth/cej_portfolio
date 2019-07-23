@@ -2,22 +2,14 @@ import React from 'react';
 import './bio.css';
 
 class Bio extends React.Component{
-    constructor(props) {
-        super(props)
-        this.myRef = React.createRef()   // Create a ref object 
-    }
-    
-    componentDidMount() {
-      this.myRef.current.scrollTo(0, 0);
-    }
+
     onXclick = () => {
-        console.log("X");
-        this.myRef.current.scrollTo(0, 0);        
+        document.getElementById('headerMenu').scrollIntoView();        
     }
 
     render(){
         return(
-        <div ref={this.myRef} id="bioContainer" >
+        <div id="bioContainer" >
             <div>
                 <div className="bioHeader largeText">
                     BIO
