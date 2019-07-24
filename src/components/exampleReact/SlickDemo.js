@@ -111,8 +111,10 @@ class SimpleSlider extends React.Component {
 
 
     var slidesInFrame = 1.68; // On screen
-    if(window.matchMedia("(max-width: 960px)").matches) {
+    var scrollSpeed = 1500;
+    if(window.matchMedia("(max-width: 1050px)").matches) {
       slidesInFrame = 1; // on phone tablet
+      scrollSpeed = 500;
     }
 
     var settings = {
@@ -120,11 +122,11 @@ class SimpleSlider extends React.Component {
       infinite: true,
       slidesToShow: slidesInFrame,
       slidesToScroll: 1,
-      speed: 1500,
+      speed: scrollSpeed,
       centerMode: true,
       arrow: true,
       //autoplay: true,
-      autoplaySpeed: 10000,
+      autoplaySpeed: 1000,
       //adaptiveHeight:true,
       variableWidth: true,
       //dots:true,
