@@ -1,4 +1,4 @@
-body, html, pre {
+body, html, pre{
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -8,8 +8,9 @@ body, html, pre {
   margin: 0;
   cursor: none ;
   overflow: hidden;
+  width: auto !important;   
+  overflow-x: hidden !important;
 }
-
 
 ::-webkit-scrollbar {
   width: 0px; 
@@ -37,6 +38,7 @@ body:hover{
 
 #root{
   height: 100%;
+  width: 100%;
 }
 
 .largeText {
@@ -64,9 +66,8 @@ body:hover{
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
-  a, pre{
+  .MyHeaderContainer a, pre{
     font-size: 7pt !important;
     line-height: 9pt !important; 
   }
-
 }

@@ -15,3 +15,12 @@
 .pdfDL:hover{
     color: blue;
 }
+
+
+@media (max-width: 500px){
+ .pdfDL {
+    font-size: 13.5pt;
+    line-height: 18.5pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+}

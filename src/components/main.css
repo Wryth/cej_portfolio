@@ -9,7 +9,8 @@
   height: 95%;
   bottom: 50px;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+  -ms-overflow-style: none; 
+  overflow-x: hidden !important;
 }
 
 #contentBox{
@@ -23,8 +24,8 @@
 @media (max-width:500px) {
   
   .mainContainer{
-    top: 25px;
-    bottom: 25px;
+    top: 2%;
+    bottom: 2%;
     width: 92%;
     left: 4%;
   }

@@ -65,14 +65,12 @@
         -ms-transform: translateY(-200%);
         transform: translateY(-200%);
     }
-    .titleBox{
-        font-size: 10px;
-    }
     .pictureTitle{
         margin: 0;
         height: 100%;
         width: 100%;
         transform: translateY(0%);
         position: relative;
+        top: -2px;
     }
 }

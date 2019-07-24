@@ -40,7 +40,7 @@ const MenuItem = ({ pic, title }) => {
   return (
     <Fragment>
       <div className="titleBox">
-        <p className="pictureTitle">{title}</p>
+        <p className="pictureTitle smallText">{title}</p>
       </div>
       <img className="pictures" src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}/>
     </Fragment>
