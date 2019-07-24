@@ -45,6 +45,10 @@
         height: 15px;
     }
 
+    .emailLink{
+        width: 165px;
+    }
+
     .contactText{
         margin-bottom: 20px;
         margin-left: 0px;
