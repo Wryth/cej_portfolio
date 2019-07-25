@@ -76,7 +76,7 @@
     min-width: 82px;
 }
 
-@media (max-width:900px) {
+@media (max-width:900px), (max-height:500px) {
     .menuOption{
         margin: 0;
         padding: 0;

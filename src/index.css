@@ -59,7 +59,7 @@ body:hover{
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-@media (max-width:500px) {
+@media (max-width:500px), (max-height:500px) {
   .largeText {
     font-size: 13.5pt;
     line-height: 18.5pt;
