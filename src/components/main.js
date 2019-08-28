@@ -19,11 +19,11 @@ class Main extends React.Component {
             <div className="mainContainer">
                 <MyHeader />
                 <div id="contentBox">
-                    <Route path="/bio" component={Bio}/>
-                    <Route path="/downloads" component={Downloads}/>
+                    <Route path="/bio" component={ Bio }/>
+                    <Route path="/downloads" component={ Downloads }/>
                 </div>
-                <Route exact path="/" component={InstagramDisplay}/>
-                <Route path="/archive" component={SimpleSlider}/>
+                <Route exact path="/" component={ InstagramDisplay }/>
+                <Route path="/archive" component={ SimpleSlider }/>
             </div>
             </HashRouter>
         );
