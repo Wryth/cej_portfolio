@@ -9,38 +9,81 @@ function importAll(r) {
   return r.keys().map(r);
 }
 
-// selected prop will be passed
-const MenuItem = ({ pic, title }) => {
-  return (
-    <Fragment>
-      <div className="titleBox">
-        <p className="pictureTitle smallText">{title}</p>
-      </div>
-      <img className="pictures" src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}/>
-    </Fragment>
-  );
-};
-
-// All items component
-// Important! add unique key
-export const Menu = (list) => list.map(el => {
-  const { name, title } = el;
-  return (
-    <MenuItem
-      title={title}
-      pic={name}
-      key={name}
-    />
-  );
-});
-
+function imagesLoaded(parentNode) {
+  const imgElements = [...document.querySelectorAll("img")];
+  for (let i = 0; i < imgElements.length; i += 1) {
+    const img = imgElements[i];
+    if (!img.complete) {
+      return false;
+    }
+  }
+  return true;
+}
 
 class SimpleSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { mode: [] } ;
+    this.state = { 
+      mode: [],
+      open: null,
+      loading: true,
+     };
     this.handleWheel = this.handleWheel.bind(this);
   }
+
+
+  handleImageChange = () => {
+    this.setState({
+      loading: !imagesLoaded(this.slider)
+    });
+  };
+
+  handleStateChange = () => {
+    this.setState({
+      loading: !imagesLoaded(this.slider),
+    });
+  }
+
+  // selected prop will be passed
+  MenuItem = ({ pic, title }) => {
+    return (
+      <Fragment>
+        <div className="titleBox">
+          <p className="pictureTitle smallText">{title}</p>
+        </div>
+        <img 
+          className="pictures" 
+          src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}
+          onLoad={this.handleStateChange}
+          onError={this.handleStateChange}
+          />
+      </Fragment>
+    );
+  };
+
+  // All items component
+  // Important! add unique key
+  Menu = (list) => list.map(el => {
+    const { name, title } = el;
+    return (
+      <this.MenuItem
+        title={title}
+        pic={name}
+        key={name}
+      />
+    );
+  });
+
+
+renderSpinner() {
+  if (!this.state.loading) {
+    // Render nothing if not loading
+    return null;
+  }
+  return (
+    <div class="bioHeader largeText spinner">LOADING ...</div>
+  );
+}
 
   componentWillMount(){
     const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
@@ -51,7 +94,7 @@ class SimpleSlider extends React.Component {
       title: x.split("_")[0]}});
     console.log(list2);
     console.log(objList);
-    const menu = Menu(objList);
+    const menu = this.Menu(objList);
     this.setState({ mode : menu});
 
     console.log(pubimages);
@@ -78,6 +121,7 @@ class SimpleSlider extends React.Component {
   }
 
   render() {
+    const classes = this.state.loading ? 'basket hide' : 'basket';
     var slidesInFrame = 1.68; // On screen
     var scrollSpeed = 1500;
     if(window.matchMedia("(max-width: 1050px)").matches) {
@@ -98,9 +142,12 @@ class SimpleSlider extends React.Component {
     };
     
     return (
-      <Slider {...settings} ref={slider => this.slider = slider}>
+      <Fragment>
+      <Slider {...settings} ref={slider => this.slider = slider} className={classes}>
         { this.state.mode }
       </Slider>
+      { this.renderSpinner() }
+      </Fragment>
     );
   }
 }

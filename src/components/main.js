@@ -21,9 +21,9 @@ class Main extends React.Component {
                 <div id="contentBox">
                     <Route path="/bio" component={ Bio }/>
                     <Route path="/downloads" component={ Downloads }/>
+                    <Route path="/archive" component={ SimpleSlider }/>
                 </div>
                 <Route exact path="/" component={ InstagramDisplay }/>
-                <Route path="/archive" component={ SimpleSlider }/>
             </div>
             </HashRouter>
         );

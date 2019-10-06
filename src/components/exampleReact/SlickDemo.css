@@ -52,6 +52,26 @@
     opacity: 0;
 }
 
+.basket {
+    transition: opacity 2.5s;
+    opacity: 1;
+  }
+  
+.basket.hide {
+    opacity: 0;
+}
+
+.spinner{
+    display: block;
+    position: relative;
+    margin-left: auto;  
+    margin-right: auto;
+    width: 50%;
+    top: 30%;
+    max-width: 200px;
+}
+
+
 @media (min-height:500px) {
     .slick-slider.slick-initialized{
         top: 60%;
@@ -73,3 +93,9 @@
         top: -2px;
     }
 }
+
+@media only screen and (orientation: landscape) {
+    .slick-slider{
+      top: 100px;
+    }
+  }

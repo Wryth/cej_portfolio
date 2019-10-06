@@ -7,15 +7,12 @@
     text-decoration: none;
     color: black;
     position: relative;
-    font-size: 23.5pt;
-    line-height: 30.5pt;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .pdfDL:hover{
     color: blue;
 }
-
 
 @media (max-width: 500px){
  .pdfDL {

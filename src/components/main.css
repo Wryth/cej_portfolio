@@ -37,5 +37,10 @@
     text-align: center;
     top: 0;
   }
+}
 
-} 
+@media (orientation: landscape) {
+  .mainContainer{
+    top: 2%;
+  }
+}
