@@ -56,6 +56,7 @@ class SimpleSlider extends React.Component {
           src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}
           onLoad={this.handleStateChange}
           onError={this.handleStateChange}
+          alt=''
           />
       </Fragment>
     );
