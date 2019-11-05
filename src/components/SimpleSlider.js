@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import ReactDOM from 'react-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./SlickDemo.css";
+import "./SimpleSlider.css";
 
 function importAll(r) {
   return r.keys().map(r);
@@ -80,7 +80,7 @@ renderSpinner() {
 }
 
   componentWillMount(){
-    const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+    const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
     console.log(this.state.mode);
     const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
     const objList = list2.map(x => {return {
@@ -92,7 +92,7 @@ renderSpinner() {
     this.setState({ mode : menu});
 
     console.log(pubimages);
-    console.log(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+    console.log(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
   }
 
   componentDidMount() {

@@ -9,7 +9,7 @@ import MyHeader from './myHeader.js';
 import Bio from './bio';
 import InstagramDisplay from './instagramDisplay.js';
 import Downloads from './downloads';
-import SimpleSlider from "./exampleReact/SlickDemo";
+import SimpleSlider from "./SimpleSlider";
 
 class Main extends React.Component {
 

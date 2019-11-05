@@ -4,8 +4,8 @@ import './bio.css';
 class Bio extends React.Component{
 
     onXclick = () => {
-        document.getElementById('headerMenu').scrollIntoView();        
-    }
+        document.getElementById('headerMenu').scrollIntoView();
+    };
 
     render(){
         return(
@@ -38,7 +38,7 @@ class Bio extends React.Component{
                 </div>
 
                 <div className="bioYear largeText">
-                    2019 
+                    2019
                 </div>
                 <p className="exhibitionInfo smallText">
                     CERAMIC MOMENTUM, <i>group exhibition</i>, CLAY, Museum of Ceramic Art, DK
@@ -62,7 +62,7 @@ class Bio extends React.Component{
                 </div>
 
                 <div className="bioYear largeText">
-                    2017 
+                    2017
                 </div>
                 <div className="exhibitionInfo smallText">
                     NEW DANISH MODERN, <i>group exhibition</i>, O­space, Aarhus, DK
@@ -84,7 +84,7 @@ class Bio extends React.Component{
                     <br></br>
                     FORÅRSUDSTILLINGEN, <i>group exhibition</i>, København, DK
                     <br></br>
-                    <br></br> 
+                    <br></br>
                 </div>
 
                 <div className="bioYear largeText">
