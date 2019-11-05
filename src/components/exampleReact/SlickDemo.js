@@ -23,7 +23,7 @@ function imagesLoaded(parentNode) {
 class SimpleSlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       mode: [],
       open: null,
       loading: true,
@@ -31,18 +31,11 @@ class SimpleSlider extends React.Component {
     this.handleWheel = this.handleWheel.bind(this);
   }
 
-
-  handleImageChange = () => {
-    this.setState({
-      loading: !imagesLoaded(this.slider)
-    });
-  };
-
   handleStateChange = () => {
     this.setState({
       loading: !imagesLoaded(this.slider),
     });
-  }
+  };
 
   // selected prop will be passed
   MenuItem = ({ pic, title }) => {
@@ -51,8 +44,8 @@ class SimpleSlider extends React.Component {
         <div className="titleBox">
           <p className="pictureTitle smallText">{title}</p>
         </div>
-        <img 
-          className="pictures" 
+        <img
+          className="pictures"
           src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}
           onLoad={this.handleStateChange}
           onError={this.handleStateChange}
@@ -82,7 +75,7 @@ renderSpinner() {
     return null;
   }
   return (
-    <div class="bioHeader largeText spinner">LOADING ...</div>
+    <div className="bioHeader largeText spinner">LOADING ...</div>
   );
 }
 
@@ -100,12 +93,6 @@ renderSpinner() {
 
     console.log(pubimages);
     console.log(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-
-    /*
-    pubimages.forEach((picture) => {
-      let img = new Image().src = picture.fileName;
-    });
-    */
   }
 
   componentDidMount() {
@@ -115,7 +102,7 @@ renderSpinner() {
   componentWillUnmount() {
     ReactDOM.findDOMNode(this).removeEventListener('wheel', this.handleWheel);
   }
-  
+
   handleWheel(e) {
     e.preventDefault();
     e.deltaY > 0 || e.deltaX > 0 ? this.slider.slickNext() : this.slider.slickPrev();
@@ -123,14 +110,14 @@ renderSpinner() {
 
   render() {
     const classes = this.state.loading ? 'basket hide' : 'basket';
-    var slidesInFrame = 1.68; // On screen
-    var scrollSpeed = 1500;
+    let slidesInFrame = 1.68; // On screen
+    let scrollSpeed = 1500;
     if(window.matchMedia("(max-width: 1050px)").matches) {
       slidesInFrame = 1; // on phone tablet
       scrollSpeed = 500;
     }
 
-    var settings = {
+    const settings = {
       infinite: true,
       slidesToShow: slidesInFrame,
       slidesToScroll: 1,
@@ -141,7 +128,7 @@ renderSpinner() {
       autoplaySpeed: 1000,
       variableWidth: true,
     };
-    
+
     return (
       <Fragment>
       <Slider {...settings} ref={slider => this.slider = slider} className={classes}>
