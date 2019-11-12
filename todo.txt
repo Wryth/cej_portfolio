@@ -70,3 +70,4 @@ TODO:
 -keep 1.68 img scale at mobil? other scales seems to break the wheel. reduce the total size of the images
 -automatic upload from folder/ one for the main page one for picture wheel.
 -the menu switches at mobile size. it should not.
+https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
