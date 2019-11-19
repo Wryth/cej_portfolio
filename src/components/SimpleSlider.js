@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import ReactDOM from 'react-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Dropbox from "dropbox";
 import "./SimpleSlider.css";
 
 function importAll(r) {
@@ -27,6 +28,7 @@ class SimpleSlider extends React.Component {
       mode: [],
       open: null,
       loading: true,
+      dbImgs: []
      };
     this.handleWheel = this.handleWheel.bind(this);
   }
@@ -97,6 +99,26 @@ renderSpinner() {
 
   componentDidMount() {
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
+    const dbx = new Dropbox.Dropbox({ accessToken: '9vE_oDUSeHoAAAAAAAAAM0zpFnPH1G0kstaqnr82WdYtLJahQiIFuQRU6qGoPQOK' });
+    dbx.usersGetCurrentAccount()
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+    dbx.filesListFolder({path: ''})
+        .then(res => res.json())
+        .then( (response) => {
+          console.log(response.entries);
+        })
+        .then((res) => {
+          this.setState({ dbImgs: [res.entries[0].path_display]} )
+        })
+        .catch((error) => {
+          console.error(error);
+        });
   }
 
   componentWillUnmount() {
@@ -131,6 +153,9 @@ renderSpinner() {
 
     return (
       <Fragment>
+        <div id="dbContainer">
+          <img id="dbSource" src={this.state.dbImgs} alt=""/>
+        </div>
       <Slider {...settings} ref={slider => this.slider = slider} className={classes}>
         { this.state.mode }
       </Slider>
