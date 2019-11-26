@@ -57,12 +57,30 @@ class SimpleSlider extends React.Component {
     );
   };
 
+  // uses a direct image link
+  MenuLinkItem = ({ pic, title }) => {
+    return (
+        <Fragment>
+          <div className="titleBox">
+            <p className="pictureTitle smallText">{title}</p>
+          </div>
+          <img
+              className="pictures"
+              src={ pic }
+              onLoad={this.handleStateChange}
+              onError={this.handleStateChange}
+              alt=''
+          />
+        </Fragment>
+    );
+  };
+
   // All items component
   // Important! add unique key
   Menu = (list) => list.map(el => {
     const { name, title } = el;
     return (
-      <this.MenuItem
+      <this.MenuLinkItem
         title={title}
         pic={name}
         key={name}
@@ -81,7 +99,7 @@ renderSpinner() {
   );
 }
 
-  componentWillMount(){
+  componentDidMount() {
     const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
     console.log(this.state.mode);
     const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
@@ -91,15 +109,15 @@ renderSpinner() {
     console.log(list2);
     console.log(objList);
     const menu = this.Menu(objList);
-    this.setState({ mode : menu});
+    //this.setState({ mode : menu});
 
     console.log(pubimages);
     console.log(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-  }
-
-  componentDidMount() {
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
-    const dbx = new Dropbox.Dropbox({ accessToken: '9vE_oDUSeHoAAAAAAAAAM0zpFnPH1G0kstaqnr82WdYtLJahQiIFuQRU6qGoPQOK' });
+
+
+    const dbx = new Dropbox.Dropbox({ fetch: fetch , accessToken: '9vE_oDUSeHoAAAAAAAAAM0zpFnPH1G0kstaqnr82WdYtLJahQiIFuQRU6qGoPQOK' });
+    /*
     dbx.usersGetCurrentAccount()
         .then((response) => {
           console.log(response);
@@ -107,15 +125,28 @@ renderSpinner() {
         .catch((error) => {
           console.error(error);
         });
-
+    */
     dbx.filesListFolder({path: ''})
-        .then(res => res.json())
-        .then( (response) => {
-          console.log(response.entries);
+        .then((res) => {
+          return res.entries.map(x => x.path_lower)
         })
         .then((res) => {
-          this.setState({ dbImgs: [res.entries[0].path_display]} )
-        })
+              // demo stuff
+          Promise.all(res.map(x => dbx.filesGetTemporaryLink({path: x})))
+              .then((result) => {
+                this.setState({dbImgs: result}, () => {
+
+                  const menu = this.Menu(this.state.dbImgs.map(x => { return { name:x.link, title: x.metadata.name.split(".")[0] }}));
+
+                 this.setState({mode: menu});
+
+                  console.log(this.state.dbImgs[0].link)})
+              })
+              .catch((error) => {
+                console.error(error)
+              });
+            }
+        )
         .catch((error) => {
           console.error(error);
         });
@@ -153,9 +184,6 @@ renderSpinner() {
 
     return (
       <Fragment>
-        <div id="dbContainer">
-          <img id="dbSource" src={this.state.dbImgs} alt=""/>
-        </div>
       <Slider {...settings} ref={slider => this.slider = slider} className={classes}>
         { this.state.mode }
       </Slider>
