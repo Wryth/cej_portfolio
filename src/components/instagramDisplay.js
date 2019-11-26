@@ -9,7 +9,7 @@ class InstagramDisplay extends React.Component{
 
     componentDidMount() {
         // GET most recent image added to instagram
-        fetch('https://graph.instagram.com/me/media?fields=media_url&access_token=IGQVJXU0o4S1ZAsQzU0MzN6RGRzdkJjSEJvdnFOWmxBbnB4SW9sTncxX01abGhhcDZAIbE80clpmQkxlbFByWkpDa3FPUE14Um1mMi05UzRnR2tnNWlGTGFiNDVuZAmNlbXVQVUphNkZADWDRlX3JsRXVuUl9IN0dwcS13cm5z')
+        fetch('https://graph.instagram.com/me/media?fields=media_url&access_token=' + process.env.REACT_APP_IG_TOKEN)
             .then(res => res.json())
             .then((res) => {
                 this.setState({ igImg: res.data[0].media_url})

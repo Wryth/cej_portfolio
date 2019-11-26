@@ -101,46 +101,29 @@ renderSpinner() {
 
   componentDidMount() {
     const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-    console.log(this.state.mode);
     const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
     const objList = list2.map(x => {return {
       name: x,
       title: x.split("_")[0]}});
-    console.log(list2);
-    console.log(objList);
     const menu = this.Menu(objList);
     //this.setState({ mode : menu});
 
-    console.log(pubimages);
-    console.log(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
 
 
-    const dbx = new Dropbox.Dropbox({ fetch: fetch , accessToken: '9vE_oDUSeHoAAAAAAAAAM0zpFnPH1G0kstaqnr82WdYtLJahQiIFuQRU6qGoPQOK' });
-    /*
-    dbx.usersGetCurrentAccount()
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    */
+    const dbx = new Dropbox.Dropbox({ fetch: fetch , accessToken: process.env.REACT_APP_DBX_TOKEN });
     dbx.filesListFolder({path: ''})
         .then((res) => {
           return res.entries.map(x => x.path_lower)
         })
         .then((res) => {
-              // demo stuff
+              //demo get alle images from a dropbox folder. TODO When ready share the app folder with CEJ
           Promise.all(res.map(x => dbx.filesGetTemporaryLink({path: x})))
               .then((result) => {
                 this.setState({dbImgs: result}, () => {
-
-                  const menu = this.Menu(this.state.dbImgs.map(x => { return { name:x.link, title: x.metadata.name.split(".")[0] }}));
-
-                 this.setState({mode: menu});
-
-                  console.log(this.state.dbImgs[0].link)})
+                    const menu = this.Menu(this.state.dbImgs.map(x => { return { name:x.link, title: x.metadata.name.split(".")[0] }}));
+                    this.setState({mode: menu});
+                })
               })
               .catch((error) => {
                 console.error(error)
