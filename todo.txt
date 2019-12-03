@@ -6,8 +6,8 @@ TODO:
 
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
 https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
--Add access token fetch, if no current one is there.
--Move tokens and fetches to App.js or main., Pass them to the current rendered component.
+- CEJ have to create his own dropbox app with a folder, and give me his access-token
+- maybe have to do the same thing with instagram
 
 
 https://www.dropbox.com/developers/documentation/http/overview

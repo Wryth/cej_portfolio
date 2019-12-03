@@ -38,23 +38,51 @@ class SimpleSlider extends React.Component {
     });
   };
 
-  // selected prop will be passed
-  MenuItem = ({ pic, title }) => {
+  componentDidMount() {
+      /*
+    console.log(this.props.dbImgs);
+    if(this.props.dbImgs === []) {
+      console.log('derp');
+      const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+      const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+      const objList = list2.map(x => {
+        return {
+          name: x,
+          title: x.split("_")[0]
+        }
+      });
+      const menu = this.Menu(objList);
+      this.setState({ mode : menu});
+    }
+    */
+    ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
+
+    this.setState({ dbImgs: this.props.dbImgs}, () => {
+      const menu = this.Menu(this.props.dbImgs.map(x => {
+        return { name: x.link, title: x.metadata.name.split(".")[0].split("_")[0] }
+      }));
+      this.setState({ mode: menu });
+    });
+  }
+
+  componentWillUnmount() {
+    ReactDOM.findDOMNode(this).removeEventListener('wheel', this.handleWheel);
+  }
+
+  renderSpinner() {
+    if (!this.state.loading) {
+      // Render nothing if not loading
+      return null;
+    }
     return (
-      <Fragment>
-        <div className="titleBox">
-          <p className="pictureTitle smallText">{title}</p>
-        </div>
-        <img
-          className="pictures"
-          src={process.env.PUBLIC_URL + '/foto/carousel/' + pic + '.jpg'}
-          onLoad={this.handleStateChange}
-          onError={this.handleStateChange}
-          alt=''
-          />
-      </Fragment>
+        <div className="bioHeader largeText spinner">LOADING ...</div>
     );
-  };
+  }
+
+  handleWheel(e) {
+    e.preventDefault();
+    e.deltaY > 0 || e.deltaX > 0 ? this.slider.slickNext() : this.slider.slickPrev();
+  }
 
   // uses a direct image link
   MenuLinkItem = ({ pic, title }) => {
@@ -79,58 +107,13 @@ class SimpleSlider extends React.Component {
   Menu = (list) => list.map(el => {
     const { name, title } = el;
     return (
-      <this.MenuLinkItem
-        title={title}
-        pic={name}
-        key={name}
-      />
+        <this.MenuLinkItem
+            title={title}
+            pic={name}
+            key={name}
+        />
     );
   });
-
-renderSpinner() {
-  if (!this.state.loading) {
-    // Render nothing if not loading
-    return null;
-  }
-  return (
-    <div className="bioHeader largeText spinner">LOADING ...</div>
-  );
-}
-
-  componentDidMount() {
-    console.log(this.props.dbImgs);
-    if(this.props.dbImgs === []) {
-      console.log('derp');
-      const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-      const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-      const objList = list2.map(x => {
-        return {
-          name: x,
-          title: x.split("_")[0]
-        }
-      });
-      const menu = this.Menu(objList);
-      this.setState({ mode : menu});
-    }
-
-    ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
-
-    this.setState({ dbImgs: this.props.dbImgs}, () => {
-      const menu = this.Menu(this.props.dbImgs.map(x => {
-        return {name: x.link, title: x.metadata.name.split(".")[0]}
-      }));
-      this.setState({ mode: menu });
-    })
-  }
-
-  componentWillUnmount() {
-    ReactDOM.findDOMNode(this).removeEventListener('wheel', this.handleWheel);
-  }
-
-  handleWheel(e) {
-    e.preventDefault();
-    e.deltaY > 0 || e.deltaX > 0 ? this.slider.slickNext() : this.slider.slickPrev();
-  }
 
   render() {
     const classes = this.state.loading ? 'basket hide' : 'basket';
