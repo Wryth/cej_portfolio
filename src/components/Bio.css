@@ -6,21 +6,18 @@
 }
 
 .bioText{
-    margin: 0;
-    margin-bottom: 55px;
+    margin: 0 0 55px;
     -webkit-hyphens: manual;
     -ms-hyphens: manual;
     hyphens: manual;
 }
 
 .bioHeader{
-    margin: 0;
-    margin-bottom: 55px;
+    margin: 0 0 55px;
 }
 
 .bioYear{
-    margin: 0;
-    margin-bottom: 3px;
+    margin: 0 0 3px;
 }
 
 .exhibitionInfo{

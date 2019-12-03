@@ -1,5 +1,5 @@
 import React from 'react';
-import './downloads.css';
+import './Downloads.css';
 
 class Downloads extends React.Component{
     render(){

@@ -1,75 +1,13 @@
-ToDoList:
-
-https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.html
-
-
--Instagram Display wheel.
-    -Instagram embedding: https://www.instagram.com/developer/embedding/
-    -https://www.instagram.com/carlemiljacobsen/
-
-
-https://auth0.com/
-https://firebase.google.com/
-
-Logge inn med googlebruker i en skjult admin dashboard.
-
-godaddy som host?
-wordpress
-
-navn some home
-
-Todo:
--trigger inline css font skifte på valge elementer.
--firebase/innlogging.
-
-
-Laget på wix.com
-Domenet er fra One.com
-
-
-
-TODO:
-Host på hostgator
-add node.js to hostgator:
-https://www.dzeta.biz/add-nodejs-hostgator-shared-hosting-server/
-
-Tutorials:
-https://www.youtube.com/watch?v=tq7dqdHCc7U&list=LLO9WJn7iF0KysinClsjvDvA&index=2&t=0s
-https://www.youtube.com/watch?v=P9MB218jzF4
-
-
-WinSCP
-FileZill
-CyberDuck
-
-use webpack to bundle the project.
-the move it to the server.
-
-https://www.youtube.com/watch?v=rfpRZ2t_BrQ&fbclid=IwAR1ehq1RVvXGCKkbqienAfH75vADhk_Yr1WULPqFwV9aA8ybULt8dbW2qnI
-cursor as a div element
-
-https://css-tricks.com/practical-css-scroll-snapping/
-
-
-https://react-slick.neostack.com/docs/api/
-https://react-slick.neostack.com/docs/api/#methods
-
-
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-css styled components, so that the change to div does not effect all divs
-
-
-slick-list is a list which contains all active elements.
-with uneven slick-slide boxes it is unable to fit the set amount.
-
-!!
-https://react-slick.neostack.com/docs/example/variable-width
-!!
-
 TODO:
 -keep 1.68 img scale at mobil? other scales seems to break the wheel. reduce the total size of the images
 -automatic upload from folder/ one for the main page one for picture wheel.
 -the menu switches at mobile size. it should not.
+
+
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
+https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
+-Add access token fetch, if no current one is there.
+-Move tokens and fetches to App.js or main., Pass them to the current rendered component.
 
 
+https://www.dropbox.com/developers/documentation/http/overview

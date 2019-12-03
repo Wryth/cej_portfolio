@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import ReactDOM from 'react-dom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Dropbox from "dropbox";
 import "./SimpleSlider.css";
 
 function importAll(r) {
@@ -88,7 +87,6 @@ class SimpleSlider extends React.Component {
     );
   });
 
-
 renderSpinner() {
   if (!this.state.loading) {
     // Render nothing if not loading
@@ -100,39 +98,29 @@ renderSpinner() {
 }
 
   componentDidMount() {
-    const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-    const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-    const objList = list2.map(x => {return {
-      name: x,
-      title: x.split("_")[0]}});
-    const menu = this.Menu(objList);
-    //this.setState({ mode : menu});
+    console.log(this.props.dbImgs);
+    if(this.props.dbImgs === []) {
+      console.log('derp');
+      const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+      const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+      const objList = list2.map(x => {
+        return {
+          name: x,
+          title: x.split("_")[0]
+        }
+      });
+      const menu = this.Menu(objList);
+      this.setState({ mode : menu});
+    }
 
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
 
-
-    const dbx = new Dropbox.Dropbox({ fetch: fetch , accessToken: process.env.REACT_APP_DBX_TOKEN });
-    dbx.filesListFolder({path: ''})
-        .then((res) => {
-          return res.entries.map(x => x.path_lower)
-        })
-        .then((res) => {
-              //demo get alle images from a dropbox folder. TODO When ready share the app folder with CEJ
-          Promise.all(res.map(x => dbx.filesGetTemporaryLink({path: x})))
-              .then((result) => {
-                this.setState({dbImgs: result}, () => {
-                    const menu = this.Menu(this.state.dbImgs.map(x => { return { name:x.link, title: x.metadata.name.split(".")[0] }}));
-                    this.setState({mode: menu});
-                })
-              })
-              .catch((error) => {
-                console.error(error)
-              });
-            }
-        )
-        .catch((error) => {
-          console.error(error);
-        });
+    this.setState({ dbImgs: this.props.dbImgs}, () => {
+      const menu = this.Menu(this.props.dbImgs.map(x => {
+        return {name: x.link, title: x.metadata.name.split(".")[0]}
+      }));
+      this.setState({ mode: menu });
+    })
   }
 
   componentWillUnmount() {
@@ -167,10 +155,10 @@ renderSpinner() {
 
     return (
       <Fragment>
-      <Slider {...settings} ref={slider => this.slider = slider} className={classes}>
-        { this.state.mode }
-      </Slider>
-      { this.renderSpinner() }
+        <Slider {...settings} ref={ slider => this.slider = slider } className={ classes }>
+          { this.state.mode }
+        </Slider>
+        { this.renderSpinner() }
       </Fragment>
     );
   }

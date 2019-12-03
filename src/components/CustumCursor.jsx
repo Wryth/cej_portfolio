@@ -1,6 +1,6 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
-import "./customCursor.css";
+import "./CustomCursor.css";
 
 
 
@@ -14,6 +14,5 @@ class CustomCursor extends React.Component {
         )
     }
 }
-
 
 export default CustomCursor;

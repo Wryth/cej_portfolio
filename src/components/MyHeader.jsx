@@ -1,6 +1,6 @@
 import React from 'react';
-import './myHeader.css';
-import Menu from './myMenu';
+import './MyHeader.css';
+import Menu from './MyMenu';
 
 class MyHeader extends React.Component {
     render(){

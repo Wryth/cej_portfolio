@@ -3,7 +3,7 @@ import {
     NavLink,
   } from "react-router-dom";
 
-import './myMenu.css';
+import './MyMenu.css';
 
 class Menu extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Menu extends React.Component {
         return(
             <div id="menuContainer">
                 <div className="menuOptions">
-                        <NavLink exact id="name" 
+                        <NavLink exact id="name"
                             className="menuOption"
                             to="/"
                             >CARL EMIL JACOBSEN
@@ -39,7 +39,7 @@ class Menu extends React.Component {
                                 id="menuBio"
                                 to="/bio"
                                 >CV</NavLink>
-                                                            
+
                                 <NavLink className="menuOption"
                                 activeClassName="active"
                                 id="menuDownloads"
