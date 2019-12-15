@@ -39,10 +39,9 @@ class SimpleSlider extends React.Component {
   };
 
   componentDidMount() {
-      /*
+    /*
     console.log(this.props.dbImgs);
-    if(this.props.dbImgs === []) {
-      console.log('derp');
+    if(this.state.dbImgs === []) {
       const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
       const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
       const objList = list2.map(x => {
@@ -54,7 +53,7 @@ class SimpleSlider extends React.Component {
       const menu = this.Menu(objList);
       this.setState({ mode : menu});
     }
-    */
+     */
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
 
     this.setState({ dbImgs: this.props.dbImgs}, () => {
@@ -63,6 +62,7 @@ class SimpleSlider extends React.Component {
       }));
       this.setState({ mode: menu });
     });
+
   }
 
   componentWillUnmount() {

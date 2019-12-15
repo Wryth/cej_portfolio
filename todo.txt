@@ -7,7 +7,9 @@ TODO:
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
 https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
 - CEJ have to create his own dropbox app with a folder, and give me his access-token
-- maybe have to do the same thing with instagram
+- Add gracfull error handelig aka: if dropbox fails, get from public folder, if all fails return error display.
 
 
 https://www.dropbox.com/developers/documentation/http/overview
+https://www.instagram.com/developer/authentication/
+https://css-tricks.com/everything-need-know-instagram-api-integration/

@@ -48,7 +48,6 @@ class Main extends React.Component {
                 return res.entries.map(x => x.path_lower)
             })
             .then((res) => {
-                    //demo get all images from a dropbox folder. TODO When ready share the app folder with CEJ
                     Promise.all(res.map(x => dbx.filesGetTemporaryLink({ path: x })))
                         .then((result) => {
                             this.setState({ dbImgs: result });
