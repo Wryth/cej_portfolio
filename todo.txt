@@ -6,8 +6,8 @@ TODO:
 
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
 https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
-- CEJ have to create his own dropbox app with a folder, and give me his access-token
-- Add gracfull error handelig aka: if dropbox fails, get from public folder, if all fails return error display.
+- Add graceful failure. Get local images on failed DB image fetch.
+- See if i can have more controll over padding between images in the slider
 
 
 https://www.dropbox.com/developers/documentation/http/overview

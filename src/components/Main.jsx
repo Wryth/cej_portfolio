@@ -16,7 +16,7 @@ class Main extends React.Component {
         super(props);
         this.state = {
             dbImgs: [],
-            igImg: 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l',
+            igImg: '',
             pdf: process.env.PUBLIC_URL + "/CEJ_works19.pdf",
         };
     }
