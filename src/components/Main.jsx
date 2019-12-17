@@ -11,13 +11,17 @@ import Downloads from './Downloads';
 import SimpleSlider from "./SimpleSlider";
 import Dropbox from "dropbox";
 
+function importAll(r) {
+    return r.keys().map(r);
+}
+
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             dbImgs: [],
             igImg: '',
-            pdf: process.env.PUBLIC_URL + "/CEJ_works19.pdf",
+            pdf: '',
         };
     }
 
@@ -53,6 +57,9 @@ class Main extends React.Component {
                             this.setState({ dbImgs: result });
                         })
                         .catch((error) => {
+                            const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+                            const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+                            this.setState({ dbImgs: list2 });
                             console.error(error);
                         });
                 }
@@ -72,6 +79,7 @@ class Main extends React.Component {
                             this.setState({ pdf: result.link });
                         })
                         .catch((error) => {
+                            this.setState({ pdf: process.env.PUBLIC_URL + "/CEJ_works19.pdf" });
                             console.error(error);
                         });
                 }

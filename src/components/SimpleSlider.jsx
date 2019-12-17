@@ -5,10 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./SimpleSlider.css";
 
-function importAll(r) {
-  return r.keys().map(r);
-}
-
 function imagesLoaded(parentNode) {
   const imgElements = [...document.querySelectorAll("img")];
   for (let i = 0; i < imgElements.length; i += 1) {
@@ -39,30 +35,17 @@ class SimpleSlider extends React.Component {
   };
 
   componentDidMount() {
-    /*
-    console.log(this.props.dbImgs);
-    if(this.state.dbImgs === []) {
-      const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-      const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-      const objList = list2.map(x => {
-        return {
-          name: x,
-          title: x.split("_")[0]
-        }
-      });
-      const menu = this.Menu(objList);
-      this.setState({ mode : menu});
-    }
-     */
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
 
     this.setState({ dbImgs: this.props.dbImgs}, () => {
       const menu = this.Menu(this.props.dbImgs.map(x => {
-        return { name: x.link, title: x.metadata.name.split(".")[0].split("_")[0] }
+        if(!x.metadata) {
+          return {name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0]}
+        }
+        return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
       }));
       this.setState({ mode: menu });
     });
-
   }
 
   componentWillUnmount() {

@@ -14,7 +14,7 @@ class InstagramDisplay extends React.Component {
         render() {
             return (
                 <div id="igContainer">
-                    <img id="igSource" src={ this.state.igImg } alt="lastIgPost"/>
+                    <img id="igSource" src={ this.state.igImg } alt="" />
                 </div>
             );
         }
