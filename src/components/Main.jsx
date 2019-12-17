@@ -49,19 +49,19 @@ class Main extends React.Component {
 
         dbx.filesListFolder({path: '/slider'})
             .then((res) => {
-                return res.entries.map(x => x.path_lower)
+                return res.entries.map(x => x.path_lower).sort().reverse()
             })
             .then((res) => {
-                    Promise.all(res.map(x => dbx.filesGetTemporaryLink({ path: x })))
-                        .then((result) => {
-                            this.setState({ dbImgs: result });
-                        })
-                        .catch((error) => {
-                            const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-                            const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-                            this.setState({ dbImgs: list2 });
-                            console.error(error);
-                        });
+                Promise.all(res.map(x => dbx.filesGetTemporaryLink({ path: x })))
+                    .then((result) => {
+                        this.setState({ dbImgs: result });
+                    })
+                    .catch((error) => {
+                        const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+                        const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+                        this.setState({ dbImgs: list2 });
+                        console.error(error);
+                    });
                 }
             )
             .catch((error) => {
@@ -74,14 +74,14 @@ class Main extends React.Component {
                 return res.entries.map(x => x.path_lower)
             })
             .then((res) => {
-                    dbx.filesGetTemporaryLink({ path: res[0] })
-                        .then((result) => {
-                            this.setState({ pdf: result.link });
-                        })
-                        .catch((error) => {
-                            this.setState({ pdf: process.env.PUBLIC_URL + "/CEJ_works19.pdf" });
-                            console.error(error);
-                        });
+                dbx.filesGetTemporaryLink({ path: res[0] })
+                    .then((result) => {
+                        this.setState({ pdf: result.link });
+                    })
+                    .catch((error) => {
+                        this.setState({ pdf: process.env.PUBLIC_URL + "/CEJ_works19.pdf" });
+                        console.error(error);
+                    });
                 }
             )
             .catch((error) => {
