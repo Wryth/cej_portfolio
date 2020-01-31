@@ -13,3 +13,13 @@ https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
 https://www.dropbox.com/developers/documentation/http/overview
 https://www.instagram.com/developer/authentication/
 https://css-tricks.com/everything-need-know-instagram-api-integration/
+
+
+
+
+
+@custom-media --small-viewport (min-width: 500px);
+@custom-media --medium-viewport (min-width: 768px);
+@custom-media --large-viewport (min-width: 1024px);
+@custom-media --xlarge-viewport (min-width: 1280px);
+@custom-media --super-viewport (min-width: 1300px);
