@@ -1,47 +1,25 @@
-ToDoList:
-
--Drop down manu.
-    -Gjøre om til buttons.
-        -Dropdown ved trykk, okuper like mye plass.
-https://www.kirupa.com/react/creating_single_page_app_react_using_react_router.htm
+TODO:
+-keep 1.68 img scale at mobil? other scales seems to break the wheel. reduce the total size of the images
+-automatic upload from folder/ one for the main page one for picture wheel.
+-the menu switches at mobile size. it should not.
 
 
--Instagram Display wheel.
-    -Instagram embedding: https://www.instagram.com/developer/embedding/
-    -https://www.instagram.com/carlemiljacobsen/
+https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
+https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
+- Add graceful failure. Get local images on failed DB image fetch.
+- See if i can have more controll over padding between images in the slider
+
+
+https://www.dropbox.com/developers/documentation/http/overview
+https://www.instagram.com/developer/authentication/
+https://css-tricks.com/everything-need-know-instagram-api-integration/
 
 
 
-Spørsmål til CPS:
--Fonts
-    -Hvilke fonts? Størrelse(em,%,px),
-    -Skal alle bokstaver skyfte font til Georgia? forslag: bare de man kan trykke på?
-        -atm omståkker det veldig på siden, etter som fonts har forskjellig størrelse.
-        Dette kan sikkert fikses, men det kan hende at noe sånt over hele siden blir fort
-        rotete.
-
-https://auth0.com/
-https://firebase.google.com/
-
-Logge inn med googlebruker i en skjult admin dashboard.
-
-godaddy som host?
-wordpress
-
-navn some home
 
 
-Default: Arial
-Hover/selected: Georgia
-
-Todo:
--Plassering av bilder, ape etter pdf.
--trigger inline css font skifte på valge elementer.
--sirkel på cursor.
--flytt home til navnet hans.
--firebase/innlogging.
-
-
-Laget på wix.com
-Domenet er fra One.com
-
+@custom-media --small-viewport (min-width: 500px);
+@custom-media --medium-viewport (min-width: 768px);
+@custom-media --large-viewport (min-width: 1024px);
+@custom-media --xlarge-viewport (min-width: 1280px);
+@custom-media --super-viewport (min-width: 1300px);

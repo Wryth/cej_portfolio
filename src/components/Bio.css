@@ -1,0 +1,52 @@
+.bioContainer{
+}
+
+.bioText {
+    text-align: left;
+}
+
+.bioText{
+    margin: 0 0 55px;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
+}
+
+.bioHeader{
+    margin: 0 0 55px;
+}
+
+.bioYear{
+    margin: 0 0 3px;
+}
+
+.exhibitionInfo{
+    margin: 0;
+}
+
+.textEnd{
+    margin-bottom: 90px;
+}
+
+.xEnd{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 37px;
+}
+
+
+@media (max-width:500px), (max-height:500px) {
+    .bioHeader{
+        margin-bottom: 20px;
+    }
+
+    .textEnd{
+        margin-bottom: 30px;
+    }
+
+    .bioText {
+        margin-bottom: 30px;
+    }
+
+    .exhibitionInfo {
+    }
+}

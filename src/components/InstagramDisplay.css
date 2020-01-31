@@ -1,0 +1,23 @@
+#igContainer{
+    display: block;
+    position: fixed;
+    width: 60%;
+    height: 60%;
+    left: 20%;
+    margin: 0;
+    text-align: center;
+}
+
+#igSource{
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 1px;
+}
+
+@media (min-height:550px) {
+    #igContainer{
+        top: 60%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}

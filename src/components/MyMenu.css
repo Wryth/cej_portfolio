@@ -1,0 +1,119 @@
+
+#menuContainer{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.menuOptions{
+    height: 100%;
+    width: 100%;
+}
+
+#name{
+    float: left;
+    margin: 0;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 2;
+    position: absolute;
+}
+
+.innerMenu{
+    position: absolute;
+    left: 20%;
+    width: 60%;
+    z-index: 1;
+}
+
+.innerContainer{
+    margin-left: 30%;
+}
+
+.menuOption{
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.125rem;
+    line-height: 1.542rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    min-height: 20px;
+}
+
+#menuArchive{
+    min-width: 123px;
+}
+
+#menuBio{
+    min-width: 26px;
+    margin-left: 40px;
+}
+
+#menuDownloads{
+    min-width: 81px;
+    margin-left: 40px;
+}
+
+.menuOption:hover, #igLink:hover {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#menuBox{
+    float: right;
+    top: 1.2em;
+    visibility: visible;
+}
+
+#igLink{
+    float: right;
+    text-decoration: none;
+    color: black;
+    margin-left: 40px;
+    min-width: 82px;
+}
+
+@media (max-width:900px), (max-height:500px) {
+    .menuOption{
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+        text-decoration: none;
+        color: black;
+        font-weight: 500;
+        min-height: 20px;
+    }
+
+    #menuDownloads{
+        min-width: 42px;
+    }
+
+    #menuArchive{
+        min-width: 64px;
+    }
+
+    #menuBio{
+        min-width: 13px;
+    }
+
+    #igLink{
+        min-width: 42px;
+        margin-left: 0;
+    }
+
+    #menuBio, #menuArchive, #menuDownloads{
+        margin-left: 5%;
+    }
+
+    .innerContainer{
+        margin-left: 15%;
+    }
+
+    .innerMenu{
+        left: 26%;
+    }
+}

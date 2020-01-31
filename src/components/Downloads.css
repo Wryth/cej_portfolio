@@ -1,0 +1,17 @@
+#dlContainer{
+    text-align: center;
+}
+
+.pdfDL{
+    margin: 0;
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+
+.pdfDL:hover{
+    color: blue;
+}
+
+@media (max-width: 500px){
+}

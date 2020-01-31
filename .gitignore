@@ -23,3 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 /foto/*
+public/CEJ_works19.pdf
+
+.idea
+.idea/
+
+# enviorment variables
+.env
