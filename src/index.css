@@ -71,7 +71,7 @@ body:hover{
   }
 
   .MyHeaderContainer a, pre{
-    font-size: 0.583rem !important;
-    line-height: 0.75rem !important;
+    font-size: 0.583rem;
+    line-height: 0.75rem;
   }
 }

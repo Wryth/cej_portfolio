@@ -1,7 +1,6 @@
 TODO:
--keep 1.68 img scale at mobil? other scales seems to break the wheel. reduce the total size of the images
--automatic upload from folder/ one for the main page one for picture wheel.
--the menu switches at mobile size. it should not.
+- Recenter picture wheel when orientation is changed.
+- the menu switches at mobile size. it should not(on OS).
 
 
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
@@ -23,3 +22,18 @@ https://css-tricks.com/everything-need-know-instagram-api-integration/
 @custom-media --large-viewport (min-width: 1024px);
 @custom-media --xlarge-viewport (min-width: 1280px);
 @custom-media --super-viewport (min-width: 1300px);
+
+
+// Sizing
+$screen-sm: 640px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1280px;
+$max-screen-sm: $screen-sm - 1;
+$max-screen-md: $screen-md - 1;
+$max-screen-lg: $screen-lg - 1;
+$max-screen-xl: $screen-xl - 1;
+
+// Fonts
+$sans-serif: "IBM Plex Sans", sans-serif;
+$serif: "IBM Plex Serif", serif;
