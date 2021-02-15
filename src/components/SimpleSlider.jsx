@@ -84,7 +84,7 @@ class SimpleSlider extends React.Component {
   // uses a direct image link
   MenuLinkItem = ({ pic, title }) => {
     return (
-        <Fragment className="smallText">
+        <Fragment>
           <div className="titleBox smallText">
             <p className="pictureTitle smallText">{title}</p>
           </div>
@@ -123,7 +123,7 @@ class SimpleSlider extends React.Component {
       speed: 1500,
       centerMode: true,
       arrow: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 10000,
       variableWidth: true,
       responsive: [
