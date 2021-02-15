@@ -23,10 +23,9 @@ class SimpleSlider extends React.Component {
       mode: [],
       open: null,
       loading: true,
-      dbImgs: [],
+      dbImgs: []
      };
     this.handleWheel = this.handleWheel.bind(this);
-    this.onWindowResized = this.onWindowResized.bind(this);
   }
 
   handleStateChange = () => {
@@ -37,9 +36,6 @@ class SimpleSlider extends React.Component {
 
   componentDidMount() {
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
-    // ReactDOM.findDOMNode(this).addEventListener("orientationchange",this.handleChange);
-    window.addEventListener('orientationchange', this.onWindowResized);
-
 
     this.setState({ dbImgs: this.props.dbImgs}, () => {
       const menu = this.Menu(this.props.dbImgs.map(x => {
@@ -52,18 +48,8 @@ class SimpleSlider extends React.Component {
     });
   }
 
-  onWindowResized() { //add debounce for performance?
-    this.forceUpdate();
-    this.slider.slickPrev();
-    setTimeout(() => {
-      this.slider.slickNext();
-      },200);
-  }
-
   componentWillUnmount() {
     ReactDOM.findDOMNode(this).removeEventListener('wheel', this.handleWheel);
-    // ReactDOM.findDOMNode(this).removeEventListener("orientationchange", this.handleChange)
-    window.removeEventListener('orientationchange', this.onWindowResized);
   }
 
   renderSpinner() {
@@ -84,8 +70,8 @@ class SimpleSlider extends React.Component {
   // uses a direct image link
   MenuLinkItem = ({ pic, title }) => {
     return (
-        <Fragment className="smallText">
-          <div className="titleBox smallText">
+        <Fragment>
+          <div className="titleBox">
             <p className="pictureTitle smallText">{title}</p>
           </div>
           <img
@@ -112,30 +98,25 @@ class SimpleSlider extends React.Component {
     );
   });
 
-
   render() {
     const classes = this.state.loading ? 'basket hide' : 'basket';
+    let slidesInFrame = 1.68; // On screen
+    let scrollSpeed = 1500;
+    if(window.matchMedia("(max-width: 1050px)").matches) {
+      slidesInFrame = 1; // on phone tablet
+      scrollSpeed = 500;
+    }
 
     const settings = {
       infinite: true,
-      slidesToShow: 1.68,
+      slidesToShow: slidesInFrame,
       slidesToScroll: 1,
-      speed: 1500,
+      speed: scrollSpeed,
       centerMode: true,
       arrow: true,
-      autoplay: true,
-      autoplaySpeed: 10000,
+      //autoplay: true,
+      autoplaySpeed: 1000,
       variableWidth: true,
-      responsive: [
-        {
-          breakpoint: 1050,
-          settings: {
-            autoplay: false,
-            slidesToShow: 1, // on phone tablet
-            speed: 500,
-          }
-        },
-      ]
     };
 
     return (
