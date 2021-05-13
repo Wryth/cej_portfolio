@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rescript/react": "^0.10.3",
     "@types/react": "^16.8.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -10,15 +11,18 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
     "react-slick": "^0.24.0",
+    "rescript": "^9.1.2",
     "slick-carousel": "^1.8.1",
     "typescript": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "altStart": " set PORT=3006 && react-scripts start",
+    "altStart": "set PORT=3006 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "re:build": "rescript",
+    "re:start": "rescript build -w"
   },
   "eslintConfig": {
     "extends": "react-app"
