@@ -82,9 +82,9 @@ class SimpleSlider extends React.Component {
   }
 
   // uses a direct image link
-  MenuLinkItem = ({ pic, title }) => {
+  MenuLinkItem = ({ pic, title, key }) => {
     return (
-        <Fragment>
+        <Fragment key={key}>
           <div className="titleBox smallText">
             <p className="pictureTitle smallText">{title}</p>
           </div>
@@ -104,11 +104,7 @@ class SimpleSlider extends React.Component {
   Menu = (list) => list.map(el => {
     const { name, title } = el;
     return (
-        <this.MenuLinkItem
-            title={title}
-            pic={name}
-            key={name}
-        />
+        this.MenuLinkItem({title:title, pic:name, key:{name}})
     );
   });
 
