@@ -9,3 +9,13 @@ React,
 JavaScript,   
 Node,  
 Dropbox API.  
+
+
+ReScript
+
+
+
+# Tools  
+https://nextjs.org/
+https://www.sanity.io/
+

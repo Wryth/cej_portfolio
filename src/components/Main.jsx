@@ -7,7 +7,8 @@ import './Main.css';
 import MyHeader from './MyHeader.jsx';
 import Bio from './Bio';
 import InstagramDisplay from './InstagramDisplay.jsx';
-import Downloads from './Downloads';
+import {make as Downloads} from "./Downloads.bs";
+// import Downloads from './oldDownloads';
 import SimpleSlider from "./SimpleSlider";
 import Dropbox from "dropbox";
 
