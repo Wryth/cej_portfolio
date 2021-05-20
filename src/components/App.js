@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomCursor from './CustumCursor';
-import Main from "./Main";
+import Main from "./Main.bs";
 import "./App.css";
 
 class App extends React.Component {

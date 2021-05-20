@@ -12,7 +12,8 @@ Dropbox API.
 
 
 ReScript
-
+[React ReScript](https://rescript-lang.org/docs/react/latest/introduction)
+[Converting to ReScript](https://rescript-lang.org/docs/manual/latest/converting-from-js)
 
 
 # Tools  
