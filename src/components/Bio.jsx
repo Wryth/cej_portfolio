@@ -38,9 +38,31 @@ class Bio extends React.Component{
                 </div>
 
                 <div className="bioYear largeText">
+                    2021
+                </div>
+                <p className="exhibitionInfo smallText">
+                    A NEW REALISM, <i>group exhibition</i>, Friedman Benda, New York, US
+                    <br></br>
+                    SCULPTURE TO SCULPTURE, <i>group exhibition</i>, The Round Tower, Copenhagen, DK
+                    <br></br>
+                    <br></br>
+                </p>
+
+                <div className="bioYear largeText">
+                    2020
+                </div>
+                <p className="exhibitionInfo smallText">
+                    JORDBUNDEN, <i>group exhibition</i>, Art Weekend Aarhus, Aarhus, DK
+                    <br></br>
+                    <br></br>
+                </p>
+
+                <div className="bioYear largeText">
                     2019
                 </div>
                 <p className="exhibitionInfo smallText">
+                    CRAFTED MATTER, <i>group exhibition</i>, Cheongju International Craft, Biennale, ROK
+                    <br></br>
                     CERAMIC MOMENTUM, <i>group exhibition</i>, CLAY, Museum of Ceramic Art, DK
                     <br></br>
                     WEATHERED, <i>solo show</i>, Mark Kenly Domino Tan Showroom, København, DK
