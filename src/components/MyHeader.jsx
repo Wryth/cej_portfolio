@@ -1,6 +1,6 @@
 import React from 'react';
 import './MyHeader.css';
-import Menu from './MyMenu';
+import {make as Menu} from './MyMenu.bs';
 
 class MyHeader extends React.Component {
     render(){

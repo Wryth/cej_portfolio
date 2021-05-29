@@ -1,7 +1,4 @@
-
-
 %%raw(`
-
 import React from 'react';
 import {
     Route,
@@ -14,10 +11,18 @@ import InstagramDisplay from './InstagramDisplay.jsx';
 import {make as Downloads} from "./Downloads.bs";
 import SimpleSlider from "./SimpleSlider";
 import Dropbox from "dropbox";
+`)
 
-function importAll(r) {
-    return r.keys().map(r);
+
+let importAll = (r) => {
+    r->Js_dict.keys
 }
+
+
+%%raw(`
+// function importAll(r) {
+//     return r.keys().map(r);
+// }
 
 class Main extends React.Component {
     constructor(props) {
@@ -113,17 +118,17 @@ class Main extends React.Component {
 
     render() {
         return(
-            <HashRouter>
-            <div className="mainContainer">
-                <MyHeader />
-                <div id="contentBox">
-                    <Route path="/bio" component={ Bio }/>
-                    <Route path="/downloads" render={ (props) => <Downloads {...props} isAuthed={true} pdf={this.state.pdf} key={this.state.pdf} />} />
-                    <Route path="/archive" render={ (props) => <SimpleSlider {...props} isAuthed={true} dbImgs={this.state.dbImgs} key={this.state.dbImgs} />} />
-                </div>
-                <Route exact path="/" render={ (props) => <InstagramDisplay {...props} isAuthed={true} igImg={this.state.igImg} key={this.state.igImg}/> }/>
-            </div>
-            </HashRouter>
+             <HashRouter>
+             <div className="mainContainer">
+                 <MyHeader />
+                 <div id="contentBox">
+                     <Route path="/bio" component={ Bio }/>
+                     <Route path="/downloads" render={ (props) => <Downloads {...props} isAuthed={true} pdf={this.state.pdf} key={this.state.pdf} />} />
+                     <Route path="/archive" render={ (props) => <SimpleSlider {...props} isAuthed={true} dbImgs={this.state.dbImgs} key={this.state.dbImgs} />} />
+                 </div>
+                 <Route exact path="/" render={ (props) => <InstagramDisplay {...props} isAuthed={true} igImg={this.state.igImg} key={this.state.igImg}/> }/>
+             </div>
+             </HashRouter>
         );
     }
 }
