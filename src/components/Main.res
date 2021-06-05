@@ -1,9 +1,9 @@
 %%raw(`
 // import React from 'react';
-import {
-    Route,
-    HashRouter
-  } from "react-router-dom";
+// import {
+//     Route,
+//     HashRouter
+//   } from "react-router-dom";
 import './Main.css';
 import MyHeader from './MyHeader.jsx';
 import Bio from './Bio';
@@ -12,6 +12,36 @@ import InstagramDisplay from './InstagramDisplay.jsx';
 import SimpleSlider from "./SimpleSlider";
 import Dropbox from "dropbox";
 `)
+
+let fetch_slider_pics = () => {
+    %raw(`
+    new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/slider'})
+             .then((res) => {
+                 return res.entries.map(x => x.path_lower).sort().reverse()
+             })
+             .then((res) => {
+                 Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+                 .filesGetTemporaryLink({ path: x })))
+                     .then((result) => {
+                        // this.setState({ dbImgs: result });
+                        return result
+                     })
+                     .catch((error) => {
+                         const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+                         const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+                         // this.setState({ dbImgs: list2 });
+                         console.error(error);
+                         return list2
+                     });
+                 }
+             )
+             .catch((error) => {
+                 console.error(error);
+             })
+    `)
+}
+
+
 
 let fetch_home_pic = () => {
     %raw(`
@@ -53,20 +83,29 @@ let importAll = (r) => {
 @react.component
 let make = () => {
 
-//     let (darkmode, setDarkmode) = React.useState(_ => false)
     let url = RescriptReactRouter.useUrl()
     let (homepic, setHomePic) = React.useState(_ => "")
+    let (dbImgs, setdbImgs) = React.useState(_ => [])
     let pdf = ""
 
-    // from a previous example above
-//     React.useEffect1(() => {
-//         Js.log(`You clicked times! ${homepic}`)
-//         None
-//     }, [darkmode]);
-
     React.useEffect0(() => {
+        open Js_promise
         Js.log(`You clicked times! ${homepic}`)
-        fetch_home_pic() -> setHomePic
+        let fetch_home = fetch_home_pic()
+            -> then_(value => {
+                Js.log(value)
+                setHomePic(_ => value)
+                resolve(value)
+            }, _)
+
+        Js.log(`Some ${dbImgs -> Js.Array.toString}`)
+        let fetch_slider = fetch_slider_pics()
+            -> then_(value => {
+                Js.log(value)
+                setdbImgs(prev => prev)
+                resolve(value)
+            }, _)
+
         None
     });
 
@@ -87,16 +126,24 @@ let make = () => {
 //         <div> <button onClick> {React.string(toggleText)} </button> </div>
 //     </div>
 
+    let a = %raw(`
+    (dbImgs, keys) => {
+        return (<SimpleSlider dbImgs={dbImgs} keys={keys} />)
+        }`)
+
+    let b = %raw(`
+        (pic) => {return (<InstagramDisplay igImg={homepic}/>)}
+    `)
 
     <div className="mainContainer">
         %raw(`<MyHeader />`)
         <div id="contentBox">
         { switch url.path {
-            | list{""} => %raw(`<InstagramDisplay />`)
-            | list{"archive"} => %raw(`<SimpleSlider />`)
-            | list{"downloads"} => <Downloads pdf />
+            | list{""} => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
+            | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)
             | list{"bio"} => %raw(`<Bio />`)
-            | _ => %raw(`<InstagramDisplay />`)
+            | list{"downloads"} => <Downloads pdf />
+            | _ => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
         }
         }
 //            <Route path="/bio" component={ Bio }/>

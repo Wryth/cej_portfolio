@@ -6,10 +6,10 @@ import * as Downloads from "./Downloads.bs.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
 // import React from 'react';
-import {
-    Route,
-    HashRouter
-  } from "react-router-dom";
+// import {
+//     Route,
+//     HashRouter
+//   } from "react-router-dom";
 import './Main.css';
 import MyHeader from './MyHeader.jsx';
 import Bio from './Bio';
@@ -18,6 +18,32 @@ import InstagramDisplay from './InstagramDisplay.jsx';
 import SimpleSlider from "./SimpleSlider";
 import Dropbox from "dropbox";
 ;
+
+function fetch_slider_pics(param) {
+  return (new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/slider'})
+             .then((res) => {
+                 return res.entries.map(x => x.path_lower).sort().reverse()
+             })
+             .then((res) => {
+                 Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+                 .filesGetTemporaryLink({ path: x })))
+                     .then((result) => {
+                        // this.setState({ dbImgs: result });
+                        return result
+                     })
+                     .catch((error) => {
+                         const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+                         const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+                         // this.setState({ dbImgs: list2 });
+                         console.error(error);
+                         return list2
+                     });
+                 }
+             )
+             .catch((error) => {
+                 console.error(error);
+             }));
+}
 
 function fetch_home_pic(param) {
   return (new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/home'})
@@ -51,39 +77,60 @@ function Main(Props) {
       });
   var setHomePic = match[1];
   var homepic = match[0];
+  var match$1 = React.useState(function () {
+        return [];
+      });
+  var setdbImgs = match$1[1];
+  var dbImgs = match$1[0];
   React.useEffect((function () {
           console.log("You clicked times! " + homepic);
-          Curry._1(setHomePic, fetch_home_pic(undefined));
+          var __x = fetch_home_pic(undefined);
+          __x.then(function (value) {
+                console.log(value);
+                Curry._1(setHomePic, (function (param) {
+                        return value;
+                      }));
+                return Promise.resolve(value);
+              });
+          console.log("Some " + dbImgs.toString());
+          var __x$1 = fetch_slider_pics(undefined);
+          __x$1.then(function (value) {
+                console.log(value);
+                Curry._1(setdbImgs, (function (prev) {
+                        return prev;
+                      }));
+                return Promise.resolve(value);
+              });
           
         }), []);
-  var match$1 = url.path;
+  var match$2 = url.path;
   var tmp;
   var exit = 0;
-  if (match$1) {
-    switch (match$1.hd) {
+  if (match$2) {
+    switch (match$2.hd) {
       case "" :
-          if (match$1.tl) {
+          if (match$2.tl) {
             exit = 1;
           } else {
-            tmp = (<InstagramDisplay />);
+            tmp = (<InstagramDisplay igImg={homepic} key={homepic} />);
           }
           break;
       case "archive" :
-          if (match$1.tl) {
+          if (match$2.tl) {
             exit = 1;
           } else {
-            tmp = (<SimpleSlider />);
+            tmp = (<SimpleSlider dbImgs={dbImgs} />);
           }
           break;
       case "bio" :
-          if (match$1.tl) {
+          if (match$2.tl) {
             exit = 1;
           } else {
             tmp = (<Bio />);
           }
           break;
       case "downloads" :
-          if (match$1.tl) {
+          if (match$2.tl) {
             exit = 1;
           } else {
             tmp = React.createElement(Downloads.make, {
@@ -98,7 +145,7 @@ function Main(Props) {
     exit = 1;
   }
   if (exit === 1) {
-    tmp = (<InstagramDisplay />);
+    tmp = (<InstagramDisplay igImg={homepic} key={homepic} />);
   }
   return React.createElement("div", {
               className: "mainContainer"
@@ -225,6 +272,7 @@ function Main(Props) {
 var make = Main;
 
 export {
+  fetch_slider_pics ,
   fetch_home_pic ,
   importAll ,
   make ,
