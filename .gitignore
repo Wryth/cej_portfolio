@@ -30,3 +30,7 @@ public/CEJ_works19.pdf
 
 # enviorment variables
 .env
+
+# rescript
+lib/
+.bsb.lock
