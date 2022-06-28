@@ -6,7 +6,6 @@ TODO:
 
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media
 https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
-- Add graceful failure. Get local images on failed DB image fetch.
 - See if i can have more controll over padding between images in the slider
 
 
