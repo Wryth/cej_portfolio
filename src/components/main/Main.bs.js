@@ -2,8 +2,10 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as $$Promise from "@ryyppy/rescript-promise/src/Promise.bs.js";
 import * as Dropbox from "dropbox";
 import * as Downloads from "../Downloads.bs.js";
+import * as Caml_array from "rescript/lib/es6/caml_array.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
 // import React from 'react';
@@ -37,6 +39,20 @@ function ff(param) {
   
 }
 
+function handle_error(error) {
+  if (error.RE_EXN_ID === $$Promise.JsError) {
+    var msg = error._1.message;
+    if (msg !== undefined) {
+      console.log("Some JS error msg: " + msg);
+    } else {
+      console.log("Must be some non-error value");
+    }
+    return ;
+  }
+  console.log("Some unknown error");
+  
+}
+
 function fetch_slider_pics(param) {
   return (new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/slider'})
              .then((res) => {
@@ -61,6 +77,39 @@ function fetch_slider_pics(param) {
              .catch((error) => {
                  console.error(error);
              }));
+}
+
+function fetch_home_pic2(param) {
+  return new Dropbox.Dropbox({
+                    fetch: (function (param) {
+                        return "";
+                      }),
+                    access_token: "process.env.REACT_APP_DBX_TOKEN"
+                  }).filesListFolder({
+                  path: "/home"
+                }).then(function (res) {
+                return res.entries.map(function (x) {
+                            return x.path_lower;
+                          });
+              }).then(function (res) {
+              $$Promise.$$catch($$Promise.$$catch(new Dropbox.Dropbox({
+                                fetch: (function (param) {
+                                    return "";
+                                  }),
+                                access_token: "process.env.REACT_APP_DBX_TOKEN"
+                              }).filesGetTemporaryLink({
+                              path: Caml_array.get(res, 0)
+                            }).then(function (res2) {
+                            return res2.link;
+                          }), (function (error) {
+                          handle_error(error);
+                          return Promise.resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l");
+                        })), (function (error) {
+                      handle_error(error);
+                      return Promise.resolve("");
+                    }));
+              
+            });
 }
 
 function fetch_home_pic(param) {
@@ -292,7 +341,9 @@ var make = Main;
 export {
   DDropbox ,
   ff ,
+  handle_error ,
   fetch_slider_pics ,
+  fetch_home_pic2 ,
   fetch_home_pic ,
   importAll ,
   make ,

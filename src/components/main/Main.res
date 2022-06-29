@@ -13,8 +13,6 @@ import SimpleSlider from "../SimpleSlider";
 // import Dropbox from "dropbox";
 `)
 
-
-
 module DDropbox = {
     type dropboxOptions = { 
         fetch: () => string, 
@@ -28,12 +26,13 @@ module DDropbox = {
     external dropbox: (dropboxOptions) => dropbox = "Dropbox"
 
     type files
-
+    type pathROrId = string
     type listFolderArg = {
       /**
        * A unique identifier for the file.
        */
-      path: string
+      path: pathROrId,
+
     }
 
     type metadata = {
@@ -80,9 +79,23 @@ module DDropbox = {
       has_more: bool
     }
 
+    type getTemporaryLinkResult = {
+      /**
+       * Metadata of the file.
+       */
+      metadata: metadata,
+      /**
+       * The temporary link which can be used to stream content the file.
+       */
+      link: string
+    }
+
     @send 
     external filesListFolder: (dropbox, listFolderArg) => Promise.t<listFolderResult> = "filesListFolder"
 
+
+    @send 
+    external filesGetTemporaryLink: (dropbox, listFolderArg) => Promise.t<getTemporaryLinkResult> = "filesGetTemporaryLink"
 
     // public filesListFolder(arg: files.ListFolderArg): Promise<files.ListFolderResult>;
 //    @module("dropbox") external filesListFolder: (dropbox, string) => Promise.t<string> = "filesListFolder"
@@ -92,14 +105,21 @@ let ff = () => {
     open DDropbox
     let a = {fetch: () => "", access_token: ""}
     let b = dropbox(a)
-
     let c = {path: ""}
-    
     let d = b -> filesListFolder(c)
 
-    
-
     // DDropbox.filesListFolder("/slider")
+}
+
+let handle_error = (error) => {
+    switch error {
+    | Promise.JsError(obj) =>
+        switch Js.Exn.message(obj) {
+        | Some(msg) => Js.log("Some JS error msg: " ++ msg)
+        | None => Js.log("Must be some non-error value")
+        }
+    | _ => Js.log("Some unknown error")
+    }
 }
 
 let fetch_slider_pics = () => {
@@ -130,6 +150,29 @@ let fetch_slider_pics = () => {
     `)
 }
 
+let fetch_home_pic2 = () => {
+    open Promise
+    DDropbox.dropbox({fetch: () => "", access_token: "process.env.REACT_APP_DBX_TOKEN"})
+        -> DDropbox.filesListFolder({path: "/home"}) 
+        -> Promise.thenResolve((res) => {res.entries -> Js.Array2.map(x => x.path_lower)}) 
+        -> Promise.thenResolve((res) => {
+            DDropbox.dropbox({fetch: () => "", access_token: "process.env.REACT_APP_DBX_TOKEN"})
+                -> DDropbox.filesGetTemporaryLink({ path:res[0] })
+                -> Promise.thenResolve((res2) => {
+                    res2.link
+                })
+                -> Promise.catch((error) => {
+                    handle_error(error)
+                    resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l")
+                })
+                    // -> ignore
+                -> Promise.catch((error) => {
+                    handle_error(error)
+                    resolve("")
+                })
+                -> ignore
+    })
+}
 
 
 let fetch_home_pic = () => {
