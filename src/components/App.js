@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomCursor from './CustumCursor';
-import {make as Main} from "./main/Main.bs";
+import { Main } from "./main/Main.bs";
 import "./App.css";
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
         return(
             <div className="appContainer" onMouseMove={this.handleCursor}>
                 <CustomCursor />
-                <Main />
+                <Main.make />
             </div>
         );
     }

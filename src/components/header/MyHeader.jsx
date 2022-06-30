@@ -1,13 +1,13 @@
 import React from 'react';
 import './MyHeader.css';
-import {make as Menu} from './MyMenu.bs';
+import { Menu } from '../menu/MyMenu.bs';
 
 class MyHeader extends React.Component {
     render(){
         return(
             <div className="MyHeaderContainer">
                 <div id="headerMenu">
-                    <Menu />
+                    <Menu.make />
                 </div>
                 <Contact />
             </div>

@@ -6,6 +6,8 @@
 import './MyMenu.css';
 `)
 
+module Menu = {
+    // Module contents
 @react.component
 let make = () => {
 //     let (active_dl, set_active_dl) = React.useState(_ => 0)
@@ -56,6 +58,7 @@ let make = () => {
                 </div>
         </div>
     </div>
+}
 }
 
 

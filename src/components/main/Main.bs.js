@@ -4,7 +4,7 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as $$Promise from "@ryyppy/rescript-promise/src/Promise.bs.js";
 import * as Dropbox from "dropbox";
-import * as Downloads from "../Downloads.bs.js";
+import * as Downloads from "../downloads/Downloads.bs.js";
 import * as Caml_array from "rescript/lib/es6/caml_array.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
@@ -14,19 +14,19 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs
 //     HashRouter
 //   } from "react-router-dom";
 import './Main.css';
-import MyHeader from '../MyHeader.jsx';
-import Bio from '../Bio';
+import MyHeader from '../header/MyHeader.jsx';
+import Bio from '../bio/Bio';
 import InstagramDisplay from '../InstagramDisplay.jsx';
 // import {make as Downloads} from "../Downloads.bs";
-import SimpleSlider from "../SimpleSlider";
+import SimpleSlider from "../slider/SimpleSlider";
 // import Dropbox from "dropbox";
 ;
 
 var DDropbox = {};
 
 function ff(param) {
-  var a_fetch = function (param) {
-    return "";
+  var a_fetch = function (prim) {
+    return fetch(prim);
   };
   var a = {
     fetch: a_fetch,
@@ -36,7 +36,7 @@ function ff(param) {
   b.filesListFolder({
         path: ""
       });
-  
+  return process.env.REACT_APP_DBX_TOKEN;
 }
 
 function handle_error(error) {
@@ -80,36 +80,35 @@ function fetch_slider_pics(param) {
 }
 
 function fetch_home_pic2(param) {
-  return new Dropbox.Dropbox({
-                    fetch: (function (param) {
-                        return "";
-                      }),
-                    access_token: "process.env.REACT_APP_DBX_TOKEN"
-                  }).filesListFolder({
-                  path: "/home"
-                }).then(function (res) {
-                return res.entries.map(function (x) {
-                            return x.path_lower;
-                          });
-              }).then(function (res) {
-              $$Promise.$$catch($$Promise.$$catch(new Dropbox.Dropbox({
-                                fetch: (function (param) {
-                                    return "";
-                                  }),
-                                access_token: "process.env.REACT_APP_DBX_TOKEN"
-                              }).filesGetTemporaryLink({
-                              path: Caml_array.get(res, 0)
-                            }).then(function (res2) {
-                            return res2.link;
-                          }), (function (error) {
-                          handle_error(error);
-                          return Promise.resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l");
-                        })), (function (error) {
-                      handle_error(error);
-                      return Promise.resolve("");
-                    }));
-              
-            });
+  return $$Promise.$$catch(new Dropbox.Dropbox({
+                        fetch: (function (prim) {
+                            return fetch(prim);
+                          }),
+                        access_token: process.env.REACT_APP_DBX_TOKEN
+                      }).filesListFolder({
+                      path: "/home"
+                    }).then(function (res) {
+                    return res.entries.map(function (x) {
+                                return x.path_lower;
+                              });
+                  }).then(function (res) {
+                  return $$Promise.$$catch(new Dropbox.Dropbox({
+                                      fetch: (function (prim) {
+                                          return fetch(prim);
+                                        }),
+                                      access_token: process.env.REACT_APP_DBX_TOKEN
+                                    }).filesGetTemporaryLink({
+                                    path: Caml_array.get(res, 0)
+                                  }).then(function (res2) {
+                                  return res2.link;
+                                }), (function (error) {
+                                handle_error(error);
+                                return Promise.resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l");
+                              }));
+                }), (function (e) {
+                handle_error(e);
+                return Promise.resolve("");
+              }));
 }
 
 function fetch_home_pic(param) {
@@ -137,7 +136,7 @@ function importAll(r) {
   return Object.keys(r);
 }
 
-function Main(Props) {
+function Main$Main(Props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
   var match = React.useState(function () {
         return "";
@@ -151,23 +150,22 @@ function Main(Props) {
   var dbImgs = match$1[0];
   React.useEffect((function () {
           console.log("You clicked times! " + homepic);
-          var __x = fetch_home_pic(undefined);
-          __x.then(function (value) {
-                console.log(value);
-                Curry._1(setHomePic, (function (param) {
-                        return value;
-                      }));
-                return Promise.resolve(value);
+          fetch_home_pic2(undefined).then(function (x) {
+                console.log(x);
+                return Curry._1(setHomePic, (function (param) {
+                              return x;
+                            }));
               });
-          console.log("Some " + dbImgs.toString());
-          var __x$1 = fetch_slider_pics(undefined);
-          __x$1.then(function (value) {
-                console.log(value);
-                Curry._1(setdbImgs, (function (prev) {
-                        return prev;
-                      }));
-                return Promise.resolve(value);
-              });
+          console.log("A " + dbImgs.toString());
+          $$Promise.$$catch(fetch_slider_pics(undefined).then(function (value) {
+                    console.log(value);
+                    return Curry._1(setdbImgs, (function (prev) {
+                                  return prev;
+                                }));
+                  }), (function (e) {
+                  handle_error(e);
+                  return Promise.resolve(undefined);
+                }));
           
         }), []);
   var match$2 = url.path;
@@ -200,7 +198,7 @@ function Main(Props) {
           if (match$2.tl) {
             exit = 1;
           } else {
-            tmp = React.createElement(Downloads.make, {
+            tmp = React.createElement(Downloads.Downloads.make, {
                   pdf: ""
                 });
           }
@@ -336,7 +334,9 @@ function Main(Props) {
 // 
 // export default Main;
 
-var make = Main;
+var Main = {
+  make: Main$Main
+};
 
 export {
   DDropbox ,
@@ -346,7 +346,7 @@ export {
   fetch_home_pic2 ,
   fetch_home_pic ,
   importAll ,
-  make ,
+  Main ,
   
 }
 /*  Not a pure module */

@@ -5,7 +5,7 @@ import * as React from "react";
 import './Downloads.css'
 ;
 
-function Downloads(Props) {
+function Downloads$Downloads(Props) {
   var pdf = Props.pdf;
   return React.createElement("div", {
               id: "dlContainer"
@@ -16,10 +16,12 @@ function Downloads(Props) {
                 }, "CEJ_works.pdf"));
 }
 
-var make = Downloads;
+var Downloads = {
+  make: Downloads$Downloads
+};
 
 export {
-  make ,
+  Downloads ,
   
 }
 /*  Not a pure module */

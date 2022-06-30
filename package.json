@@ -13,6 +13,7 @@
     "react-scripts": "2.1.5",
     "react-slick": "^0.24.0",
     "rescript": "^9.1.2",
+    "rescript-fetch": "^0.0.3",
     "slick-carousel": "^1.8.1",
     "typescript": "^3.3.3"
   },

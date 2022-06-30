@@ -5,108 +5,103 @@
 //     HashRouter
 //   } from "react-router-dom";
 import './Main.css';
-import MyHeader from '../MyHeader.jsx';
-import Bio from '../Bio';
+import MyHeader from '../header/MyHeader.jsx';
+import Bio from '../bio/Bio';
 import InstagramDisplay from '../InstagramDisplay.jsx';
 // import {make as Downloads} from "../Downloads.bs";
-import SimpleSlider from "../SimpleSlider";
+import SimpleSlider from "../slider/SimpleSlider";
 // import Dropbox from "dropbox";
 `)
 
+    // Module contents
 module DDropbox = {
+    type responseType = BASIC | CORS | DEFAULT | ERROR | OPAQUE | OPAQUEREDIRECT
+
+
+    type response = {
+        ok: bool,
+        redirected: bool,
+        status: int,
+        statusText: string,
+        \"type": responseType,
+        url: string,
+    }
+
+    @val external fetch: (string) => Promise.t<response> = "fetch"
+
+    type requestInit = {
+        integrity: string,
+        keepalive: bool,
+        method: string,
+        referrer: string,
+    }
+
+    type url = {
+        hash: string,
+        host: string,
+        hostname: string,
+        href: string,
+        origin: string,
+        password: string,
+        pathname: string,
+        port: string,
+        protocol: string,
+        search: string,
+        username: string,
+    }
+
     type dropboxOptions = { 
-        fetch: () => string, 
+        fetch: (string) => Promise.t<response>, 
         access_token: string 
     }
 
-
     type dropbox
 
-    @module("dropbox") @new 
-    external dropbox: (dropboxOptions) => dropbox = "Dropbox"
+    @module("dropbox") @new external dropbox: (dropboxOptions) => dropbox = "Dropbox"
 
     type files
     type pathROrId = string
     type listFolderArg = {
-      /**
-       * A unique identifier for the file.
-       */
       path: pathROrId,
-
     }
 
     type metadata = {
-      /**
-       * The last component of the path (including extension). This never
-       * contains a slash.
-       */
       name: string,
-      /**
-       * The lowercased full path in the user's Dropbox. This always starts with
-       * a slash. This field will be null if the file or folder is not mounted.
-       */
       path_lower: string,
-      /**
-       * The cased path to be used for display purposes only. In rare instances
-       * the casing will not correctly match the user's filesystem, but this
-       * behavior will match the path provided in the Core API v1, and at least
-       * the last path component will have the correct casing. Changes to only
-       * the casing of paths won't be returned by listFolderContinue(). This
-       * field will be null if the file or folder is not mounted.
-       */
       path_display: string
-      /**
-       * Please use FileSharingInfo.parent_shared_folder_id or
-       * FolderSharingInfo.parent_shared_folder_id instead.
-       */
-      // parent_shared_folder_id?: common.SharedFolderId;
     }
 
     type listFolderResult = {
-      /**
-       * The files and (direct) subfolders in the folder.
-       */
       entries: array<metadata>,
-      /**
-       * Pass the cursor into listFolderContinue() to see what's changed in the
-       * folder since your previous query.
-       */
-      // cursor: ListFolderCursor;
-      /**
-       * If true, then there are more entries available. Pass the cursor to
-       * listFolderContinue() to retrieve the rest.
-       */
       has_more: bool
     }
 
     type getTemporaryLinkResult = {
-      /**
-       * Metadata of the file.
-       */
       metadata: metadata,
-      /**
-       * The temporary link which can be used to stream content the file.
-       */
       link: string
     }
 
-    @send 
-    external filesListFolder: (dropbox, listFolderArg) => Promise.t<listFolderResult> = "filesListFolder"
-
-
-    @send 
-    external filesGetTemporaryLink: (dropbox, listFolderArg) => Promise.t<getTemporaryLinkResult> = "filesGetTemporaryLink"
-
-    // public filesListFolder(arg: files.ListFolderArg): Promise<files.ListFolderResult>;
-//    @module("dropbox") external filesListFolder: (dropbox, string) => Promise.t<string> = "filesListFolder"
+    @send external filesListFolder: (dropbox, listFolderArg) => Promise.t<listFolderResult> = "filesListFolder"
+    @send external filesGetTemporaryLink: (dropbox, listFolderArg) => Promise.t<getTemporaryLinkResult> = "filesGetTemporaryLink"
 }
+
+//@val external process: (string, int) => string = "process"
+// @val @scope(("process", "env")) @return(nullable) external react_app_dbx_token: option<string> = "REACT_APP_DBX_TOKEN"
+
+@val @scope(("process", "env")) external react_app_dbx_token: string = "REACT_APP_DBX_TOKEN"
+
 
 let ff = () => {
     open DDropbox
-    let a = {fetch: () => "", access_token: ""}
+    
+    // open Fetch
+
+    let a = {fetch: DDropbox.fetch, access_token: ""}
     let b = dropbox(a)
     let c = {path: ""}
     let d = b -> filesListFolder(c)
+
+    react_app_dbx_token
 
     // DDropbox.filesListFolder("/slider")
 }
@@ -152,28 +147,23 @@ let fetch_slider_pics = () => {
 
 let fetch_home_pic2 = () => {
     open Promise
-    DDropbox.dropbox({fetch: () => "", access_token: "process.env.REACT_APP_DBX_TOKEN"})
+    DDropbox.dropbox({fetch: DDropbox.fetch, access_token: react_app_dbx_token})
         -> DDropbox.filesListFolder({path: "/home"}) 
-        -> Promise.thenResolve((res) => {res.entries -> Js.Array2.map(x => x.path_lower)}) 
-        -> Promise.thenResolve((res) => {
-            DDropbox.dropbox({fetch: () => "", access_token: "process.env.REACT_APP_DBX_TOKEN"})
-                -> DDropbox.filesGetTemporaryLink({ path:res[0] })
-                -> Promise.thenResolve((res2) => {
-                    res2.link
-                })
-                -> Promise.catch((error) => {
+        -> Promise.thenResolve(res => res.entries -> Js.Array2.map(x => x.path_lower)) 
+        -> Promise.then(res => {
+            DDropbox.dropbox({fetch: DDropbox.fetch, access_token: react_app_dbx_token})
+                -> DDropbox.filesGetTemporaryLink({ path: res[0] })
+                -> Promise.thenResolve(res2 => res2.link)
+                -> Promise.catch(error => {
                     handle_error(error)
                     resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l")
                 })
-                    // -> ignore
-                -> Promise.catch((error) => {
-                    handle_error(error)
-                    resolve("")
-                })
-                -> ignore
+    })
+    -> Promise.catch(e => {
+        handle_error(e)
+        resolve("")
     })
 }
-
 
 let fetch_home_pic = () => {
     %raw(`
@@ -197,9 +187,8 @@ let fetch_home_pic = () => {
         })
     `)
 }
-let importAll = (r) => {
-    r -> Js_dict.keys
-}
+
+let importAll = (r) => Js_dict.keys(r)
 
 // @react.component
 // let make = (_) => {
@@ -212,35 +201,57 @@ let importAll = (r) => {
 //     <div></div>
 // }
 
-@react.component
-let make = () => {
+module Main = {
+    @react.component
+    let make = () => {
+        let url = RescriptReactRouter.useUrl()
+        let (homepic, setHomePic) = React.useState(_ => "")
+        let (dbImgs, setdbImgs) = React.useState(_ => [])
+        let pdf = ""
 
-    let url = RescriptReactRouter.useUrl()
-    let (homepic, setHomePic) = React.useState(_ => "")
-    let (dbImgs, setdbImgs) = React.useState(_ => [])
-    let pdf = ""
+        React.useEffect0(() => {
+            // open Promise
 
-    React.useEffect0(() => {
-        open Js_promise
-        // open Promise
+            Js.log(`You clicked times! ${homepic}`)
+            fetch_home_pic2()
+                -> Promise.thenResolve(x => {
+                    Js.log(x)
+                    setHomePic(_ => x)
+                })
+                -> ignore
 
-        Js.log(`You clicked times! ${homepic}`)
-        let fetch_home = fetch_home_pic()
-            -> then_(value => {
-                Js.log(value)
-                setHomePic(_ => value)
-                resolve(value)
-            }, _)
+            Js.log(`A ${dbImgs -> Js.Array.toString}`)
+            fetch_slider_pics()
+                -> Promise.thenResolve(value => {
+                    Js.log(value)
+                    setdbImgs(prev => prev)
+                })
+                -> Promise.catch(e => {
+                    handle_error(e)
+                    Promise.resolve()
+                })
+                -> ignore
+            None
+        });
 
-        Js.log(`Some ${dbImgs -> Js.Array.toString}`)
-        let fetch_slider = fetch_slider_pics()
-            -> then_(value => {
-                Js.log(value)
-                setdbImgs(prev => prev)
-                Promise.resolve(value)
-            }, _)
-        None
-    });
+    open Downloads
+    <div className="mainContainer">
+        %raw(`<MyHeader />`)
+        <div id="contentBox">
+        { switch url.path {
+            | list{""} => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
+            | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)
+            | list{"bio"} => %raw(`<Bio />`)
+            | list{"downloads"} => <Downloads pdf />
+            | _ => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
+        }
+        }
+//            <Route path="/bio" component={ Bio }/>
+//            <Route path="/downloads" render={ (props) => <Downloads {...props} isAuthed={true} pdf={this.state.pdf} key={this.state.pdf} />} />
+//            <Route path="/archive" render={ (props) => <SimpleSlider {...props} isAuthed={true} dbImgs={this.state.dbImgs} key={this.state.dbImgs} />} />
+        </div>
+//        <Route exact path="/" render={ (props) => <InstagramDisplay {...props} isAuthed={true} igImg={this.state.igImg} key={this.state.igImg}/> }/>
+    </div>
 
 //    let color = switch darkmode {
 //    | true => "theme-dark"
@@ -267,24 +278,6 @@ let make = () => {
 //    let b = %raw(`
 //        (pic) => {return (<InstagramDisplay igImg={homepic}/>)}
 //    `)
-
-    <div className="mainContainer">
-        %raw(`<MyHeader />`)
-        <div id="contentBox">
-        { switch url.path {
-            | list{""} => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
-            | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)
-            | list{"bio"} => %raw(`<Bio />`)
-            | list{"downloads"} => <Downloads pdf />
-            | _ => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
-        }
-        }
-//            <Route path="/bio" component={ Bio }/>
-//            <Route path="/downloads" render={ (props) => <Downloads {...props} isAuthed={true} pdf={this.state.pdf} key={this.state.pdf} />} />
-//            <Route path="/archive" render={ (props) => <SimpleSlider {...props} isAuthed={true} dbImgs={this.state.dbImgs} key={this.state.dbImgs} />} />
-        </div>
-//        <Route exact path="/" render={ (props) => <InstagramDisplay {...props} isAuthed={true} igImg={this.state.igImg} key={this.state.igImg}/> }/>
-    </div>
 }
 
 
@@ -407,3 +400,4 @@ let make = () => {
 // export default Main;
 
 `)
+}

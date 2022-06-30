@@ -16,6 +16,7 @@
     "reason": { "react-jsx": 3 },
     "bs-dependencies": [
         "@rescript/react",
-        "@ryyppy/rescript-promise"
+        "@ryyppy/rescript-promise",
+        "rescript-fetch"
     ]
   }

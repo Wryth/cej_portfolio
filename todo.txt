@@ -1,5 +1,7 @@
 TODO:
--json cv format fil i dropbox
+- fetch rescript bind
+- process.env DB token in ReScript
+- json cv format fil i dropbox
 
 
 https://developers.facebook.com/docs/instagram-basic-display-api/reference/media

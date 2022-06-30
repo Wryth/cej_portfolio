@@ -10,7 +10,7 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs
 import './MyMenu.css';
 ;
 
-function MyMenu(Props) {
+function MyMenu$Menu(Props) {
   return React.createElement("div", {
               id: "menuContainer"
             }, React.createElement("div", {
@@ -52,10 +52,12 @@ function MyMenu(Props) {
                             }, "Download")))));
 }
 
-var make = MyMenu;
+var Menu = {
+  make: MyMenu$Menu
+};
 
 export {
-  make ,
+  Menu ,
   
 }
 /*  Not a pure module */

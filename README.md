@@ -15,8 +15,10 @@ ReScript
 [React ReScript](https://rescript-lang.org/docs/react/latest/introduction)
 [Converting to ReScript](https://rescript-lang.org/docs/manual/latest/converting-from-js)
 
-
 # Tools  
 https://nextjs.org/
 https://www.sanity.io/
 
+
+new Promise   
+https://github.com/ryyppy/rescript-promise#usage
