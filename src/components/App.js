@@ -4,7 +4,6 @@ import { Main } from "./main/Main.bs";
 import "./App.css";
 
 class App extends React.Component {
-
     handleCursor(event) {
         document.getElementById("custom-cursor")
             .setAttribute("style", "top: "+(event.pageY - 0)+"px; left: "

@@ -3,10 +3,6 @@
 import * as React from "react";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
-// import React from 'react';
-// import {
-//     NavLink,
-//   } from "react-router-dom";
 import './MyMenu.css';
 ;
 
@@ -19,7 +15,7 @@ function MyMenu$Menu(Props) {
                       className: "menuOption",
                       id: "name",
                       onClick: (function (param) {
-                          return RescriptReactRouter.push("/");
+                          RescriptReactRouter.push("/");
                         })
                     }, "CARL EMIL JACOBSEN"), React.createElement("a", {
                       className: "menuOption",
@@ -35,19 +31,19 @@ function MyMenu$Menu(Props) {
                               className: "menuOption",
                               id: "menuArchive",
                               onClick: (function (param) {
-                                  return RescriptReactRouter.push("/archive");
+                                  RescriptReactRouter.push("/archive");
                                 })
                             }, "Selected works"), React.createElement("button", {
                               className: "menuOption",
                               id: "menuBio",
                               onClick: (function (param) {
-                                  return RescriptReactRouter.push("/bio");
+                                  RescriptReactRouter.push("/bio");
                                 })
                             }, "CV"), React.createElement("button", {
                               className: "menuOption",
                               id: "menuDownloads",
                               onClick: (function (param) {
-                                  return RescriptReactRouter.push("/downloads");
+                                  RescriptReactRouter.push("/downloads");
                                 })
                             }, "Download")))));
 }
@@ -58,6 +54,5 @@ var Menu = {
 
 export {
   Menu ,
-  
 }
 /*  Not a pure module */

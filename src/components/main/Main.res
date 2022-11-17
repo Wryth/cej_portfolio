@@ -17,7 +17,6 @@ import SimpleSlider from "../slider/SimpleSlider";
 module DDropbox = {
     type responseType = BASIC | CORS | DEFAULT | ERROR | OPAQUE | OPAQUEREDIRECT
 
-
     type response = {
         ok: bool,
         redirected: bool,
@@ -26,8 +25,10 @@ module DDropbox = {
         \"type": responseType,
         url: string,
     }
+    // Fetch.Fetch.withRequest()
 
-    @val external fetch: (string) => Promise.t<response> = "fetch"
+    // @val external fetch: (string) => Promise.t<Fetch.Response.t> = "fetch"
+    // @val external fetch: (Fetch.Request.t) => Promise.t<Fetch.Response.t> = "fetch"
 
     type requestInit = {
         integrity: string,
@@ -51,7 +52,7 @@ module DDropbox = {
     }
 
     type dropboxOptions = { 
-        fetch: (string) => Promise.t<response>, 
+        fetch: (Fetch.Request.t) => Promise.t<Fetch.Response.t>, 
         access_token: string 
     }
 
@@ -85,26 +86,30 @@ module DDropbox = {
     @send external filesGetTemporaryLink: (dropbox, listFolderArg) => Promise.t<getTemporaryLinkResult> = "filesGetTemporaryLink"
 }
 
-//@val external process: (string, int) => string = "process"
 // @val @scope(("process", "env")) @return(nullable) external react_app_dbx_token: option<string> = "REACT_APP_DBX_TOKEN"
-
 @val @scope(("process", "env")) external react_app_dbx_token: string = "REACT_APP_DBX_TOKEN"
 
-
-let ff = () => {
-    open DDropbox
-    
-    // open Fetch
-
-    let a = {fetch: DDropbox.fetch, access_token: ""}
-    let b = dropbox(a)
-    let c = {path: ""}
-    let d = b -> filesListFolder(c)
-
-    react_app_dbx_token
-
-    // DDropbox.filesListFolder("/slider")
-}
+// let ff = () => {
+//     open DDropbox
+//     
+//     // open Fetch
+//     let ee = Js.Dict.empty()
+//     let oo = Js.Dict.set(ee, "Access-Control-Allow-Origin", "*")
+//     let o = Js.Option.map((. x) => {
+//             Js.Dict.set(x, "Access-Control-Allow-Origin", "*")
+//             x
+//         }, Fetch.Options.default.headers)
+// 
+// 
+//     let f = (x) => Fetch.Request.Make.WithOptions.fromRequest(x, Fetch.Options.default)
+// 
+//     let a = {fetch: f, access_token: react_app_dbx_token}
+//     let b = dropbox(a)
+//     let c = {path: ""}
+//     b -> filesListFolder(c)
+// 
+//     // DDropbox.filesListFolder("/slider")
+// }
 
 let handle_error = (error) => {
     switch error {
@@ -146,22 +151,23 @@ let fetch_slider_pics = () => {
 }
 
 let fetch_home_pic2 = () => {
-    open Promise
-    DDropbox.dropbox({fetch: DDropbox.fetch, access_token: react_app_dbx_token})
+        
+
+    DDropbox.dropbox({fetch: Fetch.Fetch.withRequest, access_token: react_app_dbx_token})
         -> DDropbox.filesListFolder({path: "/home"}) 
         -> Promise.thenResolve(res => res.entries -> Js.Array2.map(x => x.path_lower)) 
         -> Promise.then(res => {
-            DDropbox.dropbox({fetch: DDropbox.fetch, access_token: react_app_dbx_token})
+            DDropbox.dropbox({fetch: Fetch.Fetch.withRequest, access_token: react_app_dbx_token})
                 -> DDropbox.filesGetTemporaryLink({ path: res[0] })
                 -> Promise.thenResolve(res2 => res2.link)
                 -> Promise.catch(error => {
                     handle_error(error)
-                    resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l")
+                    Promise.resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l")
                 })
     })
     -> Promise.catch(e => {
         handle_error(e)
-        resolve("")
+        Promise.reject(e)
     })
 }
 
@@ -190,17 +196,6 @@ let fetch_home_pic = () => {
 
 let importAll = (r) => Js_dict.keys(r)
 
-// @react.component
-// let make = (_) => {
-//     let (home, setHome) = React.useState(_ => "")
-// 
-// //     React.useEffect0(() => {
-// //         setHome(prev => prev)
-// //         //None // or Some(() => {})
-// //     })
-//     <div></div>
-// }
-
 module Main = {
     @react.component
     let make = () => {
@@ -210,8 +205,6 @@ module Main = {
         let pdf = ""
 
         React.useEffect0(() => {
-            // open Promise
-
             Js.log(`You clicked times! ${homepic}`)
             fetch_home_pic2()
                 -> Promise.thenResolve(x => {

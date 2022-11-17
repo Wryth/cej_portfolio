@@ -24,21 +24,6 @@ import SimpleSlider from "../slider/SimpleSlider";
 
 var DDropbox = {};
 
-function ff(param) {
-  var a_fetch = function (prim) {
-    return fetch(prim);
-  };
-  var a = {
-    fetch: a_fetch,
-    access_token: ""
-  };
-  var b = new Dropbox.Dropbox(a);
-  b.filesListFolder({
-        path: ""
-      });
-  return process.env.REACT_APP_DBX_TOKEN;
-}
-
 function handle_error(error) {
   if (error.RE_EXN_ID === $$Promise.JsError) {
     var msg = error._1.message;
@@ -50,7 +35,6 @@ function handle_error(error) {
     return ;
   }
   console.log("Some unknown error");
-  
 }
 
 function fetch_slider_pics(param) {
@@ -107,7 +91,7 @@ function fetch_home_pic2(param) {
                               }));
                 }), (function (e) {
                 handle_error(e);
-                return Promise.resolve("");
+                return Promise.reject(e);
               }));
 }
 
@@ -149,24 +133,23 @@ function Main$Main(Props) {
   var setdbImgs = match$1[1];
   var dbImgs = match$1[0];
   React.useEffect((function () {
-          console.log("You clicked times! " + homepic);
+          console.log("You clicked times! " + homepic + "");
           fetch_home_pic2(undefined).then(function (x) {
                 console.log(x);
-                return Curry._1(setHomePic, (function (param) {
-                              return x;
-                            }));
+                Curry._1(setHomePic, (function (param) {
+                        return x;
+                      }));
               });
-          console.log("A " + dbImgs.toString());
+          console.log("A " + dbImgs.toString() + "");
           $$Promise.$$catch(fetch_slider_pics(undefined).then(function (value) {
                     console.log(value);
-                    return Curry._1(setdbImgs, (function (prev) {
-                                  return prev;
-                                }));
+                    Curry._1(setdbImgs, (function (prev) {
+                            return prev;
+                          }));
                   }), (function (e) {
                   handle_error(e);
                   return Promise.resolve(undefined);
                 }));
-          
         }), []);
   var match$2 = url.path;
   var tmp;
@@ -340,13 +323,11 @@ var Main = {
 
 export {
   DDropbox ,
-  ff ,
   handle_error ,
   fetch_slider_pics ,
   fetch_home_pic2 ,
   fetch_home_pic ,
   importAll ,
   Main ,
-  
 }
 /*  Not a pure module */

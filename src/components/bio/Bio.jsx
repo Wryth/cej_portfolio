@@ -37,10 +37,24 @@ class Bio extends React.Component{
                     </p>
                 </div>
 
+
+                <div className="bioYear largeText">
+                    2022
+                </div>
+                <p className="exhibitionInfo smallText">
+                    KUMMERFORM, <i>solo show</i>, Viborg Kunsthal, DK
+                    <br></br>
+                    FICTIONS, <i>group exhibition</i>, Peach Corner, Copenhagen, DK
+                    <br></br>
+                    <br></br>
+                </p>
+
                 <div className="bioYear largeText">
                     2021
                 </div>
                 <p className="exhibitionInfo smallText">
+                    COMB A HAIRY DOUGHNUT FLAT, <i>solo show</i>, O-Overgaden, Copenhagen, DK
+                    <br></br>
                     A NEW REALISM, <i>group exhibition</i>, Friedman Benda, New York, US
                     <br></br>
                     SCULPTURE TO SCULPTURE, <i>group exhibition</i>, The Round Tower, Copenhagen, DK

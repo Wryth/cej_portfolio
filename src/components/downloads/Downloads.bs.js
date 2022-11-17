@@ -22,6 +22,5 @@ var Downloads = {
 
 export {
   Downloads ,
-  
 }
 /*  Not a pure module */
