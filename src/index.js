@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import * as serviceWorker from './serviceWorker';
 
 import './index.css';
@@ -8,8 +8,8 @@ import App from "./components/App";
 // import {make} from "./components/Downloads.bs"
 
 //===========================
-ReactDOM.render(
-    //make("https://google.com"),
-    <App />,
-    document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container); 
+root.render(<App />);
+
 serviceWorker.unregister();

@@ -1,3 +1,9 @@
+import Dropbox from "dropbox";
+
+function importAll(r) {
+    return r.keys().map(r);
+}
+
 export function fetch_slider_pics() {
     new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/slider'})
              .then((res) => {

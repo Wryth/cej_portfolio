@@ -7,6 +7,7 @@
     "@rescript/react": "^0.10.3",
     "@ryyppy/rescript-promise": "^2.1.0",
     "@types/react": "^18.0.25",
+    "dropbox": "^4.0.30",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-horizontal-scrolling-menu": "^3.2.3",
@@ -37,7 +38,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "dropbox": "^4.0.30",
     "reanalyze": "^2.23.0"
   }
 }
