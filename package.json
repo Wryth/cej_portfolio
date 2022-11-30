@@ -2,7 +2,6 @@
   "name": "cej_portfolio",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://api.dropboxapi.com",
   "dependencies": {
     "@rescript/react": "^0.10.3",
     "@ryyppy/rescript-promise": "^2.1.0",

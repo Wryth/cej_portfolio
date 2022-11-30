@@ -3,9 +3,7 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
 import * as $$Promise from "@ryyppy/rescript-promise/src/Promise.bs.js";
-import * as Dropbox from "dropbox";
 import * as Downloads from "../downloads/Downloads.bs.js";
-import * as Caml_array from "rescript/lib/es6/caml_array.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
 // import React from 'react';
@@ -19,7 +17,9 @@ import Bio from '../bio/Bio';
 import InstagramDisplay from '../InstagramDisplay.jsx';
 // import {make as Downloads} from "../Downloads.bs";
 import SimpleSlider from "../slider/SimpleSlider";
-// import Dropbox from "dropbox";
+import Dropbox from "dropbox";
+
+import { fetch_slider_pics2, fetch_home_pic2 } from "./fetchDropBoxFiles";
 ;
 
 var DDropbox = {};
@@ -38,82 +38,11 @@ function handle_error(error) {
 }
 
 function fetch_slider_pics(param) {
-  return (new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/slider'})
-             .then((res) => {
-                 return res.entries.map(x => x.path_lower).sort().reverse()
-             })
-             .then((res) => {
-                 Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
-                 .filesGetTemporaryLink({ path: x })))
-                     .then((result) => {
-                        // this.setState({ dbImgs: result });
-                        return result
-                     })
-                     .catch((error) => {
-                         const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-                         const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-                         // this.setState({ dbImgs: list2 });
-                         console.error(error);
-                         return list2
-                     });
-                 }
-             )
-             .catch((error) => {
-                 console.error(error);
-             }));
-}
-
-function fetch_home_pic2(param) {
-  return $$Promise.$$catch(new Dropbox.Dropbox({
-                        fetch: (function (prim) {
-                            return fetch(prim);
-                          }),
-                        access_token: process.env.REACT_APP_DBX_TOKEN
-                      }).filesListFolder({
-                      path: "/home"
-                    }).then(function (res) {
-                    return res.entries.map(function (x) {
-                                return x.path_lower;
-                              });
-                  }).then(function (res) {
-                  return $$Promise.$$catch(new Dropbox.Dropbox({
-                                      fetch: (function (prim) {
-                                          return fetch(prim);
-                                        }),
-                                      access_token: process.env.REACT_APP_DBX_TOKEN
-                                    }).filesGetTemporaryLink({
-                                    path: Caml_array.get(res, 0)
-                                  }).then(function (res2) {
-                                  return res2.link;
-                                }), (function (error) {
-                                handle_error(error);
-                                return Promise.resolve("https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l");
-                              }));
-                }), (function (e) {
-                handle_error(e);
-                return Promise.reject(e);
-              }));
+  return (fetch_slider_pics2());
 }
 
 function fetch_home_pic(param) {
-  return (new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesListFolder({path: '/home'})
-        .then((res) => {
-            return res.entries.map(x => x.path_lower)
-        })
-        .then((res) => {
-                return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesGetTemporaryLink({ path: res[0] })
-                    .then((result) => {
-                        return result.link
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                        return 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l'
-                    });
-            }
-        )
-        .catch((error) => {
-            console.error(error);
-        }));
+  return (fetch_home_pic2());
 }
 
 function importAll(r) {
@@ -134,7 +63,7 @@ function Main$Main(Props) {
   var dbImgs = match$1[0];
   React.useEffect((function () {
           console.log("You clicked times! " + homepic + "");
-          fetch_home_pic2(undefined).then(function (x) {
+          fetch_home_pic(undefined).then(function (x) {
                 console.log(x);
                 Curry._1(setHomePic, (function (param) {
                         return x;
@@ -202,121 +131,6 @@ function Main$Main(Props) {
                 }, tmp));
 }
 
-// function importAll(r) {
-//     return r.keys().map(r);
-// }
-
-// class Main extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             dbImgs: [],
-//             igImg: '',
-//             pdf: '',
-//         };
-//     }
-// 
-//     componentDidMount() {
-//         const dbx = new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN });
-//         // get front Page Picture
-//         dbx.filesListFolder({path: '/home'})
-//             .then((res) => {
-//                 return res.entries.map(x => x.path_lower)
-//             })
-//             .then((res) => {
-//                     dbx.filesGetTemporaryLink({ path: res[0] })
-//                         .then((result) => {
-//                             this.setState({ igImg: result.link });
-//                         })
-//                         .catch((error) => {
-//                             console.error(error);
-//                             this.setState( { igImg: 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l' })
-//                         });
-//                 }
-//             )
-//             .catch((error) => {
-//                 console.error(error);
-//             });
-// 
-//         dbx.filesListFolder({path: '/slider'})
-//             .then((res) => {
-//                 return res.entries.map(x => x.path_lower).sort().reverse()
-//             })
-//             .then((res) => {
-//                 Promise.all(res.map(x => dbx.filesGetTemporaryLink({ path: x })))
-//                     .then((result) => {
-//                         this.setState({ dbImgs: result });
-//                     })
-//                     .catch((error) => {
-//                         const pubimages = importAll(require.context('../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-//                         const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-//                         this.setState({ dbImgs: list2 });
-//                         console.error(error);
-//                     });
-//                 }
-//             )
-//             .catch((error) => {
-//                 console.error(error);
-//             });
-// 
-//         // get PDF
-//         dbx.filesListFolder({path: '/pdf'})
-//             .then((res) => {
-//                 return res.entries.map(x => x.path_lower)
-//             })
-//             .then((res) => {
-//                 dbx.filesGetTemporaryLink({ path: res[0] })
-//                     .then((result) => {
-//                         this.setState({ pdf: result.link });
-//                     })
-//                     .catch((error) => {
-//                         this.setState({ pdf: process.env.PUBLIC_URL + "/CEJ_works19.pdf" });
-//                         console.error(error);
-//                     });
-//                 }
-//             )
-//             .catch((error) => {
-//                 console.error(error);
-//             });
-// 
-//         // TODO access the instagram feed. Should not have to et usre access token
-//         /*
-//         fetch('https://api.instagram.com/oauth/authorize?app_id='
-//             + process.env.REACT_APP_IG_APP_ID + '&redirect_uri=https%3A%2F%2Fcarlemiljacobsen.com%2F&scope=&response_type=code')
-//             .then((result) =>{
-//                 console.log(result);
-//             })
-//             .catch();
-// 
-//         // GET most recent image added to instagram
-//         fetch('https://graph.instagram.com/me/media?fields=media_url&access_token=' + process.env.REACT_APP_IG_TOKEN)
-//             .then(res => res.json())
-//             .then((res) => {
-//                 this.setState({ igImg: res.data[0].media_url})
-//             })
-//             .catch(console.log)
-//         */
-//     }
-// 
-//     render() {
-//         return(
-//              <HashRouter>
-//              <div className="mainContainer">
-//                  <MyHeader />
-//                  <div id="contentBox">
-//                      <Route path="/bio" component={ Bio }/>
-//                      <Route path="/downloads" render={ (props) => <Downloads {...props} isAuthed={true} pdf={this.state.pdf} key={this.state.pdf} />} />
-//                      <Route path="/archive" render={ (props) => <SimpleSlider {...props} isAuthed={true} dbImgs={this.state.dbImgs} key={this.state.dbImgs} />} />
-//                  </div>
-//                  <Route exact path="/" render={ (props) => <InstagramDisplay {...props} isAuthed={true} igImg={this.state.igImg} key={this.state.igImg}/> }/>
-//              </div>
-//              </HashRouter>
-//         );
-//     }
-// }
-// 
-// export default Main;
-
 var Main = {
   make: Main$Main
 };
@@ -325,7 +139,6 @@ export {
   DDropbox ,
   handle_error ,
   fetch_slider_pics ,
-  fetch_home_pic2 ,
   fetch_home_pic ,
   importAll ,
   Main ,
