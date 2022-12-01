@@ -11,7 +11,7 @@ import MyHeader from '../header/MyHeader.jsx';
 import Bio from '../bio/Bio';
 import InstagramDisplay from '../instagram/InstagramDisplay.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
-import { fetch_slider_pics2, fetch_home_pic2 } from "./fetchDropBoxFiles";
+import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
 ;
 
 function handle_error(error) {
@@ -33,6 +33,10 @@ function fetch_slider_pics(param) {
 
 function fetch_home_pic(param) {
   return (fetch_home_pic2());
+}
+
+function fetch_cv_file(param) {
+  return (fetch_cv_file2());
 }
 
 function Main$Main(Props) {
@@ -123,6 +127,7 @@ export {
   handle_error ,
   fetch_slider_pics ,
   fetch_home_pic ,
+  fetch_cv_file ,
   Main ,
 }
 /*  Not a pure module */

@@ -4,7 +4,7 @@ import MyHeader from '../header/MyHeader.jsx';
 import Bio from '../bio/Bio';
 import InstagramDisplay from '../instagram/InstagramDisplay.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
-import { fetch_slider_pics2, fetch_home_pic2 } from "./fetchDropBoxFiles";
+import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
 `)
 
 let handle_error = (error) => {
@@ -38,6 +38,8 @@ type imgData = {
 
 let fetch_slider_pics = () => %raw(`fetch_slider_pics2()`)
 let fetch_home_pic = () => %raw(`fetch_home_pic2()`)
+
+let fetch_cv_file = () => %raw(`fetch_cv_file2()`)
 
 module Main = {
     open Downloads

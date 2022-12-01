@@ -4,12 +4,15 @@ function importAll(r) {
     return r.keys().map(r);
 }
 
+// const 
+
 const fetch_slider_pics2 = () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesListFolder({path: '/slider'})
-        .then((res) => {
-            return res.entries.map(x => x.path_lower).sort().reverse()
-        })
+        .then(res => res.entries
+            .map(x => x.path_lower)
+            .sort()
+            .reverse())
         .then(async (res) => {
             return Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
                 .filesGetTemporaryLink({ path: x })))
@@ -29,19 +32,14 @@ const fetch_slider_pics2 = () => {
         })
 }
 
-
 const fetch_home_pic2 = () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesListFolder({path: '/home'})
-        .then((res) => {
-            return res.entries.map(x => x.path_lower)
-        })
+        .then(res => res.entries.map(x => x.path_lower))
         .then(async (res) => {
                 return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
                     .filesGetTemporaryLink({ path: res[0] })
-                    .then((result) => {
-                        return result.link
-                    })
+                    .then(result => result.link)
                     .catch((error) => {
                         console.error(error);
                         return 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l'
@@ -53,7 +51,32 @@ const fetch_home_pic2 = () => {
         })
 }
 
+const fetch_cv_file2 = () => {
+    return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+        .filesListFolder({path: '/cv'})
+        .then(res => res.entries.map(x => x.path_lower))
+        .then(
+            async (res) => {
+                return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+                    .filesGetTemporaryLink({ path: res[0] })
+                    .then(result => result.link)
+                    .catch((error) => {
+                        console.error(error);
+                        return 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l'
+                    });
+            }
+        )
+        .catch(error => {
+            console.error(error)
+
+            const csv = importAll(require.context('../../../public/', false, /\.(csv)$/));
+            // const list2 = csv.map(x => x.split("/")[3].split(".")[0]);
+            return csv
+        })
+}
+
 export {
     fetch_slider_pics2,
-    fetch_home_pic2
+    fetch_home_pic2,
+    fetch_cv_file2
 }
