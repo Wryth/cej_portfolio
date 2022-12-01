@@ -7413,13 +7413,6 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==
 
-rescript-fetch@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/rescript-fetch/-/rescript-fetch-0.0.3.tgz#b45159fddb6745266a036d031343d6cd50a1e517"
-  integrity sha512-WK0eBNmwzgFUnPkieDnYD5pLvGiAAXG9gBLrPth0t3mOqHRdjYFSh3fRSMtJkyDcvmHMMgal26PgyLMt37cTJQ==
-  dependencies:
-    "@ryyppy/rescript-promise" "^2.1.0"
-
 rescript@10.0.1:
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/rescript/-/rescript-10.0.1.tgz#5b2da8a8bcfb994bed1eb24820bf10cfb9d8c440"
@@ -8334,11 +8327,6 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
-
-typescript@^4.9.3:
-  version "4.9.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
-  integrity sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
