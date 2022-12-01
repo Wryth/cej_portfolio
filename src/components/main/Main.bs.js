@@ -6,23 +6,13 @@ import * as $$Promise from "@ryyppy/rescript-promise/src/Promise.bs.js";
 import * as Downloads from "../downloads/Downloads.bs.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
-// import React from 'react';
-// import {
-//     Route,
-//     HashRouter
-//   } from "react-router-dom";
 import './Main.css';
 import MyHeader from '../header/MyHeader.jsx';
 import Bio from '../bio/Bio';
 import InstagramDisplay from '../InstagramDisplay.jsx';
-// import {make as Downloads} from "../Downloads.bs";
 import SimpleSlider from "../slider/SimpleSlider";
-import Dropbox from "dropbox";
-
 import { fetch_slider_pics2, fetch_home_pic2 } from "./fetchDropBoxFiles";
 ;
-
-var DDropbox = {};
 
 function handle_error(error) {
   if (error.RE_EXN_ID === $$Promise.JsError) {
@@ -58,21 +48,14 @@ function Main$Main(Props) {
   var setdbImgs = match$1[1];
   var dbImgs = match$1[0];
   React.useEffect((function () {
-          console.log("You clicked times! " + homepic + "");
+          console.log("" + homepic + "");
           fetch_home_pic(undefined).then(function (x) {
-                console.log("home img:");
-                console.log(x);
                 Curry._1(setHomePic, (function (param) {
                         return x;
                       }));
               });
-          console.log("A " + dbImgs.toString() + "");
+          console.log("" + dbImgs.toString() + "");
           $$Promise.$$catch(fetch_slider_pics(undefined).then(function (x) {
-                    console.log("slider imgs:");
-                    console.log(x);
-                    console.log(x.map(function (y) {
-                              return y.metadata.name;
-                            }));
                     Curry._1(setdbImgs, (function (param) {
                             return x;
                           }));
@@ -137,7 +120,6 @@ var Main = {
 };
 
 export {
-  DDropbox ,
   handle_error ,
   fetch_slider_pics ,
   fetch_home_pic ,

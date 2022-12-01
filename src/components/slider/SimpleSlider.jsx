@@ -45,7 +45,6 @@ class SimpleSlider extends React.Component {
             }
             return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
           }));
-          console.log("Menu:" + menu);
       this.setState({ mode: menu });
     });
   }
