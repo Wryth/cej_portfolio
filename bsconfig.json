@@ -13,9 +13,7 @@
     }
   ],
   "suffix": ".bs.js",
-  "reason": {
-    "react-jsx": 3 
-  },
+  "reason": { "react-jsx": 3 },
   "bs-dependencies": [
       "@rescript/react",
       "@ryyppy/rescript-promise"
