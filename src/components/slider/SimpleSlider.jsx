@@ -38,12 +38,14 @@ class SimpleSlider extends React.Component {
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
 
     this.setState({ dbImgs: this.props.dbImgs}, () => {
-      const menu = this.Menu(this.props.dbImgs.map(x => {
-        if(!x.metadata) {
-          return {name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0]}
-        }
-        return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
-      }));
+      const menu = this.Menu(this.props.dbImgs
+          .map(x => {
+            if(!x.metadata) {
+              return {name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0]}
+            }
+            return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
+          }));
+          console.log("Menu:" + menu);
       this.setState({ mode: menu });
     });
   }

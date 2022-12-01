@@ -4,16 +4,19 @@ function importAll(r) {
     return r.keys().map(r);
 }
 
-const fetch_slider_pics2 = async () => {
+const fetch_slider_pics2 = () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesListFolder({path: '/slider'})
         .then((res) => {
             return res.entries.map(x => x.path_lower).sort().reverse()
         })
-        .then((res) => {
-            Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN }).filesGetTemporaryLink({ path: x })))
+        .then(async (res) => {
+            return Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+                .filesGetTemporaryLink({ path: x })))
                 .then((result) => {
                 // this.setState({ dbImgs: result });
+
+                console.log("js slider links:");
                 console.log(result);
                 return result
                 })
@@ -31,7 +34,7 @@ const fetch_slider_pics2 = async () => {
 }
 
 
-const fetch_home_pic2 = async () => {
+const fetch_home_pic2 = () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesListFolder({path: '/home'})
         .then((res) => {

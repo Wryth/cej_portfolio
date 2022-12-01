@@ -45,10 +45,6 @@ function fetch_home_pic(param) {
   return (fetch_home_pic2());
 }
 
-function importAll(r) {
-  return Object.keys(r);
-}
-
 function Main$Main(Props) {
   var url = RescriptReactRouter.useUrl(undefined, undefined);
   var match = React.useState(function () {
@@ -64,16 +60,21 @@ function Main$Main(Props) {
   React.useEffect((function () {
           console.log("You clicked times! " + homepic + "");
           fetch_home_pic(undefined).then(function (x) {
+                console.log("home img:");
                 console.log(x);
                 Curry._1(setHomePic, (function (param) {
                         return x;
                       }));
               });
           console.log("A " + dbImgs.toString() + "");
-          $$Promise.$$catch(fetch_slider_pics(undefined).then(function (value) {
-                    console.log(value);
-                    Curry._1(setdbImgs, (function (prev) {
-                            return prev;
+          $$Promise.$$catch(fetch_slider_pics(undefined).then(function (x) {
+                    console.log("slider imgs:");
+                    console.log(x);
+                    console.log(x.map(function (y) {
+                              return y.metadata.name;
+                            }));
+                    Curry._1(setdbImgs, (function (param) {
+                            return x;
                           }));
                   }), (function (e) {
                   handle_error(e);
@@ -140,7 +141,6 @@ export {
   handle_error ,
   fetch_slider_pics ,
   fetch_home_pic ,
-  importAll ,
   Main ,
 }
 /*  Not a pure module */

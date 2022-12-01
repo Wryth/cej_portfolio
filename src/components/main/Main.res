@@ -102,12 +102,29 @@ let handle_error = (error) => {
     }
 }
 
-let fetch_slider_pics = () => %raw(`fetch_slider_pics2()`)
+type metadata = {
+    client_modified: string,
+    content_hash: string, 
+    id: string,
+    is_downloadable: bool,
+    name: string,
+    path_display: string,
+    path_lower: string,
+    rev: string,
+    server_modified: string,
+    size: int
+}
+
+type imgData = {
+    link: string,
+    metadata: metadata 
+}
+
+let fetch_slider_pics = (): Promise.t<array<imgData>> => %raw(`fetch_slider_pics2()`)
 let fetch_home_pic = () => %raw(`fetch_home_pic2()`)
 
- let importAll = (r) => Js_dict.keys(r)
- 
 module Main = {
+
     @react.component
     let make = () => {
         let url = RescriptReactRouter.useUrl()
@@ -116,9 +133,11 @@ module Main = {
         let pdf = ""
 
         React.useEffect0(() => {
+
             Js.log(`You clicked times! ${homepic}`)
             fetch_home_pic()
                 -> Promise.thenResolve(x => {
+                    Js.log("home img:")
                     Js.log(x)
                     setHomePic(_ => x)
                 })
@@ -126,9 +145,11 @@ module Main = {
 
             Js.log(`A ${Js.Array.toString(dbImgs)}`)
             fetch_slider_pics()
-                -> Promise.thenResolve(value => {
-                    Js.log(value)
-                    setdbImgs(prev => prev)
+                -> Promise.thenResolve(x => {
+                    Js.log("slider imgs:")
+                    Js.log(x)
+                    x->Js.Array2.map(y => y.metadata.name)->Js.log
+                    setdbImgs(_ => x)
                 })
                 -> Promise.catch(e => {
                     handle_error(e)
