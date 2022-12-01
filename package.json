@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "res:build": "rescript",
+    "res:build": "rescript build -with-deps",
     "res:start": "rescript build -w"
   },
   "eslintConfig": {
