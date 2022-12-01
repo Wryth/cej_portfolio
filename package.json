@@ -6,7 +6,7 @@
     "@rescript/react": "^0.10.3",
     "@ryyppy/rescript-promise": "^2.1.0",
     "@types/react": "^18.0.25",
-    "dropbox": "^4.0.30",
+    "dropbox": "^10.34.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-horizontal-scrolling-menu": "^3.2.3",
@@ -15,8 +15,7 @@
     "react-slick": "^0.29.0",
     "rescript": "10.0.1",
     "rescript-fetch": "^0.0.3",
-    "slick-carousel": "^1.8.1",
-    "typescript": "^4.9.3"
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,8 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "re:build": "rescript",
-    "re:start": "rescript build -w"
+    "res:build": "rescript",
+    "res:start": "rescript build -w"
   },
   "eslintConfig": {
     "extends": "react-app"
