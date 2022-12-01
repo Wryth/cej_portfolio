@@ -1,10 +1,9 @@
 import React from 'react';
 import CustomCursor from './CustumCursor';
-import Main from "./Main";
+import { Main } from "./main/Main.bs";
 import "./App.css";
 
 class App extends React.Component {
-
     handleCursor(event) {
         document.getElementById("custom-cursor")
             .setAttribute("style", "top: "+(event.pageY - 0)+"px; left: "
@@ -15,7 +14,7 @@ class App extends React.Component {
         return(
             <div className="appContainer" onMouseMove={this.handleCursor}>
                 <CustomCursor />
-                <Main />
+                <Main.make />
             </div>
         );
     }

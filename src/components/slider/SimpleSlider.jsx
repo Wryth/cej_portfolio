@@ -23,10 +23,9 @@ class SimpleSlider extends React.Component {
       mode: [],
       open: null,
       loading: true,
-      dbImgs: [],
+      dbImgs: []
      };
     this.handleWheel = this.handleWheel.bind(this);
-    this.onWindowResized = this.onWindowResized.bind(this);
   }
 
   handleStateChange = () => {
@@ -37,33 +36,21 @@ class SimpleSlider extends React.Component {
 
   componentDidMount() {
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
-    // ReactDOM.findDOMNode(this).addEventListener("orientationchange",this.handleChange);
-    window.addEventListener('orientationchange', this.onWindowResized);
-
 
     this.setState({ dbImgs: this.props.dbImgs}, () => {
-      const menu = this.Menu(this.props.dbImgs.map(x => {
-        if(!x.metadata) {
-          return {name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0]}
-        }
-        return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
-      }));
+      const menu = this.Menu(this.props.dbImgs
+          .map(x => {
+            if(!x.metadata) {
+              return {name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0]}
+            }
+            return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
+          }));
       this.setState({ mode: menu });
     });
   }
 
-  onWindowResized() { //add debounce for performance?
-    this.forceUpdate();
-    this.slider.slickPrev();
-    setTimeout(() => {
-      this.slider.slickNext();
-      },200);
-  }
-
   componentWillUnmount() {
     ReactDOM.findDOMNode(this).removeEventListener('wheel', this.handleWheel);
-    // ReactDOM.findDOMNode(this).removeEventListener("orientationchange", this.handleChange)
-    window.removeEventListener('orientationchange', this.onWindowResized);
   }
 
   renderSpinner() {
@@ -108,30 +95,25 @@ class SimpleSlider extends React.Component {
     );
   });
 
-
   render() {
     const classes = this.state.loading ? 'basket hide' : 'basket';
+    let slidesInFrame = 1.68; // On screen
+    let scrollSpeed = 1500;
+    if(window.matchMedia("(max-width: 1050px)").matches) {
+      slidesInFrame = 1; // on phone tablet
+      scrollSpeed = 500;
+    }
 
     const settings = {
       infinite: true,
-      slidesToShow: 1.68,
+      slidesToShow: slidesInFrame,
       slidesToScroll: 1,
-      speed: 1500,
+      speed: scrollSpeed,
       centerMode: true,
       arrow: true,
       autoplay: false,
       autoplaySpeed: 10000,
       variableWidth: true,
-      responsive: [
-        {
-          breakpoint: 1050,
-          settings: {
-            autoplay: false,
-            slidesToShow: 1, // on phone tablet
-            speed: 500,
-          }
-        },
-      ]
     };
 
     return (

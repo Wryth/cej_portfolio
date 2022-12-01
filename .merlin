@@ -1,0 +1,18 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx '/home/viktor/projects/other/cej_portfolio/node_modules/rescript/linux/bsc.exe -as-ppx -bs-jsx 3'
+S /home/viktor/projects/other/cej_portfolio/node_modules/rescript/lib/ocaml
+B /home/viktor/projects/other/cej_portfolio/node_modules/rescript/lib/ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S /home/viktor/projects/other/cej_portfolio/node_modules/@rescript/react/lib/ocaml
+B /home/viktor/projects/other/cej_portfolio/node_modules/@rescript/react/lib/ocaml
+S /home/viktor/projects/other/cej_portfolio/node_modules/@ryyppy/rescript-promise/lib/ocaml
+B /home/viktor/projects/other/cej_portfolio/node_modules/@ryyppy/rescript-promise/lib/ocaml
+S /home/viktor/projects/other/cej_portfolio/node_modules/rescript-fetch/lib/ocaml
+B /home/viktor/projects/other/cej_portfolio/node_modules/rescript-fetch/lib/ocaml
+S src/components/main
+B lib/bs/src/components/main
+S src/components/downloads
+B lib/bs/src/components/downloads
+S src/components/menu
+B lib/bs/src/components/menu
+####BSB GENERATED: NO EDIT}

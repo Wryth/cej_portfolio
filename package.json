@@ -3,22 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/react": "^16.8.2",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1",
-    "react-horizontal-scrolling-menu": "^0.5.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
-    "react-slick": "^0.24.0",
-    "slick-carousel": "^1.8.1",
-    "typescript": "^3.3.3"
+    "@rescript/react": "^0.10.3",
+    "@ryyppy/rescript-promise": "^2.1.0",
+    "@types/react": "^18.0.25",
+    "dropbox": "^10.34.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-horizontal-scrolling-menu": "^3.2.3",
+    "react-router-dom": "^6.4.3",
+    "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "rescript": "10.0.1",
+    "rescript-fetch": "^0.0.3",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "altStart": " set PORT=3006 && react-scripts start",
+    "altStart": "set PORT=3006 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "res:build": "rescript",
+    "res:start": "rescript build -w"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,6 +36,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "dropbox": "^4.0.30"
+    "reanalyze": "^2.23.0"
   }
 }
