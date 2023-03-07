@@ -1,4 +1,8 @@
 import Dropbox from "dropbox";
+// import { read } from "fs";
+// import { fs } from "node:fs";
+// import { readline } from 'node:readline';
+
 
 function importAll(r) {
     return r.keys().map(r);
@@ -62,15 +66,19 @@ const fetch_cv_file2 = () => {
                     .then(result => result.link)
                     .catch((error) => {
                         console.error(error);
-                        return 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l'
+                        return ''
                     });
             }
         )
         .catch(error => {
             console.error(error)
-
+            console.log("Getting local file");
             const csv = importAll(require.context('../../../public/', false, /\.(csv)$/));
-            // const list2 = csv.map(x => x.split("/")[3].split(".")[0]);
+            const list2 = csv.map(x => x.split("/")[3].split(".")[0]);
+            console.log(list2);
+            // const fileStream = fs.createReadStream('input.txt')
+            const reader = FileReader();
+            // reader
             return csv
         })
 }

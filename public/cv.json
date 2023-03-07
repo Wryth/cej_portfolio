@@ -1,0 +1,177 @@
+[
+	{
+		"year": "2022",
+		"title": "KUMMERFORM",
+		"description": "solo show",
+		"location": "Viborg Kunsthal",
+		"city": null,
+		"country": "DK"
+	},
+	{
+		"year": "2022",
+		"title": "FICTIONS",
+		"description": "group exhibition",
+		"location": "Peach Corner",
+		"city": "Copenhagen",
+		"country": "DK"
+	},
+
+	{
+		"year": "2021",
+		"title": "COMB A HAIRY DOUGHNUT FLAT",
+		"description": "solo show",
+		"location": "O-Overgaden",
+		"city": "Copenhagen",
+		"country": "DK"
+	},
+	{
+		"year": "2021",
+		"title": "A NEW REALISM",
+		"description": "group exhibition",
+		"location": "Friedman Benda",
+		"city": "New York",
+		"country": "US"
+	},
+	{
+		"year": "2021",
+		"title": "SCULPTURE TO SCULPTURE",
+		"description": "group exhibition",
+		"location": "The Round Tower",
+		"city": "Copenhagen",
+		"country": "DK"
+	},
+	{
+		"year": "2021",
+		"title": "A NEW REALISM",
+		"description": "group exhibition",
+		"location": "Friedman Benda",
+		"city":"New York",
+		"country": "US"
+	},
+	{
+		"year": "2021",
+		"title": "SCULPTURE TO SCULPTURE",
+		"description": "group exhibition",
+		"location": "The Round Tower",
+		"city": "Copenhagen",
+		"country": "DK"
+	},
+
+	{
+		"year": "2020",
+		"title": "JORDBUNDEN",
+		"description": "group exhibition",
+		"location": "Art Weekend Aarhus",
+		"city": "Aarhus",
+		"country": "DK"
+	},
+
+	{
+		"year": "2019",
+		"title": "CRAFTED MATTER",
+		"description": "group exhibition",
+		"location": "Cheongju International Craft",
+		"city": "Biennale",
+		"country": "ROK"
+	},
+	{
+		"year": "2019",
+		"title": "CERAMIC MOMENTUM",
+		"description": "group exhibition",
+		"location": "CLAY, Museum of Ceramic Art",
+		"city": null,
+		"country": "DK"
+	},
+	{
+		"year": "2019",
+		"title": "WEATHERED",
+		"description": "solo show",
+		"location": "Mark Kenly Domino Tan Showroom",
+		"city": "København",
+		"country": "DK"
+	},
+
+	{
+		"year": "2018",
+		"title": "DON’T KNOW WHAT SHAPE I’M IN",
+		"description": "solo show",
+		"location": "Patrick Parrish Gallery",
+		"city": "NYC",
+		"country": "US"
+	},
+	{
+		"year": "2018",
+		"title": "ABOUT CLAY",
+		"description": "group exhibition",
+		"location": null,
+		"city": "Fiskars",
+		"country": "FI"
+	},
+	{
+		"year": "2018",
+		"title": "MINDCRAFT18",
+		"description": "group exhibition",
+		"location": "Il Salone",
+		"city": "Milano",
+		"country": "IT"
+	},
+
+	{
+		"year": "2017",
+		"title": "NEW DANISH MODERN",
+		"description": "group exhibition",
+		"location": "Ospace",
+		"city": "Aarhus",
+		"country": "DK"
+	},
+	{
+		"year": "2017",
+		"title": "TERRAIN",
+		"description": "solo show",
+		"location": "Galerie Maria Wettergren",
+		"city": "Paris",
+		"country": "FR"
+	},
+	{
+		"year": "2017",
+		"title": "MINDCRAFT17",
+		"description": "group exhibition",
+		"location": "Il Salone",
+		"city": "Milano",
+		"country": "IT"
+	},
+	{
+		"year": "2017",
+		"title": "DOMESTIC APPEAL, PART III",
+		"description": "group exhibition",
+		"location": "Chamber Gallery",
+		"city": "New York",
+		"country": "US"
+	},
+
+	{
+		"year": "2016",
+		"title": "THE CURIO, CHART ART FAIR",
+		"description": "group exhibition",
+		"location": "Charlottenborg",
+		"city":"København",
+		"country": "DK"
+	},
+	{
+		"year": "2016",
+		"title": "FORÅRSUDSTILLINGEN",
+		"description": "group exhibition",
+		"location": null,
+		"city": "København",
+		"country": "DK"
+	},
+
+	{
+		"year": "2015",
+		"title": "TILSIGTEDE SAMMENSÆTNINGER (I UTILSIGTEDE OPTRÆDENER)",
+		"description": "solo show",
+		"location": "Piscine",
+		"city": "Aarhus",
+		"country": "DK"
+	}
+]

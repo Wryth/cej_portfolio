@@ -50,6 +50,7 @@ module Main = {
         let (homepic, setHomePic) = React.useState(_ => "")
         let (dbImgs, setdbImgs) = React.useState(_ => [])
         let pdf = ""
+        let (cv, setCv) = React.useState(_ => "")
 
         React.useEffect0(() => {
 
@@ -70,6 +71,21 @@ module Main = {
                     Promise.resolve()
                 })
                 -> ignore
+
+
+            fetch_cv_file()
+                -> Promise.thenResolve(x => {
+                    Js.log("Trying to fetch CV")
+                    Js.log(x)
+                    setCv(_ => x)
+                    
+                })
+                -> Promise.catch(e => {
+                    handle_error(e)
+                    Promise.resolve()
+                })
+                -> ignore
+
             None
         });
 

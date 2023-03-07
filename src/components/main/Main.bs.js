@@ -51,6 +51,10 @@ function Main$Main(Props) {
       });
   var setdbImgs = match$1[1];
   var dbImgs = match$1[0];
+  var match$2 = React.useState(function () {
+        return "";
+      });
+  var setCv = match$2[1];
   React.useEffect((function () {
           console.log("" + homepic + "");
           fetch_home_pic(undefined).then(function (x) {
@@ -67,35 +71,45 @@ function Main$Main(Props) {
                   handle_error(e);
                   return Promise.resolve(undefined);
                 }));
+          $$Promise.$$catch(fetch_cv_file(undefined).then(function (x) {
+                    console.log("Trying to fetch CV");
+                    console.log(x);
+                    Curry._1(setCv, (function (param) {
+                            return x;
+                          }));
+                  }), (function (e) {
+                  handle_error(e);
+                  return Promise.resolve(undefined);
+                }));
         }), []);
-  var match$2 = url.path;
+  var match$3 = url.path;
   var tmp;
   var exit = 0;
-  if (match$2) {
-    switch (match$2.hd) {
+  if (match$3) {
+    switch (match$3.hd) {
       case "" :
-          if (match$2.tl) {
+          if (match$3.tl) {
             exit = 1;
           } else {
             tmp = (<InstagramDisplay igImg={homepic} key={homepic} />);
           }
           break;
       case "archive" :
-          if (match$2.tl) {
+          if (match$3.tl) {
             exit = 1;
           } else {
             tmp = (<SimpleSlider dbImgs={dbImgs} />);
           }
           break;
       case "bio" :
-          if (match$2.tl) {
+          if (match$3.tl) {
             exit = 1;
           } else {
             tmp = (<Bio />);
           }
           break;
       case "downloads" :
-          if (match$2.tl) {
+          if (match$3.tl) {
             exit = 1;
           } else {
             tmp = React.createElement(Downloads.Downloads.make, {
