@@ -1,11 +1,12 @@
 import React from 'react';
 import './Bio.css';
 
-const Bio = () => {
-
+const Bio = (props) => {
+    console.log(props.cv)
     const onXclick = () => {
         document.getElementById('headerMenu').scrollIntoView();
     };
+    
     return (
     <div id="bioContainer" >
         <div>

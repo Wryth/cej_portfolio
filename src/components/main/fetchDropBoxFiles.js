@@ -1,8 +1,4 @@
 import Dropbox from "dropbox";
-// import { read } from "fs";
-// import { fs } from "node:fs";
-// import { readline } from 'node:readline';
-
 
 function importAll(r) {
     return r.keys().map(r);
@@ -73,13 +69,10 @@ const fetch_cv_file2 = () => {
         .catch(error => {
             console.error(error)
             console.log("Getting local file");
-            const csv = importAll(require.context('../../../public/', false, /\.(csv)$/));
-            const list2 = csv.map(x => x.split("/")[3].split(".")[0]);
-            console.log(list2);
-            // const fileStream = fs.createReadStream('input.txt')
-            const reader = FileReader();
-            // reader
-            return csv
+            const json = importAll(require.context('../../../public/', false, /\.(json)$/));
+
+            console.log(json[0])
+            return json[0]
         })
 }
 

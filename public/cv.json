@@ -4,7 +4,7 @@
 		"title": "KUMMERFORM",
 		"description": "solo show",
 		"location": "Viborg Kunsthal",
-		"city": null,
+		"city": "",
 		"country": "DK"
 	},
 	{
@@ -79,7 +79,7 @@
 		"title": "CERAMIC MOMENTUM",
 		"description": "group exhibition",
 		"location": "CLAY, Museum of Ceramic Art",
-		"city": null,
+		"city": "",
 		"country": "DK"
 	},
 	{
@@ -103,7 +103,7 @@
 		"year": "2018",
 		"title": "ABOUT CLAY",
 		"description": "group exhibition",
-		"location": null,
+		"location": "",
 		"city": "Fiskars",
 		"country": "FI"
 	},
@@ -161,7 +161,7 @@
 		"year": "2016",
 		"title": "FORÅRSUDSTILLINGEN",
 		"description": "group exhibition",
-		"location": null,
+		"location": "",
 		"city": "København",
 		"country": "DK"
 	},
