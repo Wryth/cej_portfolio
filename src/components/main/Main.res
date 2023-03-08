@@ -7,84 +7,43 @@ import SimpleSlider from "../slider/SimpleSlider";
 import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
 `)
 
-let handle_error = (error) => {
-    switch error {
-    | Promise.JsError(obj) =>
-        switch Js.Exn.message(obj) {
-        | Some(msg) => Js.log("Some JS error msg: " ++ msg)
-        | None => Js.log("Must be some non-error value")
-        }
-    | _ => Js.log("Some unknown error")
-    }
+
+let fetch_slider_pics = async (setSilderPics) => {
+    let slier_pics = await %raw(`fetch_slider_pics2()`)
+    setSilderPics(_ => slier_pics)
+} 
+
+let fetch_home_pic = async (setHomePic) => {
+    let pic = await %raw(`fetch_home_pic2()`)
+    setHomePic(_ => pic)
 }
 
-type metadata = {
-    client_modified: string,
-    content_hash: string, 
-    id: string,
-    is_downloadable: bool,
-    name: string,
-    path_display: string,
-    path_lower: string,
-    rev: string,
-    server_modified: string,
-    size: int
+let fetch_cv_file = async (setCvFile) => {
+    let cvFile = await %raw(`fetch_cv_file2()`)
+    setCvFile(cvFile)
 }
-
-type imgData = {
-    link: string,
-    metadata: metadata 
-}
-
-let fetch_slider_pics = () => %raw(`fetch_slider_pics2()`)
-let fetch_home_pic = () => %raw(`fetch_home_pic2()`)
-
-let fetch_cv_file = () => %raw(`fetch_cv_file2()`)
 
 module Main = {
     open Downloads
 
     @react.component
     let make = () => {
+        open React
         let url = RescriptReactRouter.useUrl()
-        let (homepic, setHomePic) = React.useState(_ => "")
-        let (dbImgs, setdbImgs) = React.useState(_ => [])
+        let (homepic, setHomePic) = useState(_ => "")
+        let (dbImgs, setdbImgs) = useState(_ => [])
         let pdf = ""
-        let (cv, setCv) = React.useState(_ => "")
+        let (cv, setCv) = useState(_ => "")
 
-        React.useEffect0(() => {
+        useEffect0(() => {
 
             Js.log(`${homepic}`)
-            fetch_home_pic()
-                -> Promise.thenResolve(x => {
-                    setHomePic(_ => x)
-                })
-                -> ignore
+            fetch_home_pic(setHomePic) -> ignore
 
             Js.log(`${Js.Array.toString(dbImgs)}`)
-            fetch_slider_pics()
-                -> Promise.thenResolve(x => {
-                    setdbImgs(_ => x)
-                })
-                -> Promise.catch(e => {
-                    handle_error(e)
-                    Promise.resolve()
-                })
-                -> ignore
+            fetch_slider_pics(setdbImgs) -> ignore
 
-
-            fetch_cv_file()
-                -> Promise.thenResolve(x => {
-                    Js.log("Trying to fetch CV")
-                    Js.log(x)
-                    setCv(_ => x)
-                    
-                })
-                -> Promise.catch(e => {
-                    handle_error(e)
-                    Promise.resolve()
-                })
-                -> ignore
+            fetch_cv_file(setCv) -> ignore
 
             None
         });
@@ -103,4 +62,33 @@ module Main = {
         </div>
     </div>
     }
+
+//let handle_error = (error) => {
+//    switch error {
+//    | Promise.JsError(obj) =>
+//        switch Js.Exn.message(obj) {
+//        | Some(msg) => Js.log("Some JS error msg: " ++ msg)
+//        | None => Js.log("Must be some non-error value")
+//        }
+//    | _ => Js.log("Some unknown error")
+//    }
+//}
+
+//type metadata = {
+//    client_modified: string,
+//    content_hash: string, 
+//    id: string,
+//    is_downloadable: bool,
+//    name: string,
+//    path_display: string,
+//    path_lower: string,
+//    rev: string,
+//    server_modified: string,
+//    size: int
+//}
+//
+//type imgData = {
+//    link: string,
+//    metadata: metadata 
+//}
 }

@@ -2,7 +2,6 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as $$Promise from "@ryyppy/rescript-promise/src/Promise.bs.js";
 import * as Downloads from "../downloads/Downloads.bs.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
@@ -14,29 +13,22 @@ import SimpleSlider from "../slider/SimpleSlider";
 import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
 ;
 
-function handle_error(error) {
-  if (error.RE_EXN_ID === $$Promise.JsError) {
-    var msg = error._1.message;
-    if (msg !== undefined) {
-      console.log("Some JS error msg: " + msg);
-    } else {
-      console.log("Must be some non-error value");
-    }
-    return ;
-  }
-  console.log("Some unknown error");
+async function fetch_slider_pics(setSilderPics) {
+  var slier_pics = await (fetch_slider_pics2());
+  return Curry._1(setSilderPics, (function (param) {
+                return slier_pics;
+              }));
 }
 
-function fetch_slider_pics(param) {
-  return (fetch_slider_pics2());
+async function fetch_home_pic(setHomePic) {
+  var pic = await (fetch_home_pic2());
+  return Curry._1(setHomePic, (function (param) {
+                return pic;
+              }));
 }
 
-function fetch_home_pic(param) {
-  return (fetch_home_pic2());
-}
-
-function fetch_cv_file(param) {
-  return (fetch_cv_file2());
+async function fetch_cv_file(setCvFile) {
+  return Curry._1(setCvFile, await (fetch_cv_file2()));
 }
 
 function Main$Main(Props) {
@@ -57,30 +49,10 @@ function Main$Main(Props) {
   var setCv = match$2[1];
   React.useEffect((function () {
           console.log("" + homepic + "");
-          fetch_home_pic(undefined).then(function (x) {
-                Curry._1(setHomePic, (function (param) {
-                        return x;
-                      }));
-              });
+          fetch_home_pic(setHomePic);
           console.log("" + dbImgs.toString() + "");
-          $$Promise.$$catch(fetch_slider_pics(undefined).then(function (x) {
-                    Curry._1(setdbImgs, (function (param) {
-                            return x;
-                          }));
-                  }), (function (e) {
-                  handle_error(e);
-                  return Promise.resolve(undefined);
-                }));
-          $$Promise.$$catch(fetch_cv_file(undefined).then(function (x) {
-                    console.log("Trying to fetch CV");
-                    console.log(x);
-                    Curry._1(setCv, (function (param) {
-                            return x;
-                          }));
-                  }), (function (e) {
-                  handle_error(e);
-                  return Promise.resolve(undefined);
-                }));
+          fetch_slider_pics(setdbImgs);
+          fetch_cv_file(setCv);
         }), []);
   var match$3 = url.path;
   var tmp;
@@ -138,7 +110,6 @@ var Main = {
 };
 
 export {
-  handle_error ,
   fetch_slider_pics ,
   fetch_home_pic ,
   fetch_cv_file ,
