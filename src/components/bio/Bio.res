@@ -22,9 +22,6 @@ module Exhibition = {
 		let place = string(location ++ city ++ country)
 
 		<div>
-			<div className="bioYear largeText">
-				{string(data.year)}
-			</div>
 			<p className="exhibitionInfo smallText">
 				{string(data.title)}{string(", ")}<i>{string(data.description)}</i> place
 				<br></br>
@@ -33,14 +30,40 @@ module Exhibition = {
 	}
 }
 
+module YearGroup = {
+	@react.component
+	let make = (~data:(string, array<exhibitionData>)) => {
+		let (a, b) = data
+
+		let result = b
+			->Js.Array2.map(data => {<Exhibition data />})
+			->React.array
+		<div>
+			<div className="bioYear largeText">
+				{string(a)}
+			</div>
+			result
+			<br></br>
+			<br></br>
+		</div>
+	}
+}
+
 module CV = {
 	@react.component
 	let make = (~cv: array<exhibitionData>) => {
-		// TODO: filter years
-		let years = cv->Js.Array2.map(x => x.year)
+		open Js.Array2
 
-		let result = cv
-			->Js.Array2.map(x => {<Exhibition data=x />})
+		let groupByYear = (v1, v2) => {
+ 			switch v1->Js.Dict.keys->includes(v2.year) {
+ 			| true => v1->Js.Dict.set(v2.year, v1->Js.Dict.unsafeGet(v2.year)->concat([v2])); v1
+ 			| false => v1->Js.Dict.set(v2.year, [v2]); v1
+ 			}
+		}
+ 		let yearGroups = cv->reduce(groupByYear, Js.Dict.empty())
+		let result = Js.Dict.entries(yearGroups)
+			->map(data => <YearGroup data />)
+			->reverseInPlace
 			->React.array
 
 		<div>
@@ -91,7 +114,7 @@ module Bio = {
 					</p>
 				</div>
 
-				{<CV cv />}
+				<CV cv />
 
 				<div
 					className="xEnd largeText"
