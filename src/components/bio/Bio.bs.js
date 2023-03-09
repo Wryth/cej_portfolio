@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import * as Js_dict from "rescript/lib/es6/js_dict.js";
-import * as Caml_array from "rescript/lib/es6/caml_array.js";
 
 import './Bio.css';
 ;
@@ -64,7 +63,6 @@ var CV = {
 
 function Bio$Bio(Props) {
   var cv = Props.cv;
-  console.log(Caml_array.get(cv, 0));
   return React.createElement("div", {
               id: "bioContainer"
             }, React.createElement("div", undefined, React.createElement("div", {

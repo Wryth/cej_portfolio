@@ -20,15 +20,6 @@ let fetch_home_pic = async (setHomePic) => {
     setHomePic(_ => pic)
 }
 
-// type exhibitionData = {
-// 	year: string,
-// 	title: string,
-// 	description: string,
-// 	location: string,
-// 	city: string,
-// 	country: string
-// }
-
 // bind to JS' JSON.parse
 @scope("JSON") @val
 external parseIntoMyData: string => array<exhibitionData> = "parse"
@@ -37,13 +28,13 @@ external parseIntoMyData: string => array<exhibitionData> = "parse"
 let fetch_cv_file = async (setCvFile) => {
     let cvFile = await %raw(`fetch_cv_file2()`)
 
-    let a = Js.Json.stringifyAny(cvFile)
-    let b = switch a {
+    let jsonFile = Js.Json.stringifyAny(cvFile)
+    let json = switch jsonFile {
         | Some(x) => x
         | None => failwith("Failed to fetch json")
         }
 
-    let result = parseIntoMyData(b)
+    let result = parseIntoMyData(json)
     setCvFile(_ => result)
 }
 

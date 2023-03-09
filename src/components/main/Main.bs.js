@@ -31,9 +31,9 @@ async function fetch_home_pic(setHomePic) {
 
 async function fetch_cv_file(setCvFile) {
   var cvFile = await (fetch_cv_file2());
-  var a = JSON.stringify(cvFile);
-  var b = a !== undefined ? a : Pervasives.failwith("Failed to fetch json");
-  var result = JSON.parse(b);
+  var jsonFile = JSON.stringify(cvFile);
+  var json = jsonFile !== undefined ? jsonFile : Pervasives.failwith("Failed to fetch json");
+  var result = JSON.parse(json);
   return Curry._1(setCvFile, (function (param) {
                 return result;
               }));

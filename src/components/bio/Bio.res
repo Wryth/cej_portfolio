@@ -84,8 +84,6 @@ module Bio = {
 // `)
 	@react.component
 	let make = (~cv: array<exhibitionData>) => {
-		Js.log(cv[0])
-
 		<div id="bioContainer" >
 			<div>
 				<div className="bioHeader largeText">
