@@ -9,7 +9,6 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs
 
 import './Main.css';
 import MyHeader from '../header/MyHeader.jsx';
-// import Bio from '../bio/Bio';
 import InstagramDisplay from '../instagram/InstagramDisplay.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
 import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";

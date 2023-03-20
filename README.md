@@ -6,7 +6,8 @@ The website is design by [Chris Petter Spilde](http://www.chrispetterspilde.com/
 # Tools
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),  
 React,  
-JavaScript,   
+JavaScript,
+ReScript,   
 Node,  
 Dropbox API.  
 
@@ -18,7 +19,3 @@ ReScript
 # Tools  
 https://nextjs.org/
 https://www.sanity.io/
-
-
-new Promise   
-https://github.com/ryyppy/rescript-promise#usage
