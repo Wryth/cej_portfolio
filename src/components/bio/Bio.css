@@ -33,6 +33,14 @@
     margin-bottom: 37px;
 }
 
+.basket {
+    transition: opacity 2.5s;
+    opacity: 1;
+  }
+
+.basket.hide {
+    opacity: 0;
+}
 
 @media (max-width:500px), (max-height:500px) {
     .bioHeader{

@@ -1,13 +1,13 @@
 %%raw(`
 import './Main.css';
 import MyHeader from '../header/MyHeader.jsx';
-import InstagramDisplay from '../instagram/InstagramDisplay.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
 import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
 `)
 
 open Downloads
 open Bio
+open Home
 
 let fetch_slider_pics = async (setSilderPics) => {
     let slider_pics = await %raw(`fetch_slider_pics2()`)
@@ -64,11 +64,11 @@ module Main = {
         %raw(`<MyHeader />`)
         <div id="contentBox">
         { switch url.path {
-            | list{""} => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
+            | list{""} => <Home igImg={homepic} key={homepic} />
             | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)
-            | list{"bio"} => <Bio cv/> // %raw(`<Bio cv={cv}/>`)
+            | list{"bio"} => <Bio cv/>
             | list{"downloads"} => <Downloads pdf />
-            | _ => %raw(`<InstagramDisplay igImg={homepic} key={homepic} />`)
+            | _ => <Home igImg={homepic} key={homepic} />
         }
         }
         </div>

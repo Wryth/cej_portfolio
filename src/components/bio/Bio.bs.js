@@ -39,13 +39,13 @@ var YearGroup = {
 
 function Bio$CV(Props) {
   var cv = Props.cv;
-  var groupByYear = function (v1, v2) {
-    if (Object.keys(v1).includes(v2.year)) {
-      v1[v2.year] = v1[v2.year].concat([v2]);
-      return v1;
+  var groupByYear = function (agg, id) {
+    if (Object.keys(agg).includes(id.year)) {
+      agg[id.year] = agg[id.year].concat([id]);
+      return agg;
     } else {
-      v1[v2.year] = [v2];
-      return v1;
+      agg[id.year] = [id];
+      return agg;
     }
   };
   var yearGroups = cv.reduce(groupByYear, {});

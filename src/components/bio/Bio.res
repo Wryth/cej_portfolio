@@ -55,10 +55,10 @@ module CV = {
 	let make = (~cv: array<exhibitionData>) => {
 		open Js.Array2
 
-		let groupByYear = (v1, v2) => {
- 			switch v1->Js.Dict.keys->includes(v2.year) {
- 			| true => v1->Js.Dict.set(v2.year, v1->Js.Dict.unsafeGet(v2.year)->concat([v2])); v1
- 			| false => v1->Js.Dict.set(v2.year, [v2]); v1
+		let groupByYear = (agg, id) => {
+ 			switch agg->Js.Dict.keys->includes(id.year) {
+ 			| true => agg->Js.Dict.set(id.year, agg->Js.Dict.unsafeGet(id.year)->concat([id])); agg
+ 			| false => agg->Js.Dict.set(id.year, [id]); agg
  			}
 		}
  		let yearGroups = cv->reduce(groupByYear, Js.Dict.empty())
