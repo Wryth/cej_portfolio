@@ -4,8 +4,6 @@ function importAll(r) {
     return r.keys().map(r);
 }
 
-// const 
-
 const fetch_slider_pics2 = () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesListFolder({path: '/slider'})
@@ -76,8 +74,18 @@ const fetch_cv_file2 = () => {
         })
 }
 
+const fetch_pdf_file2 = () => {
+
+    console.log("Getting local file");
+    const json = importAll(require.context('../../../public/', false, /\.(pdf)$/));
+
+    console.log(json[0])
+    return json[0]
+}
+
 export {
     fetch_slider_pics2,
     fetch_home_pic2,
-    fetch_cv_file2
+    fetch_cv_file2,
+    fetch_pdf_file2
 }

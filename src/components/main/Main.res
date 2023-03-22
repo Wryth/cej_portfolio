@@ -2,7 +2,7 @@
 import './Main.css';
 import MyHeader from '../header/MyHeader.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
-import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
+import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } from "./fetchDropBoxFiles";
 `)
 
 open Downloads
@@ -19,10 +19,14 @@ let fetch_home_pic = async (setHomePic) => {
     setHomePic(_ => pic)
 }
 
+let fetch_pdf_file = (setPdfFile) => {
+    let pdfFile = %raw(`fetch_pdf_file2()`)
+    setPdfFile(_ => pdfFile)
+}
+
 // bind to JS' JSON.parse
 @scope("JSON") @val
 external parseIntoMyData: string => array<exhibitionData> = "parse"
-
 
 let fetch_cv_file = async (setCvFile) => {
     let cvFile = await %raw(`fetch_cv_file2()`)
@@ -48,7 +52,7 @@ module Main = {
         let (homepic, setHomePic) = useState(_ => "")
         let (dbImgs, setdbImgs) = useState(_ => [])
         let (cv, setCv) = useState(_ => init)
-        let pdf = ""
+        let (pdf, setPdfFile) = useState(_ => "")
 
         useEffect0(() => {
             Js.log(`${homepic}`)
@@ -56,6 +60,7 @@ module Main = {
             Js.log(`${Js.Array.toString(dbImgs)}`)
             fetch_slider_pics(setdbImgs) -> ignore
             fetch_cv_file(setCv) -> ignore
+            fetch_pdf_file(setPdfFile) -> ignore
 
             None
         });

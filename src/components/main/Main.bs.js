@@ -11,7 +11,7 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs
 import './Main.css';
 import MyHeader from '../header/MyHeader.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
-import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2 } from "./fetchDropBoxFiles";
+import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } from "./fetchDropBoxFiles";
 ;
 
 async function fetch_slider_pics(setSilderPics) {
@@ -25,6 +25,13 @@ async function fetch_home_pic(setHomePic) {
   var pic = await (fetch_home_pic2());
   return Curry._1(setHomePic, (function (param) {
                 return pic;
+              }));
+}
+
+function fetch_pdf_file(setPdfFile) {
+  var pdfFile = (fetch_pdf_file2());
+  return Curry._1(setPdfFile, (function (param) {
+                return pdfFile;
               }));
 }
 
@@ -62,20 +69,25 @@ function Main$Main(Props) {
         return init;
       });
   var setCv = match$2[1];
+  var match$3 = React.useState(function () {
+        return "";
+      });
+  var setPdfFile = match$3[1];
   React.useEffect((function () {
           console.log("" + homepic + "");
           fetch_home_pic(setHomePic);
           console.log("" + dbImgs.toString() + "");
           fetch_slider_pics(setdbImgs);
           fetch_cv_file(setCv);
+          fetch_pdf_file(setPdfFile);
         }), []);
-  var match$3 = url.path;
+  var match$4 = url.path;
   var tmp;
   var exit = 0;
-  if (match$3) {
-    switch (match$3.hd) {
+  if (match$4) {
+    switch (match$4.hd) {
       case "" :
-          if (match$3.tl) {
+          if (match$4.tl) {
             exit = 1;
           } else {
             tmp = React.createElement(Home.Home.make, {
@@ -85,14 +97,14 @@ function Main$Main(Props) {
           }
           break;
       case "archive" :
-          if (match$3.tl) {
+          if (match$4.tl) {
             exit = 1;
           } else {
             tmp = (<SimpleSlider dbImgs={dbImgs} />);
           }
           break;
       case "bio" :
-          if (match$3.tl) {
+          if (match$4.tl) {
             exit = 1;
           } else {
             tmp = React.createElement(Bio.Bio.make, {
@@ -101,11 +113,11 @@ function Main$Main(Props) {
           }
           break;
       case "downloads" :
-          if (match$3.tl) {
+          if (match$4.tl) {
             exit = 1;
           } else {
             tmp = React.createElement(Downloads.Downloads.make, {
-                  pdf: ""
+                  pdf: match$3[0]
                 });
           }
           break;
@@ -135,6 +147,7 @@ var Main = {
 export {
   fetch_slider_pics ,
   fetch_home_pic ,
+  fetch_pdf_file ,
   fetch_cv_file ,
   Main ,
 }
