@@ -22,10 +22,8 @@ module Exhibition = {
 		let place = string(location ++ city ++ country)
 
 		<>
-			<p className="exhibitionInfo smallText">
-				{string(data.title)}{string(", ")}<i>{string(data.description)}</i> place
-				<br></br>
-			</p>
+			{string(data.title)}{string(", ")}<i>{string(data.description)}</i> place
+			<br></br>
 		</>
 	}
 }
@@ -38,11 +36,14 @@ module YearGroup = {
 		let result = b
 			->Js.Array2.map(data => {<Exhibition data />})
 			->React.array
+
 		<>
 			<div className="bioYear largeText">
 				{string(a)}
 			</div>
-			result
+			<p className="exhibitionInfo smallText">
+				result
+			</p>
 			<br></br>
 			<br></br>
 		</>
@@ -84,30 +85,27 @@ module Bio = {
 
 	@react.component
 	let make = (~cv: array<exhibitionData>) => {
-		let bioHeader = string("BIO")
-		let bioText1 = string("Since Danish sculptor Carl Emil Jacobsen (b. 1987) graduated from Kolding School of Design in 2012, his practice has oscillated between art and design, revol&shy;ving around existentialism, ritualistic sophisti&shy;cation and solid craftsmanship.")
-		let bioText2 = string("Working with found materials such as stones from the heath, bricks from demolished buildings, chalk&shy;stone and marble, Carl Emil Jacobsen trans&shy;forms massive stones into light, thin and crisp shells of fine colour. As an ode to the richness of natural colours in the Nordic landscape, he brings new life to the powdered stone by converting it into layers of poetic coloured pigment — in bright to burnt hues — and a sculptural element in itself. His iron sculp&shy;tures, some polished, some burnt,  are created intuitively out of welding work without preliminary studies resulting in fragmented pieces hammered together to instinctive forms.")
-		let bioText4 = string("Carl Emil Jacobsen is represented by Galerie Maria Wettergren in Paris and has been exhibited at Art Basel, PAD, Clay Museum of Ceramic Art Denmark, Mindcraft Exhibition in Milan, Patrick Parrish Gallery, Chamber Gallery, Kunsthal Charlottenborg, Piscine and elsewhere.")
 
 		<div id="bioContainer" >
+			 {%raw(`
 			<>
 				<div className="bioHeader largeText">
-					bioHeader
-				</div>
+					BIO
+					</div>
 				<p className="bioText largeText">
-					bioText1
+					Since Danish sculptor Carl Emil Jacobsen (b. 1987) graduated from Kolding School of Design in 2012, his practice has oscillated between art and design, revol&shy;ving around existentialism, ritualistic sophisti&shy;cation and solid craftsmanship.
 				</p>
 				<p className="bioText largeText">
-				 	bioText2
+					Working with found materials such as stones from the heath, bricks from demolished buildings, chalk&shy;stone and marble, Carl Emil Jacobsen trans&shy;forms massive stones into light, thin and crisp shells of fine colour. As an ode to the richness of natural colours in the Nordic landscape, he brings new life to the powdered stone by converting it into layers of poetic coloured pigment — in bright to burnt hues — and a sculptural element in itself. His iron sculp&shy;tures, some polished, some burnt,  are created intuitively out of welding work without preliminary studies resulting in fragmented pieces hammered together to instinctive forms.
 				</p>
 				<p className="bioText largeText">
-					// bioText3
-					{string("Inspired by the dictum of late Danish sculptor Willy Ørskov's theory that \"the content of the sculpture  is sculpture\", his nonfigurative sculp" ++ Js.String2.fromCharCode(U+00AD))}{string("tures exist  on their own terms as abstract, physical forms fostering experiential connection over intellectual interference in the elastic borderland between nature and culture.")}
+					Inspired by the dictum of late Danish sculptor Willy Ørskov's theory that "the content of the sculpture  is sculpture", his nonfigurative sculp&shy;tures exist  on their own terms as abstract, physical forms fostering experiential connection over intellectual interference in the elastic borderland between nature and culture.
 				</p>
 				<p className="bioText textEnd largeText">
-					bioText4
+					Carl Emil Jacobsen is represented by Galerie Maria Wettergren in Paris and has been exhibited at Art Basel, PAD, Clay Museum of Ceramic Art Denmark, Mindcraft Exhibition in Milan, Patrick Parrish Gallery, Chamber Gallery, Kunsthal Charlottenborg, Piscine and elsewhere.
 				</p>
 			</>
+			 `)}
 
 			<>
 				<div className="bioHeader largeText">

@@ -5,6 +5,7 @@
   "dependencies": {
     "@rescript/react": "^0.11.0",
     "@types/react": "^18.0.25",
+    "concurrently": "^7.6.0",
     "dropbox": "^4.0.30",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -16,13 +17,14 @@
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
+    "dev": "concurrently --kill-others \"yarn run res:dev\" \"yarn run start\"",
     "start": "react-scripts start",
     "altStart": "set PORT=3006 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "res:build": "rescript build -with-deps",
-    "res:start": "rescript build -w"
+    "res:dev": "rescript build -w"
   },
   "eslintConfig": {
     "extends": "react-app"
