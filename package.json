@@ -6,7 +6,9 @@
     "@rescript/react": "^0.11.0",
     "@types/react": "^18.0.25",
     "concurrently": "^7.6.0",
+    "daisyui": "^2.51.5",
     "dropbox": "^4.0.30",
+    "i": "^0.3.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-horizontal-scrolling-menu": "^3.2.3",
@@ -36,6 +38,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "reanalyze": "^2.23.0"
+    "reanalyze": "^2.23.0",
+    "tailwindcss": "^3.2.7"
   }
 }
