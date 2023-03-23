@@ -63,7 +63,9 @@ module CV = {
 		}
  		let yearGroups = cv->reduce(groupByYear, Js.Dict.empty())
 		let result = Js.Dict.entries(yearGroups)
-			->map(data => <YearGroup data />)
+			->map(data => {
+				let (key, _) = data
+				<YearGroup data key /> })
 			->reverseInPlace
 			->React.array
 

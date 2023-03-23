@@ -51,7 +51,8 @@ function Bio$CV(Props) {
   var yearGroups = cv.reduce(groupByYear, {});
   var result = Js_dict.entries(yearGroups).map(function (data) {
           return React.createElement(Bio$YearGroup, {
-                      data: data
+                      data: data,
+                      key: data[0]
                     });
         }).reverse();
   return React.createElement(React.Fragment, undefined, result, React.createElement("br", undefined), React.createElement("br", undefined));
