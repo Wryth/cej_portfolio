@@ -1,6 +1,5 @@
 %%raw(`
 import './Main.css';
-import MyHeader from '../header/MyHeader.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
 import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } from "./fetchDropBoxFiles";
 `)
@@ -8,6 +7,7 @@ import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } 
 open Downloads
 open Bio
 open Home
+open MyHeader
 
 let fetch_slider_pics = async (setSilderPics) => {
     let slider_pics = await %raw(`fetch_slider_pics2()`)
@@ -66,8 +66,8 @@ module Main = {
         });
 
     <div className="mainContainer">
-        %raw(`<MyHeader />`)
-        <div id="contentBox">
+        <MyHeader />
+        <div id="contentBox" className="">
         { switch url.path {
             | list{""} => <Home igImg={homepic} key={homepic} />
             | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)

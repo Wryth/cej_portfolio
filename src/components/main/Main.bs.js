@@ -4,12 +4,12 @@ import * as Bio from "../bio/Bio.bs.js";
 import * as Home from "../instagram/Home.bs.js";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
+import * as MyHeader from "../header/MyHeader.bs.js";
 import * as Downloads from "../downloads/Downloads.bs.js";
 import * as Pervasives from "rescript/lib/es6/pervasives.js";
 import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.bs.js";
 
 import './Main.css';
-import MyHeader from '../header/MyHeader.jsx';
 import SimpleSlider from "../slider/SimpleSlider";
 import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } from "./fetchDropBoxFiles";
 ;
@@ -135,7 +135,8 @@ function Main$Main(Props) {
   }
   return React.createElement("div", {
               className: "mainContainer"
-            }, (<MyHeader />), React.createElement("div", {
+            }, React.createElement(MyHeader.MyHeader.make, {}), React.createElement("div", {
+                  className: "",
                   id: "contentBox"
                 }, tmp));
 }
