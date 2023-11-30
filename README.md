@@ -7,7 +7,7 @@ The website is design by [Chris Petter Spilde](http://www.chrispetterspilde.com/
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),  
 React,  
 JavaScript,
-ReScript,   
+ReScript,
 Node,  
 Dropbox API.  
 
