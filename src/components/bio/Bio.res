@@ -34,7 +34,7 @@ module YearGroup = {
 		let (a, b) = data
 
 		let result = b
-			->Js.Array2.map(data => {<Exhibition data />})
+			->Array.map(data => {<Exhibition data />})
 			->React.array
 
 		<>
@@ -53,20 +53,20 @@ module YearGroup = {
 module CV = {
 	@react.component
 	let make = (~cv: array<exhibitionData>) => {
-		open Js.Array2
+		//open Js.Array2
 
 		let groupByYear = (agg, id) => {
- 			switch agg->Js.Dict.keys->includes(id.year) {
- 			| true => agg->Js.Dict.set(id.year, agg->Js.Dict.unsafeGet(id.year)->concat([id])); agg
- 			| false => agg->Js.Dict.set(id.year, [id]); agg
+ 			switch agg->Dict.keysToArray->Array.includes(id.year) {
+ 			| true => agg->Dict.set(id.year, agg->Js.Dict.unsafeGet(id.year)->Array.concat([id])); agg
+ 			| false => agg->Dict.set(id.year, [id]); agg
  			}
 		}
- 		let yearGroups = cv->reduce(groupByYear, Js.Dict.empty())
+ 		let yearGroups = cv->Array.reduce(Dict.make(), groupByYear)
 		let result = Js.Dict.entries(yearGroups)
-			->map(data => {
+			->Array.map(data => {
 				let (key, _) = data
 				<YearGroup data key /> })
-			->reverseInPlace
+			->Array.toReversed
 			->React.array
 
 		<>

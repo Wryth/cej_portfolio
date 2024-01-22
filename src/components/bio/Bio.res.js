@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as Js_dict from "rescript/lib/es6/js_dict.js";
+import * as Core__Array from "@rescript/core/src/Core__Array.res.js";
 
 import './Bio.css';
 ;
@@ -48,13 +49,13 @@ function Bio$CV(Props) {
       return agg;
     }
   };
-  var yearGroups = cv.reduce(groupByYear, {});
+  var yearGroups = Core__Array.reduce(cv, {}, groupByYear);
   var result = Js_dict.entries(yearGroups).map(function (data) {
           return React.createElement(Bio$YearGroup, {
                       data: data,
                       key: data[0]
                     });
-        }).reverse();
+        }).toReversed();
   return React.createElement(React.Fragment, undefined, result, React.createElement("br", undefined), React.createElement("br", undefined));
 }
 
