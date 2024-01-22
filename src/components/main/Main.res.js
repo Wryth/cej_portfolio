@@ -81,7 +81,7 @@ function Main$Main(Props) {
           fetch_pdf_file(setPdfFile);
         }), []);
   var match$4 = url.path;
-  var tmp;
+  var content;
   var exit = 0;
   if (match$4) {
     switch (match$4.hd) {
@@ -89,7 +89,7 @@ function Main$Main(Props) {
           if (match$4.tl) {
             exit = 1;
           } else {
-            tmp = React.createElement(Home.Home.make, {
+            content = React.createElement(Home.Home.make, {
                   igImg: homepic,
                   key: homepic
                 });
@@ -99,14 +99,14 @@ function Main$Main(Props) {
           if (match$4.tl) {
             exit = 1;
           } else {
-            tmp = (<SimpleSlider dbImgs={dbImgs} />);
+            content = (<SimpleSlider dbImgs={dbImgs} />);
           }
           break;
       case "bio" :
           if (match$4.tl) {
             exit = 1;
           } else {
-            tmp = React.createElement(Bio.Bio.make, {
+            content = React.createElement(Bio.Bio.make, {
                   cv: match$2[0]
                 });
           }
@@ -115,7 +115,7 @@ function Main$Main(Props) {
           if (match$4.tl) {
             exit = 1;
           } else {
-            tmp = React.createElement(Downloads.Downloads.make, {
+            content = React.createElement(Downloads.Downloads.make, {
                   pdf: match$3[0]
                 });
           }
@@ -127,7 +127,7 @@ function Main$Main(Props) {
     exit = 1;
   }
   if (exit === 1) {
-    tmp = React.createElement(Home.Home.make, {
+    content = React.createElement(Home.Home.make, {
           igImg: homepic,
           key: homepic
         });
@@ -137,7 +137,7 @@ function Main$Main(Props) {
             }, React.createElement(MyHeader.MyHeader.make, {}), React.createElement("div", {
                   className: "",
                   id: "contentBox"
-                }, tmp));
+                }, content));
 }
 
 var Main = {

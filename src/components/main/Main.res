@@ -9,76 +9,75 @@ open Bio
 open Home
 open MyHeader
 
-let fetch_slider_pics = async (setSilderPics) => {
-    let slider_pics = await %raw(`fetch_slider_pics2()`)
-    setSilderPics(_ => slider_pics)
-} 
-
-let fetch_home_pic = async (setHomePic) => {
-    let pic = await %raw(`fetch_home_pic2()`)
-    setHomePic(_ => pic)
+let fetch_slider_pics = async setSilderPics => {
+  let slider_pics = await %raw(`fetch_slider_pics2()`)
+  setSilderPics(_ => slider_pics)
 }
 
-let fetch_pdf_file = (setPdfFile) => {
-    let pdfFile = %raw(`fetch_pdf_file2()`)
-    setPdfFile(_ => pdfFile)
+let fetch_home_pic = async setHomePic => {
+  let pic = await %raw(`fetch_home_pic2()`)
+  setHomePic(_ => pic)
+}
+
+let fetch_pdf_file = setPdfFile => {
+  let pdfFile = %raw(`fetch_pdf_file2()`)
+  setPdfFile(_ => pdfFile)
 }
 
 // bind to JS' JSON.parse
 @scope("JSON") @val
 external parseIntoMyData: string => array<exhibitionData> = "parse"
 
-let fetch_cv_file = async (setCvFile) => {
-    let cvFile = await %raw(`fetch_cv_file2()`)
+let fetch_cv_file = async setCvFile => {
+  let cvFile = await %raw(`fetch_cv_file2()`)
 
-    let jsonFile = Js.Json.stringifyAny(cvFile)
-    let json = switch jsonFile {
-        | Some(x) => x
-        | None => failwith("Failed to fetch json")
-        }
+  let jsonFile = Js.Json.stringifyAny(cvFile)
+  let json = switch jsonFile {
+  | Some(x) => x
+  | None => failwith("Failed to fetch json")
+  }
 
-    let result = parseIntoMyData(json)
-    setCvFile(_ => result)
+  let result = parseIntoMyData(json)
+  setCvFile(_ => result)
 }
 
 module Main = {
-    open React
+  open React
 
-    @react.component
-    let make = () => {
-        let init = [{ year: "", title: "", description: "", location: "", city: "", country: ""}]
+  @react.component
+  let make = () => {
+    let init = [{year: "", title: "", description: "", location: "", city: "", country: ""}]
 
-        let url = RescriptReactRouter.useUrl()
-        let (homepic, setHomePic) = useState(_ => "")
-        let (dbImgs, setdbImgs) = useState(_ => [])
-        let (cv, setCv) = useState(_ => init)
-        let (pdf, setPdfFile) = useState(_ => "")
+    let url = RescriptReactRouter.useUrl()
+    let (homepic, setHomePic) = useState(_ => "")
+    let (dbImgs, setdbImgs) = useState(_ => [])
+    let (cv, setCv) = useState(_ => init)
+    let (pdf, setPdfFile) = useState(_ => "")
 
-        useEffect0(() => {
-            Js.log(`${homepic}`)
-            fetch_home_pic(setHomePic) -> ignore
-            Js.log(`${Js.Array.toString(dbImgs)}`)
-            fetch_slider_pics(setdbImgs) -> ignore
-            fetch_cv_file(setCv) -> ignore
-            fetch_pdf_file(setPdfFile) -> ignore
+    useEffect0(() => {
+      Js.log(`${homepic}`)
+      fetch_home_pic(setHomePic)->ignore
+      Js.log(`${Js.Array.toString(dbImgs)}`)
+      fetch_slider_pics(setdbImgs)->ignore
+      fetch_cv_file(setCv)->ignore
+      fetch_pdf_file(setPdfFile)->ignore
 
-            None
-        });
+      None
+    })
+
+    let content = switch url.path {
+    | list{""} => <Home igImg={homepic} key={homepic} />
+    | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)
+    | list{"bio"} => <Bio cv />
+    | list{"downloads"} => <Downloads pdf />
+    | _ => <Home igImg={homepic} key={homepic} />
+    }
 
     <div className="mainContainer">
-        <MyHeader />
-        <div id="contentBox" className="">
-        { switch url.path {
-            | list{""} => <Home igImg={homepic} key={homepic} />
-            | list{"archive"} => %raw(`<SimpleSlider dbImgs={dbImgs} />`)
-            | list{"bio"} => <Bio cv/>
-            | list{"downloads"} => <Downloads pdf />
-            | _ => <Home igImg={homepic} key={homepic} />
-        }
-        }
-        </div>
+      <MyHeader />
+      <div id="contentBox" className=""> {content} </div>
     </div>
-    }
+  }
 }
 
 //let handle_error = (error) => {
@@ -94,7 +93,7 @@ module Main = {
 
 //type metadata = {
 //    client_modified: string,
-//    content_hash: string, 
+//    content_hash: string,
 //    id: string,
 //    is_downloadable: bool,
 //    name: string,
@@ -107,5 +106,5 @@ module Main = {
 //
 //type imgData = {
 //    link: string,
-//    metadata: metadata 
+//    metadata: metadata
 //}
