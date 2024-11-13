@@ -10,7 +10,6 @@ function Home$Home(Props) {
   return React.createElement("div", {
               id: "igContainer"
             }, React.createElement("img", {
-                  className: "fade-in",
                   id: "igSource",
                   alt: "",
                   src: igImg
