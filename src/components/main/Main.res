@@ -1,7 +1,7 @@
 %%raw(`
 import './Main.css';
 import SimpleSlider from "../slider/SimpleSlider";
-import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } from "./fetchDropBoxFiles";
+import { fetch_slider_pics_js, fetch_home_pic_js, fetch_cv_file_js, fetch_pdf_file_js } from "./fetchDropBoxFiles";
 `)
 
 open Downloads
@@ -10,17 +10,17 @@ open Home
 open MyHeader
 
 let fetch_slider_pics = async setSilderPics => {
-  let slider_pics = await %raw(`fetch_slider_pics2()`)
+  let slider_pics = await %raw(`fetch_slider_pics_js()`)
   setSilderPics(_ => slider_pics)
 }
 
 let fetch_home_pic = async setHomePic => {
-  let pic = await %raw(`fetch_home_pic2()`)
+  let pic = await %raw(`fetch_home_pic_js()`)
   setHomePic(_ => pic)
 }
 
 let fetch_pdf_file = setPdfFile => {
-  let pdfFile = %raw(`fetch_pdf_file2()`)
+  let pdfFile = %raw(`fetch_pdf_file_js()`)
   setPdfFile(_ => pdfFile)
 }
 
@@ -29,7 +29,7 @@ let fetch_pdf_file = setPdfFile => {
 external parseIntoMyData: string => array<exhibitionData> = "parse"
 
 let fetch_cv_file = async setCvFile => {
-  let cvFile = await %raw(`fetch_cv_file2()`)
+  let cvFile = await %raw(`fetch_cv_file_js()`)
 
   let jsonFile = Js.Json.stringifyAny(cvFile)
   let json = switch jsonFile {

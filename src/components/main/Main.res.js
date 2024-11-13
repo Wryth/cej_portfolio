@@ -10,32 +10,32 @@ import * as RescriptReactRouter from "@rescript/react/src/RescriptReactRouter.re
 
 import './Main.css';
 import SimpleSlider from "../slider/SimpleSlider";
-import { fetch_slider_pics2, fetch_home_pic2, fetch_cv_file2, fetch_pdf_file2 } from "./fetchDropBoxFiles";
+import { fetch_slider_pics_js, fetch_home_pic_js, fetch_cv_file_js, fetch_pdf_file_js } from "./fetchDropBoxFiles";
 ;
 
 async function fetch_slider_pics(setSilderPics) {
-  var slider_pics = await (fetch_slider_pics2());
+  var slider_pics = await (fetch_slider_pics_js());
   return setSilderPics(function (param) {
               return slider_pics;
             });
 }
 
 async function fetch_home_pic(setHomePic) {
-  var pic = await (fetch_home_pic2());
+  var pic = await (fetch_home_pic_js());
   return setHomePic(function (param) {
               return pic;
             });
 }
 
 function fetch_pdf_file(setPdfFile) {
-  var pdfFile = (fetch_pdf_file2());
+  var pdfFile = (fetch_pdf_file_js());
   return setPdfFile(function (param) {
               return pdfFile;
             });
 }
 
 async function fetch_cv_file(setCvFile) {
-  var cvFile = await (fetch_cv_file2());
+  var cvFile = await (fetch_cv_file_js());
   var jsonFile = JSON.stringify(cvFile);
   var json = jsonFile !== undefined ? jsonFile : PervasivesU.failwith("Failed to fetch json");
   var result = JSON.parse(json);

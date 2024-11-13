@@ -4,68 +4,72 @@ function importAll(r) {
     return r.keys().map(r);
 }
 
-const fetch_slider_pics2 = () => {
+
+const fetch_slider_pics_links = async (res) => {
+    return Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+        .filesGetTemporaryLink({ path: x })))
+        .then((result) => {
+            return result
+        })
+        .catch(() => {
+            const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
+            const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
+            console.log("Failed to get slider links");
+            return list2
+        });
+}
+
+const fetch_slider_pics = async () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
-        .filesListFolder({path: '/slider'})
+        .filesListFolder({ path: '/slider' })
         .then(res => res.entries
             .map(x => x.path_lower)
             .sort()
             .reverse())
-        .then(async (res) => {
-            return Promise.all(res.map(x => new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
-                .filesGetTemporaryLink({ path: x })))
-                .then((result) => {
-
-                return result
-                })
-                .catch((error) => {
-                    const pubimages = importAll(require.context('../../../public/foto/carousel', false, /\.(png|jpe?g|svg)$/));
-                    const list2 = pubimages.map(x => x.split("/")[3].split(".")[0]);
-                    console.error(error);
-                    return list2
-                });
-        })
-        .catch((error) => {
-            console.error(error);
+        .then(fetch_slider_pics_links)
+        .catch(() => {
+            console.log("Failed to find slider folder");
         })
 }
 
-const fetch_home_pic2 = () => {
+const fetch_home_pic_link = async (res) => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
-        .filesListFolder({path: '/home'})
+        .filesGetTemporaryLink({ path: res[0] })
+        .then(result => result.link)
+        .catch(() => {
+            console.log("Failed to get home pic link");
+            return 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l'
+        });
+}
+
+const fetch_home_pic = async () => {
+    return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+        .filesListFolder({ path: '/home' })
         .then(res => res.entries.map(x => x.path_lower))
-        .then(async (res) => {
-                return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
-                    .filesGetTemporaryLink({ path: res[0] })
-                    .then(result => result.link)
-                    .catch((error) => {
-                        console.error(error);
-                        return 'https://www.instagram.com/p/B2OYGi-BfVG/media/?size=l'
-                    });
-            }
-        )
-        .catch((error) => {
-            console.error(error);
+        .then(fetch_home_pic_link)
+        .catch(() => {
+            console.log("Failed to find home folder");
         })
 }
 
-const fetch_temporary_link = async (path) => {
+const fetch_cv_link = async (path) => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesGetTemporaryLink({ path: path[0] })
         .then(result => result.link)
         .catch((error) => {
             console.error(error);
+            console.log("Failed to get cv link");
             return ''
         });
 }
 
-const fetch_cv_file2 = () => {
+const fetch_cv_file = async () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
-        .filesListFolder({path: '/cv'})
+        .filesListFolder({ path: '/cv' })
         .then(res => res.entries.map(x => x.path_lower))
-        .then(fetch_temporary_link)
-        .catch(error => {
-            console.error(error)
+        .then(fetch_cv_link)
+        .catch(_ => {
+            console.log("Failed to find cv folder");
             console.log("Getting local file");
             const json = importAll(require.context('../../../public/', false, /\.(json)$/));
 
@@ -74,8 +78,7 @@ const fetch_cv_file2 = () => {
         })
 }
 
-const fetch_pdf_file2 = () => {
-
+const fetch_pdf_file = () => {
     console.log("Getting local file");
     const json = importAll(require.context('../../../public/', false, /\.(pdf)$/));
 
@@ -84,8 +87,8 @@ const fetch_pdf_file2 = () => {
 }
 
 export {
-    fetch_slider_pics2,
-    fetch_home_pic2,
-    fetch_cv_file2,
-    fetch_pdf_file2
+    fetch_slider_pics as fetch_slider_pics_js,
+    fetch_home_pic as fetch_home_pic_js,
+    fetch_cv_file as fetch_cv_file_js,
+    fetch_pdf_file as fetch_pdf_file_js
 }
