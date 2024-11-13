@@ -1,5 +1,5 @@
 %%raw(`
-import './InstagramDisplay.css';
+import './Home.css';
 `)
 
 module Home = {

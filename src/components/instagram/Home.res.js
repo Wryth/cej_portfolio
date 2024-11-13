@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-import './InstagramDisplay.css';
+import './Home.css';
 ;
 
 function Home$Home(Props) {
@@ -10,6 +10,7 @@ function Home$Home(Props) {
   return React.createElement("div", {
               id: "igContainer"
             }, React.createElement("img", {
+                  className: "fade-in",
                   id: "igSource",
                   alt: "",
                   src: igImg
