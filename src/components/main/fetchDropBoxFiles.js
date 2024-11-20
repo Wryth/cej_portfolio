@@ -68,7 +68,7 @@ const fetch_cv_link = async (path) => {
         .catch(() => {
             console.log("Failed to read cv link");
         });
-    }
+}
 
 const fetch_cv_file = async () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
@@ -85,12 +85,41 @@ const fetch_cv_file = async () => {
         })
 }
 
-const fetch_pdf_file = () => {
-    console.log("Getting local file");
-    const json = importAll(require.context('../../../public/', false, /\.(pdf)$/));
+const fetch_pdf = async (path) => {
+    const response = await fetch(path);
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    //return response.blob();
+    return response;
+}
 
-    console.log(json[0])
-    return json[0]
+
+const fetch_pdf_link = async (path) => {
+    return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+        .filesGetTemporaryLink({ path: path[0] })
+        .then(result => result.link)
+        .then(x => {
+            console.log(x)
+            return x
+        })
+        //.then(fetch_pdf)
+        .catch(() => {
+            console.log("Failed to read pdf link");
+        });
+}
+
+const fetch_pdf_file = async () => {
+    return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
+        .filesListFolder({ path: '/pdf' })
+        .then(res => res.entries.map(x => x.path_lower))
+        .then(fetch_pdf_link)
+        .catch(() => {
+            console.log("Failed to find pdf folder");
+            console.log("Getting local file");
+            const pdf = importAll(require.context('../../../public/', false, /\.(pdf)$/));
+            return pdf
+        });
 }
 
 export {

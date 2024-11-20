@@ -27,8 +27,8 @@ async function fetch_home_pic(setHomePic) {
             });
 }
 
-function fetch_pdf_file(setPdfFile) {
-  var pdfFile = (fetch_pdf_file_js());
+async function fetch_pdf_file(setPdfFile) {
+  var pdfFile = await (fetch_pdf_file_js());
   return setPdfFile(function (param) {
               return pdfFile;
             });

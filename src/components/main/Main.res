@@ -19,8 +19,8 @@ let fetch_home_pic = async setHomePic => {
   setHomePic(_ => pic)
 }
 
-let fetch_pdf_file = setPdfFile => {
-  let pdfFile = %raw(`fetch_pdf_file_js()`)
+let fetch_pdf_file = async setPdfFile => {
+  let pdfFile = await %raw(`fetch_pdf_file_js()`)
   setPdfFile(_ => pdfFile)
 }
 
