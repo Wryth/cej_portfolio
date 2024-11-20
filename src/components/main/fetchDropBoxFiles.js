@@ -26,7 +26,6 @@ const fetch_slider_pics = async () => {
             .map(x => x.path_lower)
             .sort()
             .reverse())
-        .then(printx)
         .then(fetch_slider_pics_links)
         .catch(() => {
             console.log("Failed to find slider folder");
@@ -65,29 +64,16 @@ const fetch_cv_link = async (path) => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesGetTemporaryLink({ path: path[0] })
         .then(result => result.link)
-        .then(printx)
-        .then(async (response) => {
-            try {
-                return await fetch_json(response);
-            } catch (error) {
-                console.error(error);
-                console.log("Failed to get cv link");
-                return '';
-            }
-        })
-}
-
-const printx = (x) => {
-    console.log("Found files:")
-    console.log(x)
-    return x
-}
+        .then(fetch_json)
+        .catch(() => {
+            console.log("Failed to read cv link");
+        });
+    }
 
 const fetch_cv_file = async () => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesListFolder({ path: '/cv' })
         .then(res => res.entries.map(x => x.path_lower))
-        .then(printx)
         .then(fetch_cv_link)
         .catch(_ => {
             console.log("Failed to find cv folder");
