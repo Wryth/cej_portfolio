@@ -7,7 +7,7 @@ module Home = {
 	let make = (~igImg) => {
 
 		<div id="igContainer">
-			<img id="igSource" src={igImg} alt="" />
+			<img id="igSource" src={igImg} alt="home_image" />
 		</div>
 	}
 }

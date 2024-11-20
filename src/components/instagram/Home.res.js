@@ -11,7 +11,7 @@ function Home$Home(Props) {
               id: "igContainer"
             }, React.createElement("img", {
                   id: "igSource",
-                  alt: "",
+                  alt: "home_picture",
                   src: igImg
                 }));
 }

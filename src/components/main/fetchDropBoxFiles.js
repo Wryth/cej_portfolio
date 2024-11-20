@@ -85,16 +85,6 @@ const fetch_cv_file = async () => {
         })
 }
 
-const fetch_pdf = async (path) => {
-    const response = await fetch(path);
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    //return response.blob();
-    return response;
-}
-
-
 const fetch_pdf_link = async (path) => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesGetTemporaryLink({ path: path[0] })
@@ -103,7 +93,6 @@ const fetch_pdf_link = async (path) => {
             console.log(x)
             return x
         })
-        //.then(fetch_pdf)
         .catch(() => {
             console.log("Failed to read pdf link");
         });
