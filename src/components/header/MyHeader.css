@@ -8,6 +8,9 @@
 }
 
 .MyHeaderContainer{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
     background-color: white;
     width: 100%;
     position: sticky;
@@ -21,6 +24,7 @@
 .contactText{
     margin: 0;
     margin-left: 18px;
+    
 }
 
 .contactTextLines{
@@ -54,5 +58,10 @@
         margin-bottom: 20px;
         margin-left: 0px;
         margin-top: 15px;
+    }
+
+    .MyHeaderContainer{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
     }
 }

@@ -24,9 +24,7 @@ var Contact = {
 function MyHeader$MyHeader(Props) {
   return React.createElement("div", {
               className: "MyHeaderContainer"
-            }, React.createElement("div", {
-                  id: "headerMenu"
-                }, React.createElement(MyMenu.Menu.make, {})), React.createElement(MyHeader$Contact, {}));
+            }, React.createElement(MyMenu.Menu.make, {}), React.createElement(MyHeader$Contact, {}));
 }
 
 var MyHeader = {

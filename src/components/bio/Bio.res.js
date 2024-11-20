@@ -64,7 +64,7 @@ var CV = {
 };
 
 const onXclick = () => {
-			document.getElementById('headerMenu').scrollIntoView();
+			document.getElementById('name').scrollIntoView();
 		};
 ;
 

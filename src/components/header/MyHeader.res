@@ -3,11 +3,10 @@ import './MyHeader.css';
 `)
 
 module Contact = {
-	@react.component
-	let make = () => {
-
-		<>
-		%raw(`
+  @react.component
+  let make = () => {
+    <>
+      %raw(`
         <div className="contactText">
         <pre className="smallText">
             <a className="emailLink contactTextLines" href="mailto:carlemiljacobsen@gmail.com">
@@ -17,21 +16,18 @@ module Contact = {
             <pre className="contactTextLines smallText">Phone    +45 31701698</pre>
         </div>
 		`)
-		</>
-	}
-
+    </>
+  }
 }
 
 module MyHeader = {
-	open MyMenu
+  open MyMenu
 
- 	@react.component
-	let make = () => {
-		<div className="MyHeaderContainer">
-			<div id="headerMenu">
-				<Menu />
-			</div>
-			<Contact />
-		</div>
-	}
+  @react.component
+  let make = () => {
+    <div className="MyHeaderContainer">
+      <Menu />
+      <Contact />
+    </div>
+  }
 }

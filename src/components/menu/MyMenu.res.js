@@ -7,45 +7,39 @@ import './MyMenu.css';
 ;
 
 function MyMenu$Menu(Props) {
-  return React.createElement("div", {
-              id: "menuContainer"
-            }, React.createElement("div", {
-                  className: "menuOptions"
+  return React.createElement(React.Fragment, undefined, React.createElement("button", {
+                  className: "menuOption",
+                  id: "name",
+                  onClick: (function (param) {
+                      RescriptReactRouter.push("/");
+                    })
+                }, "CARL EMIL JACOBSEN"), React.createElement("div", {
+                  className: "innerMenu"
                 }, React.createElement("button", {
                       className: "menuOption",
-                      id: "name",
+                      id: "menuArchive",
                       onClick: (function (param) {
-                          RescriptReactRouter.push("/");
+                          RescriptReactRouter.push("/archive");
                         })
-                    }, "CARL EMIL JACOBSEN"), React.createElement("a", {
+                    }, "Selected works"), React.createElement("button", {
                       className: "menuOption",
-                      id: "igLink",
-                      href: "https://www.instagram.com/carlemiljacobsen/",
-                      rel: "noopener noreferrer",
-                      target: "_blank"
-                    }, "Instagram"), React.createElement("div", {
-                      className: "innerMenu"
-                    }, React.createElement("div", {
-                          className: "innerContainer"
-                        }, React.createElement("button", {
-                              className: "menuOption",
-                              id: "menuArchive",
-                              onClick: (function (param) {
-                                  RescriptReactRouter.push("/archive");
-                                })
-                            }, "Selected works"), React.createElement("button", {
-                              className: "menuOption",
-                              id: "menuBio",
-                              onClick: (function (param) {
-                                  RescriptReactRouter.push("/bio");
-                                })
-                            }, "CV"), React.createElement("button", {
-                              className: "menuOption",
-                              id: "menuDownloads",
-                              onClick: (function (param) {
-                                  RescriptReactRouter.push("/downloads");
-                                })
-                            }, "Download")))));
+                      id: "menuBio",
+                      onClick: (function (param) {
+                          RescriptReactRouter.push("/bio");
+                        })
+                    }, "CV"), React.createElement("button", {
+                      className: "menuOption",
+                      id: "menuDownloads",
+                      onClick: (function (param) {
+                          RescriptReactRouter.push("/downloads");
+                        })
+                    }, "Download")), React.createElement("a", {
+                  className: "menuOption",
+                  id: "igLink",
+                  href: "https://www.instagram.com/carlemiljacobsen/",
+                  rel: "noopener noreferrer",
+                  target: "_blank"
+                }, "Instagram"));
 }
 
 var Menu = {
