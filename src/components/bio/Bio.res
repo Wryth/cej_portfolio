@@ -53,7 +53,6 @@ module YearGroup = {
 module CV = {
 	@react.component
 	let make = (~cv: array<exhibitionData>) => {
-		//open Js.Array2
 
 		let groupByYear = (agg, id) => {
  			switch agg->Dict.keysToArray->Array.includes(id.year) {
