@@ -9,22 +9,19 @@ module Menu = {
       </button>
       <div className="innerMenu">
           <button
-            id="menuArchive"
             className="menuOption"
-            // activeClassName="active"
+            id="menuArchive"
             onClick={_ => RescriptReactRouter.push("/archive")}>
             {React.string("Selected works")}
           </button>
           <button
             className="menuOption"
-            // activeClassName="active"
             id="menuBio"
             onClick={_ => RescriptReactRouter.push("/bio")}>
             {React.string("CV")}
           </button>
           <button
             className="menuOption"
-            // activeClassName="active"
             id="menuDownloads"
             onClick={_ => RescriptReactRouter.push("/downloads")}>
             {React.string("Download")}

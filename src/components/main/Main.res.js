@@ -73,7 +73,6 @@ function Main$Main(Props) {
       });
   var setPdfFile = match$3[1];
   React.useEffect((function () {
-          console.log(homepic);
           fetch_home_pic(setHomePic);
           console.log(dbImgs.toString());
           fetch_slider_pics(setdbImgs);

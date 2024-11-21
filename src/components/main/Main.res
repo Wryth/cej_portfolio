@@ -55,7 +55,6 @@ module Main = {
     let (pdf, setPdfFile) = useState(_ => "")
 
     useEffect0(() => {
-      Js.log(`${homepic}`)
       fetch_home_pic(setHomePic)->ignore
       Js.log(`${Js.Array.toString(dbImgs)}`)
       fetch_slider_pics(setdbImgs)->ignore

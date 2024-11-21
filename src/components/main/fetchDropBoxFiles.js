@@ -89,10 +89,6 @@ const fetch_pdf_link = async (path) => {
     return new Dropbox.Dropbox({ fetch: fetch, accessToken: process.env.REACT_APP_DBX_TOKEN })
         .filesGetTemporaryLink({ path: path[0] })
         .then(result => result.link)
-        .then(x => {
-            console.log(x)
-            return x
-        })
         .catch(() => {
             console.log("Failed to read pdf link");
         });
