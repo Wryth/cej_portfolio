@@ -24,7 +24,6 @@
 .contactText{
     margin: 0;
     margin-left: 18px;
-    
 }
 
 .contactTextLines{
@@ -36,28 +35,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.emailLink{
-    width: 420px;
-}
-
 .emailLink:hover{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-
 @media (max-width:768px), (max-height:500px) {
-    #headerMenu{
-        height: 15px;
-    }
-
-    .emailLink{
-        width: 165px;
-    }
-
     .contactText{
-        margin-bottom: 20px;
         margin-left: 0px;
-        margin-top: 15px;
     }
 
     .MyHeaderContainer{
