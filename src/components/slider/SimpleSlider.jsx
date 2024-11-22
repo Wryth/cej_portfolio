@@ -99,7 +99,7 @@ class SimpleSlider extends React.Component {
     const classes = this.state.loading ? 'basket hide' : 'basket';
     let slidesInFrame = 1.68; // On screen
     let scrollSpeed = 1500;
-    if(window.matchMedia("(max-width: 1050px)").matches) {
+    if(window.matchMedia("(max-width: 768px)").matches) {
       slidesInFrame = 1; // on phone tablet
       scrollSpeed = 500;
     }

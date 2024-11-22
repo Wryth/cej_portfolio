@@ -72,7 +72,7 @@
 }
 
 
-@media (min-height:500px) {
+@media (min-height:768px) {
     .slick-slider.slick-initialized {
         top: 60%;
         -ms-transform: translateY(-50%);
@@ -80,7 +80,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
     .slick-slider.slick-initialized {
         height: 30%;
         top: 40%;

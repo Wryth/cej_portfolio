@@ -42,7 +42,7 @@
     opacity: 0;
 }
 
-@media (max-width:500px), (max-height:500px) {
+@media (max-width:768px), (max-height:500px) {
     .bioHeader{
         margin-bottom: 20px;
     }
