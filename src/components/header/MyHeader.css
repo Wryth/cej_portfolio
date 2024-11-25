@@ -39,7 +39,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-@media (max-width:768px), (max-height:500px) {
+@media (max-width:768px) {
     .contactText{
         margin-left: 0px;
     }
