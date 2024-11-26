@@ -1,41 +1,41 @@
 #bioContainer {
-  position: relative;
-  flex: 1;
-  width: 60%;
-  left: 20%;
-  text-align: center;
-  background-color: lightblue;
+    position: relative;
+    flex: 1;
+    width: 60%;
+    left: 20%;
+    text-align: center;
+    background-color: lightblue;
 }
 
 .bioText {
     text-align: left;
 }
 
-.bioText{
+.bioText {
     margin: 0 0 55px;
     -webkit-hyphens: manual;
     -ms-hyphens: manual;
     hyphens: manual;
 }
 
-.bioHeader{
+.bioHeader {
     margin: 0 0 55px;
     text-align: center;
 }
 
-.bioYear{
+.bioYear {
     margin: 0 0 3px;
 }
 
-.exhibitionInfo{
+.exhibitionInfo {
     margin: 0;
 }
 
-.textEnd{
+.textEnd {
     margin-bottom: 90px;
 }
 
-.xEnd{
+.xEnd {
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 37px;
 }
@@ -43,30 +43,27 @@
 .basket {
     transition: opacity 2.5s;
     opacity: 1;
-  }
+}
 
 .basket.hide {
     opacity: 0;
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
     #bioContainer {
-        width: 100%;
-        left: 0;
+        width: 92%;
+        left: 4%;
     }
 
-    .bioHeader{
+    .bioHeader {
         margin-bottom: 20px;
     }
 
-    .textEnd{
+    .textEnd {
         margin-bottom: 30px;
     }
 
     .bioText {
         margin-bottom: 30px;
-    }
-
-    .exhibitionInfo {
     }
 }
