@@ -1,32 +1,33 @@
-.active{
+.active {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /*the text above pictures should not change font */
-.menu-item-wrapper.active{
+.menu-item-wrapper.active {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.MyHeaderContainer{
+.MyHeaderContainer {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: repeat(2, 1fr);
     background-color: white;
-    width: 100%;
     position: sticky;
+    width: 95%;
+    left: 2.5%;
 }
 
-#headerMenu{
+#headerMenu {
     height: 50px;
     width: 100%;
 }
 
-.contactText{
+.contactText {
     margin: 0;
     margin-left: 18px;
 }
 
-.contactTextLines{
+.contactTextLines {
     width: 100%;
     font-size: 1.125rem;
     line-height: 1.542rem;
@@ -35,16 +36,16 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.emailLink:hover{
+.emailLink:hover {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 @media (max-width:768px) {
-    .contactText{
+    .contactText {
         margin-left: 0px;
     }
 
-    .MyHeaderContainer{
+    .MyHeaderContainer {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }

@@ -74,7 +74,7 @@ module Main = {
 
     <div className="mainContainer">
       <MyHeader />
-      <div id="contentBox" className=""> {content} </div>
+      {content}
     </div>
   }
 }
