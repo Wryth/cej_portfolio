@@ -36,6 +36,12 @@
 }
 
 .slick-slider.slick-initialized {
+    max-height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     flex: 1;
     text-align: center;
     background-color: coral;
@@ -60,30 +66,21 @@
 
 .spinner {
     flex: 1;
+    text-align: center;
 }
 
 
 @media (min-height:768px) {
-    .slick-slider.slick-initialized {
-    }
 }
 
 @media (max-width: 768px) {
-    .slick-slider.slick-initialized {
-    }
-
     .pictureTitle {
         margin: 0;
         height: 100%;
         width: 100%;
         transform: translateY(0%);
         position: relative;
-        top: -2px;
     }
 }
 
-@media only screen and (orientation: landscape) {
-    .slick-slider {
-        top: 100px;
-    }
-}
+@media only screen and (orientation: landscape) {}

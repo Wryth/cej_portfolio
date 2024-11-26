@@ -59,7 +59,7 @@ class SimpleSlider extends React.Component {
       return null;
     }
     return (
-        <div className="bioHeader largeText spinner">LOADING ...</div>
+        <div className="largeText spinner">LOADING ...</div>
     );
   }
 
