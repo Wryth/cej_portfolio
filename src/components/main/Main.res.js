@@ -133,9 +133,7 @@ function Main$Main(Props) {
   }
   return React.createElement("div", {
               className: "mainContainer"
-            }, React.createElement(MyHeader.MyHeader.make, {}), React.createElement("div", {
-                  id: "contentBox"
-                }, content));
+            }, React.createElement(MyHeader.MyHeader.make, {}), content);
 }
 
 var Main = {

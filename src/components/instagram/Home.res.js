@@ -7,14 +7,10 @@ import './Home.css';
 
 function Home$Home(Props) {
   var igImg = Props.igImg;
-  var match = React.useState(function () {
-        return true;
-      });
   return React.createElement("div", {
               id: "igContainer"
             }, React.createElement("img", {
-                  className: match[0] ? "fade-in" : "",
-                  id: "igSource .fade-in",
+                  id: "igSource",
                   alt: "home_image",
                   src: igImg
                 }));

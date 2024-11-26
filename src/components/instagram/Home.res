@@ -6,7 +6,7 @@ module Home = {
 	@react.component
 	let make = (~igImg) => {
 		<div id="igContainer">
-			<img id="igSource .fade-in" src={igImg} alt="home_image" className={loading ? "fade-in" : ""} />
+			<img id="igSource" src={igImg} alt="home_image"/>
 		</div>
 	}
 }
