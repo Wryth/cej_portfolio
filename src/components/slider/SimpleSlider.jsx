@@ -117,12 +117,12 @@ class SimpleSlider extends React.Component {
     };
 
     return (
-      <Fragment>
+      <div id="cont">
         <Slider {...settings} ref={ slider => this.slider = slider } className={ classes }>
           { this.state.mode }
         </Slider>
         { this.renderSpinner() }
-      </Fragment>
+      </div>
     );
   }
 }
