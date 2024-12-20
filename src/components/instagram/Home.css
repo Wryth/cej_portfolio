@@ -16,3 +16,15 @@
     height: 80%;
     align-items: center;
 }
+
+.basket {
+    transition: opacity 2.5s;
+    opacity: 1;
+}
+
+.basket.hide {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}

@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./SimpleSlider.css";
 
-function imagesLoaded(parentNode) {
+function imagesLoaded() {
   const imgElements = [...document.querySelectorAll("img")];
   for (let i = 0; i < imgElements.length; i += 1) {
     const img = imgElements[i];
@@ -30,7 +30,7 @@ class SimpleSlider extends React.Component {
 
   handleStateChange = () => {
     this.setState({
-      loading: !imagesLoaded(this.slider),
+      loading: !imagesLoaded(),
     });
   };
 

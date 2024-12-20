@@ -7,9 +7,21 @@ import './Home.css';
 
 function Home$Home(Props) {
   var igImg = Props.igImg;
+  var match = React.useState(function () {
+        return true;
+      });
+  var setIsLoading = match[1];
+  React.useEffect((function () {
+          setTimeout((function () {
+                  setIsLoading(function (param) {
+                        return false;
+                      });
+                }), 2000);
+        }), []);
   return React.createElement("div", {
               id: "igContainer"
             }, React.createElement("img", {
+                  className: match[0] ? "basket hide" : "basket",
                   id: "igSource",
                   alt: "home_image",
                   src: igImg
