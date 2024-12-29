@@ -78,32 +78,3 @@ module Main = {
     </div>
   }
 }
-
-//let handle_error = (error) => {
-//    switch error {
-//    | Promise.JsError(obj) =>
-//        switch Js.Exn.message(obj) {
-//        | Some(msg) => Js.log("Some JS error msg: " ++ msg)
-//        | None => Js.log("Must be some non-error value")
-//        }
-//    | _ => Js.log("Some unknown error")
-//    }
-//}
-
-//type metadata = {
-//    client_modified: string,
-//    content_hash: string,
-//    id: string,
-//    is_downloadable: bool,
-//    name: string,
-//    path_display: string,
-//    path_lower: string,
-//    rev: string,
-//    server_modified: string,
-//    size: int
-//}
-//
-//type imgData = {
-//    link: string,
-//    metadata: metadata
-//}
