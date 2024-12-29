@@ -44,6 +44,8 @@
     color: black;
     font-weight: 500;
     min-height: 20px;
+    min-width: 150px; /* Fixed width */
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
 
@@ -80,7 +82,8 @@
         font-weight: 500;
         min-height: 20px;
         font-size: 0.583rem;
-        /* Ensure same size */
+        min-width: 150px; /* Fixed width */
+        box-sizing: border-box; /* Include padding and border in width */
     }
 
     #name {
