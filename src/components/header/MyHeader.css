@@ -25,6 +25,8 @@
 .contactText {
     margin: 0;
     margin-left: 18px;
+    min-width: 150px;
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
 .contactTextLines {
