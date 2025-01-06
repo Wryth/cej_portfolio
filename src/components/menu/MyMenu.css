@@ -43,8 +43,10 @@
     text-decoration: none;
     color: black;
     min-height: 20px;
-    min-width: 150px; /* Fixed width */
-    box-sizing: border-box; /* Include padding and border in width */
+    min-width: 150px;
+    /* Fixed width */
+    box-sizing: border-box;
+    /* Include padding and border in width */
 }
 
 
@@ -69,7 +71,8 @@
     justify-content: flex-end;
 }
 
-@media (max-width:768px), (max-height:500px) {
+@media (max-width:768px),
+(max-height: 500px) {
     .menuOption {
         margin: 0;
         padding: 0;
@@ -79,37 +82,42 @@
         color: black;
         min-height: 20px;
         font-size: 0.583rem;
-        min-width: 150px; /* Fixed width */
-        box-sizing: border-box; /* Include padding and border in width */
+        min-width: 150px;
+        /* Fixed width */
+        box-sizing: border-box;
+        /* Include padding and border in width */
     }
 
-    #name {
-        font-size: 0.8rem;
-        /* Ensure same size */
-        justify-content: center;
-    }
+    @media (orientation: portrait) {
 
-    #igLink {
-        margin-left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        #name {
+            font-size: 0.8rem;
+            /* Ensure same size */
+            justify-content: center;
+        }
 
-    .innerContainer {
-        margin-left: 15%;
-    }
+        #igLink {
+            margin-left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .innerMenu {
-        left: 0;
-        /* Align to the left */
-        width: 100%;
-        /* Full width */
-        display: flex;
-        justify-content: flex-start;
-        /* Align items vertically */
-        flex-direction: column;
-        height: auto;
-        /* Adjust height */
+        .innerContainer {
+            margin-left: 15%;
+        }
+
+        .innerMenu {
+            left: 0;
+            /* Align to the left */
+            width: 100%;
+            /* Full width */
+            display: flex;
+            justify-content: flex-start;
+            /* Align items vertically */
+            flex-direction: column;
+            height: auto;
+            /* Adjust height */
+        }
     }
 }
