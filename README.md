@@ -6,16 +6,9 @@ The website is design by [Chris Petter Spilde](http://www.chrispetterspilde.com/
 
 ## Tools
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app),  
 React,  
 JavaScript,
 ReScript,
 Node,  
 Dropbox API.  
-
-ReScript
-[React ReScript](https://rescript-lang.org/docs/react/latest/introduction)
-[Converting to ReScript](https://rescript-lang.org/docs/manual/latest/converting-from-js)
-
 https://nextjs.org/
-https://www.sanity.io/

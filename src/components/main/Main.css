@@ -1,52 +1,52 @@
-.mainContainer{
-  position: relative;
-  background-color: white;
-  overflow: auto;
-  top: 37px;
-  height: 95%;
-  bottom: 50px;
-  scrollbar-width: none;
-  -ms-overflow-style: none; 
-  overflow-x: hidden !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.mainContainer {
+    position: relative;
+    background-color: white;
+    overflow: auto;
+    top: 37px;
+    height: 95%;
+    bottom: 50px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: hidden !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-#cont{
-  position: relative;
-  flex: 1;
-  justify-content: center;
-  height: 100%;
-  align-items: center;
+#cont {
+    position: relative;
+    flex: 1;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
 }
 
-#contentBox{
-  position: relative;
-  flex: 1;
-  width: 60%;
-  left: 20%;
-  text-align: center;
+#contentBox {
+    position: relative;
+    flex: 1;
+    width: 60%;
+    left: 20%;
+    text-align: center;
 }
 
 @media (max-width:768px) {
-  
-  .mainContainer{
-    top: 2%;
-    bottom: 2%;
-  }
 
-  #contentBox{
-    position: relative;
-    width: 100%;
-    left: 0;
-    text-align: center;
-    top: 0;
-  }
+    .mainContainer {
+        top: 2%;
+        bottom: 2%;
+    }
+
+    #contentBox {
+        position: relative;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        top: 0;
+    }
 }
 
 @media (max-height: 500px) and (orientation: landscape) {
-  .mainContainer{
-    top: 2%;
-  }
+    .mainContainer {
+        top: 2%;
+    }
 }
