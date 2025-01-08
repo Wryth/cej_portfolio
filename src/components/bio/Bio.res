@@ -5,90 +5,93 @@ import './Bio.css';
 open React
 
 type exhibitionData = {
-	year: string,
-	title: string,
-	description: string,
-	location: string,
-	city: string,
-	country: string
+  year: string,
+  title: string,
+  description: string,
+  location: string,
+  city: string,
+  country: string,
 }
 
 module Exhibition = {
-	@react.component
-	let make = (~data) => {
-		let location = data.location != "" ? ", " ++ data.location : ""
-		let city = data.city != "" ? ", " ++ data.city : ""
-		let country = data.country != "" ? ", " ++ data.country : ""
-		let place = string(location ++ city ++ country)
+  @react.component
+  let make = (~data) => {
+    let location = data.location != "" ? ", " ++ data.location : ""
+    let city = data.city != "" ? ", " ++ data.city : ""
+    let country = data.country != "" ? ", " ++ data.country : ""
+    let place = string(location ++ city ++ country)
 
-		<>
-			{string(data.title)}{string(", ")}<i>{string(data.description)}</i> place
-			<br></br>
-		</>
-	}
+    <>
+      {string(data.title)}
+      {string(", ")}
+      <i> {string(data.description)} </i>
+      place
+      <br />
+    </>
+  }
 }
 
 module YearGroup = {
-	@react.component
-	let make = (~data:(string, array<exhibitionData>)) => {
-		let (a, b) = data
+  @react.component
+  let make = (~data: (string, array<exhibitionData>)) => {
+    let (a, b) = data
 
-		let result = b
-			->Array.map(data => {<Exhibition data />})
-			->React.array
+    let result =
+      b
+      ->Array.map(data => {<Exhibition data />})
+      ->React.array
 
-		<>
-			<div className="bioYear largeText">
-				{string(a)}
-			</div>
-			<p className="exhibitionInfo smallText">
-				result
-			</p>
-			<br></br>
-			<br></br>
-		</>
-	}
+    <>
+      <div className="bioYear largeText"> {string(a)} </div>
+      <p className="exhibitionInfo smallText"> result </p>
+      <br />
+      <br />
+    </>
+  }
 }
 
 module CV = {
-	@react.component
-	let make = (~cv: array<exhibitionData>) => {
+  @react.component
+  let make = (~cv: array<exhibitionData>) => {
+    let groupByYear = (agg, id) => {
+      switch agg->Dict.keysToArray->Array.includes(id.year) {
+      | true =>
+        agg->Dict.set(id.year, agg->Js.Dict.unsafeGet(id.year)->Array.concat([id]))
+        agg
+      | false =>
+        agg->Dict.set(id.year, [id])
+        agg
+      }
+    }
+    let yearGroups = cv->Array.reduce(Dict.make(), groupByYear)
+    let result =
+      Js.Dict.entries(yearGroups)
+      ->Array.map(data => {
+        let (key, _) = data
+        <YearGroup data key />
+      })
+      ->Array.toReversed
+      ->React.array
 
-		let groupByYear = (agg, id) => {
- 			switch agg->Dict.keysToArray->Array.includes(id.year) {
- 			| true => agg->Dict.set(id.year, agg->Js.Dict.unsafeGet(id.year)->Array.concat([id])); agg
- 			| false => agg->Dict.set(id.year, [id]); agg
- 			}
-		}
- 		let yearGroups = cv->Array.reduce(Dict.make(), groupByYear)
-		let result = Js.Dict.entries(yearGroups)
-			->Array.map(data => {
-				let (key, _) = data
-				<YearGroup data key /> })
-			->Array.toReversed
-			->React.array
-
-		<>
-			result
-			<br></br>
-			<br></br>
-		</>
-	}
+    <>
+      result
+      <br />
+      <br />
+    </>
+  }
 }
 
-
 module Bio = {
-	%%raw(`
+  %%raw(`
 		const onXclick = () => {
 			document.getElementById('name').scrollIntoView();
 		};
 	`)
 
-	@react.component
-	let make = (~cv: array<exhibitionData>) => {
-
-		<div id="bioContainer" >
-			 {%raw(`
+  @react.component
+  let make = (~cv: array<exhibitionData>) => {
+    <div id="bioContainer">
+      {%raw(`
 			<>
 				<div className="bioHeader largeText">
 					BIO
@@ -107,25 +110,17 @@ module Bio = {
 				</p>
 			</>
 			 `)}
-
-			<>
-				<div className="bioHeader largeText">
-					<p className="bioHeader largeText">
-						{string("SELECTED")}
-						<br></br>
-						{string("EXHIBITIONS")}
-					</p>
-				</div>
-
-				<CV cv />
-
-				<div
-					className="xEnd largeText"
-					onClick={%raw(`onXclick`)}
-				>
-					{string("X")}
-				</div>
-			</>
-		</div>
-	}
+      {<>
+        <div className="bioHeader largeText">
+          <p className="bioHeader largeText">
+            {string("SELECTED")}
+            <br />
+            {string("EXHIBITIONS")}
+          </p>
+        </div>
+        <CV cv />
+        <div className="xEnd largeText" onClick={%raw(`onXclick`)}> {string("X")} </div>
+      </>}
+    </div>
+  }
 }

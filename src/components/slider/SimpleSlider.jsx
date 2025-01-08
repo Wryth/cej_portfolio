@@ -24,7 +24,7 @@ class SimpleSlider extends React.Component {
       open: null,
       loading: true,
       dbImgs: []
-     };
+    };
     this.handleWheel = this.handleWheel.bind(this);
   }
 
@@ -37,14 +37,14 @@ class SimpleSlider extends React.Component {
   componentDidMount() {
     ReactDOM.findDOMNode(this).addEventListener('wheel', this.handleWheel);
 
-    this.setState({ dbImgs: this.props.dbImgs}, () => {
+    this.setState({ dbImgs: this.props.dbImgs }, () => {
       const menu = this.Menu(this.props.dbImgs
-          .map(x => {
-            if(!x.metadata) {
-              return {name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0]}
-            }
-            return {name: x.link, title: x.metadata.name.split(".")[0].split("_")[0]}
-          }));
+        .map(x => {
+          if (!x.metadata) {
+            return { name: process.env.PUBLIC_URL + '/foto/carousel/' + x + '.jpg', title: x.split("_")[0] }
+          }
+          return { name: x.link, title: x.metadata.name.split(".")[0].split("_")[0] }
+        }));
       this.setState({ mode: menu });
     });
   }
@@ -59,7 +59,7 @@ class SimpleSlider extends React.Component {
       return null;
     }
     return (
-        <div className="largeText spinner">LOADING ...</div>
+      <div className="largeText spinner">LOADING ...</div>
     );
   }
 
@@ -71,18 +71,18 @@ class SimpleSlider extends React.Component {
   // uses a direct image link
   MenuLinkItem = ({ pic, title, key }) => {
     return (
-        <Fragment key={key}>
-          <div className="titleBox smallText">
-            <p className="pictureTitle smallText">{title}</p>
-          </div>
-          <img
-              className="pictures"
-              src={ pic }
-              onLoad={this.handleStateChange}
-              onError={this.handleStateChange}
-              alt=''
-          />
-        </Fragment>
+      <Fragment key={key}>
+        <div className="titleBox smallText">
+          <p className="pictureTitle smallText">{title}</p>
+        </div>
+        <img
+          className="pictures"
+          src={pic}
+          onLoad={this.handleStateChange}
+          onError={this.handleStateChange}
+          alt=''
+        />
+      </Fragment>
     );
   };
 
@@ -91,7 +91,7 @@ class SimpleSlider extends React.Component {
   Menu = (list) => list.map(el => {
     const { name, title } = el;
     return (
-        this.MenuLinkItem({title:title, pic:name, key:{name}})
+      this.MenuLinkItem({ title: title, pic: name, key: { name } })
     );
   });
 
@@ -99,7 +99,7 @@ class SimpleSlider extends React.Component {
     const classes = this.state.loading ? 'basket hide' : 'basket';
     let slidesInFrame = 1.68; // On screen
     let scrollSpeed = 1500;
-    if(window.matchMedia("(max-width: 768px)").matches) {
+    if (window.matchMedia("(max-width: 768px)").matches) {
       slidesInFrame = 1; // on phone tablet
       scrollSpeed = 500;
     }
@@ -118,10 +118,10 @@ class SimpleSlider extends React.Component {
 
     return (
       <div id="cont">
-        <Slider {...settings} ref={ slider => this.slider = slider } className={ classes }>
-          { this.state.mode }
+        <Slider {...settings} ref={slider => this.slider = slider} className={classes}>
+          {this.state.mode}
         </Slider>
-        { this.renderSpinner() }
+        {this.renderSpinner()}
       </div>
     );
   }
